@@ -1,4 +1,4 @@
-package com.bddi.doomo.ui.nfc
+package com.bddi.doomo.ui.account
 
 import android.os.Bundle
 import android.view.LayoutInflater

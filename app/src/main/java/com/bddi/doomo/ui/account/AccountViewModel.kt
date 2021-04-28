@@ -1,4 +1,4 @@
-package com.bddi.doomo.ui.nfc
+package com.bddi.doomo.ui.account
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
