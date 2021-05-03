@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -15,13 +14,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_home, R.id.navigation_nfc, R.id.navigation_library, R.id.account))
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_nfc, R.id.navigation_library, R.id.account
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -29,12 +31,15 @@ class MainActivity : AppCompatActivity() {
         getSupportActionBar()?.hide()
 
         val accountButton: Button = findViewById(R.id.account_button)
-        accountButton.setOnClickListener({
+        accountButton.setOnClickListener {
             navController.navigate(R.id.account)
             navView.uncheckAllItems()
-        })
+        }
     }
 
+    /**
+     * Uncheck all item from bottom navigation bar
+     */
     fun BottomNavigationView.uncheckAllItems() {
         menu.setGroupCheckable(0, true, false)
         for (i in 0 until menu.size()) {
