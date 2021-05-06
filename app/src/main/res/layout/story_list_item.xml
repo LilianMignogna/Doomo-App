@@ -44,16 +44,14 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatingActionButton"
-                android:clickable="true"
                 app:srcCompat="@drawable/ic_baseline_info_24"
                 app:fabCustomSize="45dp"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:layout_margin="5dp"/>
+                android:layout_margin="5dp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatingActionButton2"
-                android:clickable="true"
                 app:srcCompat="@drawable/ic_baseline_play_circle_filled_24"
                 app:fabCustomSize="45dp"
                 android:layout_width="45dp"
