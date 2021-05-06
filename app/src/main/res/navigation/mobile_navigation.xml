@@ -9,11 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.bddi.doomo.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_navigation_home_to_account"
-            app:destination="@id/account" />
-    </fragment>
+        tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/navigation_library"
@@ -32,4 +28,16 @@
         android:name="com.bddi.doomo.ui.account.AccountFragment"
         android:label="@string/title_account"
         tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/story_details"
+        android:name="com.bddi.doomo.ui.story_details.StoryDetailsFragment"
+        android:label="@string/title_nfc"
+        tools:layout="@layout/fragment_nfc" />
+    <action
+        android:id="@+id/action_global_navigation_story_details"
+        app:destination="@id/story_details"
+        app:enterAnim="@anim/slide_in_up"
+        app:exitAnim="@anim/slide_out_down"
+        app:launchSingleTop="true" />
 </navigation>
