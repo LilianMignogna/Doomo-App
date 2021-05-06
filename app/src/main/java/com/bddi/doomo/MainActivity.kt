@@ -44,34 +44,6 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.account)
             navView.uncheckAllItems()
         }
-
-
-        // Data Base : Get Users informations
-        db.collection("Users")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    println("${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                println("Error getting documents: "+ exception)
-            }
-
-        // Data Base : Get Riri's Story informations
-        println("ici")
-        val riri = db.collection("Stories").document("B9qEJmMMFYLHESIECbjm")
-        riri.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    println("DocumentSnapshot data: ${document.data}")
-                } else {
-                    println("No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                println("Error getting documents: "+ exception)
-            }
     }
 
     /**
