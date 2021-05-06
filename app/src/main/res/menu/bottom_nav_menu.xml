@@ -7,9 +7,8 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_nfc"
-        android:icon="@drawable/ic_baseline_nfc_24"
-        android:title="@string/title_nfc" />
+        android:id="@+id/placeholder"
+        android:title="Placeholder" />
 
     <item
         android:id="@+id/navigation_library"
