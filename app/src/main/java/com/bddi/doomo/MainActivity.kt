@@ -14,6 +14,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,24 +37,35 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        // Disable placeholder button
+        navView.menu.findItem(R.id.placeholder).isEnabled = false
+
         //Hide Action bar
         getSupportActionBar()?.hide()
+
+        // Set navigation action to the big scan button
+        val scanButton: FloatingActionButton = findViewById(R.id.navigation_nfc)
+        scanButton.setOnClickListener(){
+            navController.navigate(R.id.navigation_nfc)
+            uncheckAllItems()
+        }
 
         val accountButton: Button = findViewById(R.id.account_button)
         accountButton.setOnClickListener {
             navController.navigate(R.id.account)
-            navView.uncheckAllItems()
+            uncheckAllItems()
         }
     }
 
     /**
      * Uncheck all item from bottom navigation bar
      */
-    fun BottomNavigationView.uncheckAllItems() {
-        menu.setGroupCheckable(0, true, false)
-        for (i in 0 until menu.size()) {
-            menu.getItem(i).isChecked = false
+    fun uncheckAllItems() {
+        val navview: BottomNavigationView  = findViewById(R.id.nav_view)
+        navview.menu.setGroupCheckable(0, true, false)
+        for (i in 0 until navview.menu.size()) {
+            navview.menu.getItem(i).isChecked = false
         }
-        menu.setGroupCheckable(0, true, true)
+        navview.menu.setGroupCheckable(0, true, true)
     }
 }

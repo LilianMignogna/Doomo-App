@@ -7,4 +7,5 @@
     <string name="storyTitleText">TextView</string>
     <string name="storyDescriptionText">TextView</string>
     <string name="illustration_riri">IMAGE</string>
+    <string name="text_story_details">Détails de l\'histoire</string>
 </resources>
