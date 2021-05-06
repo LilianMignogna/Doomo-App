@@ -15,20 +15,17 @@ class AccountFragment : Fragment() {
     private lateinit var accountViewModel: AccountViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         accountViewModel =
-            ViewModelProvider(this).get(AccountViewModel::class.java)
+                ViewModelProvider(this).get(AccountViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_account, container, false)
         val textView: TextView = root.findViewById(R.id.text_account)
-        accountViewModel.text.observe(
-            viewLifecycleOwner,
-            Observer {
-                textView.text = it
-            }
-        )
+        accountViewModel.text.observe(viewLifecycleOwner, Observer {
+            textView.text = it
+        })
         return root
     }
 }
