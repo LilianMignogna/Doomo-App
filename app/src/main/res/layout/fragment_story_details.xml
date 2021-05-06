@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.library.LibraryFragment"
-    android:background="#FFF">
+    tools:context=".ui.story_details.StoryDetailsFragment"
+    android:background="@color/gray">
 
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
@@ -21,26 +21,13 @@
         android:orientation="vertical"/>
 
     <TextView
-        android:id="@+id/text_library"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/storiesRecyclerView"
+        android:id="@+id/text_story_details"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/end_guideline"
         app:layout_constraintStart_toStartOf="@+id/begin_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/text_library"
-        app:spanCount="2"
-        android:background="#FFF"/>
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

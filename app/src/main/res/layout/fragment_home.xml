@@ -30,4 +30,15 @@
         app:layout_constraintEnd_toEndOf="@+id/end_guideline"
         app:layout_constraintStart_toStartOf="@+id/begin_guideline"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/to_story_details_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/text_home"
+        app:layout_constraintEnd_toEndOf="@+id/end_guideline"
+        app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+        android:text="To Story Details"
+        app:backgroundTint="?colorAccent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
