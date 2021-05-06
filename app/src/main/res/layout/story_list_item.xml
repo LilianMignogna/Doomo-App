@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/story_list_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/storyTitleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#12065F"
+                android:textSize="20dp"
+                android:text="@string/storyTitleText" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/storyImageView"
+                android:adjustViewBounds="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:shapeAppearanceOverlay="@style/border_radius"
+                app:srcCompat="@drawable/illustration_riri"
+                android:layout_marginBottom="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom|center_horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:clickable="true"
+                app:srcCompat="@drawable/ic_baseline_info_24"
+                app:fabCustomSize="45dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="5dp"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton2"
+                android:clickable="true"
+                app:srcCompat="@drawable/ic_baseline_play_circle_filled_24"
+                app:fabCustomSize="45dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

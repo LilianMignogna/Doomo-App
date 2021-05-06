@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.library.LibraryFragment">
+    tools:context=".ui.library.LibraryFragment"
+    android:background="#FFF">
 
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
@@ -21,12 +22,25 @@
 
     <TextView
         android:id="@+id/text_library"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/end_guideline"
-        app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/storiesRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+        app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/text_library"
+        app:spanCount="2"
+        android:background="#FFF"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

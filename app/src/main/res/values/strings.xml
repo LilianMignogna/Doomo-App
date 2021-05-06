@@ -4,4 +4,7 @@
     <string name="title_library">Bibliothèque</string>
     <string name="title_nfc">Nfc</string>
     <string name="title_account">Compte</string>
+    <string name="storyTitleText">TextView</string>
+    <string name="storyDescriptionText">TextView</string>
+    <string name="illustration_riri">IMAGE</string>
 </resources>
