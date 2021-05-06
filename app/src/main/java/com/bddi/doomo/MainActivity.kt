@@ -2,12 +2,12 @@ package com.bddi.doomo
 
 import android.os.Bundle
 import android.widget.Button
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bddi.doomo.model.Story
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
+      
         // Disable placeholder button
         navView.menu.findItem(R.id.placeholder).isEnabled = false
 
