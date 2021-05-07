@@ -15,7 +15,7 @@ import com.bddi.doomo.model.Story
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class StoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+class StoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 class LibraryFragment : Fragment() {
 
@@ -27,7 +27,7 @@ class LibraryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         librairyViewModel =
-                ViewModelProvider(this).get(LibraryViewModel::class.java)
+            ViewModelProvider(this).get(LibraryViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_library, container, false)
 
         // Display data in recyclerView in fragment_library.xml
