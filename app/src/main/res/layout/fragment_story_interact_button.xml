@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Theme.AppCompat.NoActionBar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="userLandscape"
+    tools:context=".ui.story.InteractButtonFragment">
+
+    <ImageView
+        android:id="@+id/image_background"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="Background"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/illustration_sans_titre_33" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/interact_layout"
+        app:layout_constraintDimensionRatio="16:9"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="#55FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/interact_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="100dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/ripple" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/pause_button"
+        android:layout_width="43dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_pause_circle_filled_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

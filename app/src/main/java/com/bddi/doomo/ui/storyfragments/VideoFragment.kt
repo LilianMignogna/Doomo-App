@@ -1,4 +1,4 @@
-package com.bddi.doomo.ui.storyfragments
+package com.bddi.doomo.ui.story
 
 import android.net.Uri
 import android.os.Bundle
@@ -22,7 +22,7 @@ class VideoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
-        var count = false
+        var isButtonVisible = false
         val context = requireContext()
 
         val root = inflater.inflate(R.layout.fragment_story_video, container, false)
@@ -31,9 +31,13 @@ class VideoFragment : Fragment() {
         val mediaController = MediaController(context)
         mediaController.setAnchorView(videoView)
 
-        val the_package = getActivity()?.getPackageName()
+        val video = (activity as? StoryActivity)?.currentArgument
 
-        val videoPath = "android.resource://$the_package/${R.raw.tetris}"
+        // get directory path
+        val currentPackage = activity?.packageName
+
+        // Put video path in the layout
+        val videoPath = "android.resource://$currentPackage/$video"
         val uri = Uri.parse(videoPath)
         videoView.setVideoURI(uri)
 
@@ -44,6 +48,7 @@ class VideoFragment : Fragment() {
         val disappear = AnimationUtils.loadAnimation(context, R.anim.disappear)
         val appear = AnimationUtils.loadAnimation(context, R.anim.appear)
 
+        // timer of visibility of pause button
         val timer = object : CountDownTimer(5000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 println(millisUntilFinished)
@@ -51,43 +56,46 @@ class VideoFragment : Fragment() {
 
             override fun onFinish() {
                 pauseButton.startAnimation(disappear)
-                count = false
+                isButtonVisible = false
                 pauseButton.visibility = View.INVISIBLE
             }
         }
 
+        // pause the video 
         pauseButton.setOnClickListener {
-            if (count) {
+            if (isButtonVisible) {
                 timer.start()
                 if (videoView.isPlaying) {
                     videoView.pause()
-                    (activity as? StoryActivity)?.hideSystemUI()
                     pauseButton.setImageResource(R.drawable.ic_baseline_play_circle_filled_24)
                 } else {
                     videoView.start()
-                    (activity as? StoryActivity)?.hideSystemUI()
                     pauseButton.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
                 }
             }
         }
 
+        // display pause button
         videoView.setOnClickListener {
+            (activity as? StoryActivity)?.endEvent()
+            (activity as? StoryActivity)?.hideSystemUI()
             timer.start()
-            if (!count) {
+            if (!isButtonVisible) {
                 pauseButton.visibility = View.VISIBLE
                 pauseButton.startAnimation(appear)
-                count = true
+                isButtonVisible = true
             } else {
                 timer.cancel()
                 pauseButton.visibility = View.INVISIBLE
                 pauseButton.startAnimation(disappear)
-                count = false
+                isButtonVisible = false
             }
         }
 
+        // event when video is ended
         videoView.setOnCompletionListener {
-            videoView.start()
-            println("the video just endedt")
+            (activity as? StoryActivity)?.endEvent()
+            println("the video just ended")
         }
 
         return root

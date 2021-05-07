@@ -8,13 +8,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bddi.doomo.model.Story
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.auth.User
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,16 +32,16 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-      
+
         // Disable placeholder button
         navView.menu.findItem(R.id.placeholder).isEnabled = false
 
-        //Hide Action bar
+        // Hide Action bar
         getSupportActionBar()?.hide()
 
         // Set navigation action to the big scan button
         val scanButton: FloatingActionButton = findViewById(R.id.navigation_nfc)
-        scanButton.setOnClickListener(){
+        scanButton.setOnClickListener() {
             navController.navigate(R.id.navigation_nfc)
             uncheckAllItems()
         }
@@ -61,7 +57,7 @@ class MainActivity : AppCompatActivity() {
      * Uncheck all item from bottom navigation bar
      */
     fun uncheckAllItems() {
-        val navview: BottomNavigationView  = findViewById(R.id.nav_view)
+        val navview: BottomNavigationView = findViewById(R.id.nav_view)
         navview.menu.setGroupCheckable(0, true, false)
         for (i in 0 until navview.menu.size()) {
             navview.menu.getItem(i).isChecked = false

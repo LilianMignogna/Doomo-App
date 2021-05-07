@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:screenOrientation="userLandscape"
-    tools:context=".MainActivity">
+    tools:context=".ui.story.VideoFragment">
 
     <VideoView
         android:id="@+id/video_view"
