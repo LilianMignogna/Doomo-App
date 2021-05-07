@@ -33,7 +33,7 @@ class StoryDetailsFragment : Fragment() {
             }
         )
 
-        val button: Button = root.findViewById(R.id.button_change_activity)
+        val button: Button = root.findViewById(R.id.button_start_interaction)
         button.setOnClickListener {
             val intent = Intent(activity, StoryActivity::class.java)
             intent.putExtra("Story", "frog")

@@ -21,6 +21,9 @@ class InteractButtonFragment : Fragment() {
         println("interaction fragment loaded")
 
         val root = inflater.inflate(R.layout.fragment_story_interact_button, container, false)
+
+        var argument = (activity as? StoryActivity)?.currentArgument as Array<Pair<Int, Int>>
+
         val backgroundImage = root.findViewById<ImageView>(R.id.image_background)
         backgroundImage.setImageResource(R.drawable.illustration_sans_titre_33)
         backgroundImage.contentDescription = "background"
@@ -34,10 +37,12 @@ class InteractButtonFragment : Fragment() {
             height = 1036
         }
 
+        var count = 0
+
         // init button position
         val layoutParams = buttonImage.layoutParams as ConstraintLayout.LayoutParams
-        val left = (activity as? StoryActivity)?.convertValue(height, 397)
-        val bottom = (activity as? StoryActivity)?.convertValue(height, 5)
+        val left = (activity as? StoryActivity)?.convertValue(height, argument[count].first)
+        val bottom = (activity as? StoryActivity)?.convertValue(height, argument[count].second)
 
         println("height : $height, Left : $left, Bottom : $bottom")
         if (left != null) {
@@ -49,14 +54,19 @@ class InteractButtonFragment : Fragment() {
 
         // change button position to next one
         buttonImage.setOnClickListener {
-            val left = (activity as? StoryActivity)?.convertValue(height, 670)
-            val bottom = (activity as? StoryActivity)?.convertValue(height, 400)
-            if (left != null) {
-                if (bottom != null) {
-                    layoutParams.setMargins(left, 0, 0, bottom)
+            count++
+            if (count >= argument.size) {
+                onFinish()
+            } else {
+                val left = (activity as? StoryActivity)?.convertValue(height, argument[count].first)
+                val bottom = (activity as? StoryActivity)?.convertValue(height, argument[count].second)
+                if (left != null) {
+                    if (bottom != null) {
+                        layoutParams.setMargins(left, 0, 0, bottom)
+                    }
                 }
+                buttonImage.layoutParams = layoutParams
             }
-            buttonImage.layoutParams = layoutParams
         }
 
         backgroundImage.setOnClickListener {
@@ -66,7 +76,7 @@ class InteractButtonFragment : Fragment() {
         return root
     }
 
-    fun onFinish() {
+    private fun onFinish() {
         (activity as? StoryActivity)?.endEvent()
         println("the interaction just ended")
     }
