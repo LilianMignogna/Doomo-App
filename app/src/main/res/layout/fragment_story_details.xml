@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.story_details.StoryDetailsFragment"
-    android:background="@color/gray">
+    android:background="@color/backgroundColor">
 
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
@@ -20,14 +20,56 @@
         app:layout_constraintGuide_end="16dp"
         android:orientation="vertical"/>
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/illustration_riri"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toStartOf="@id/begin_guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/shape_circle"
+        android:background="#F00"
+        android:backgroundTint="#0F0"/>
+
     <TextView
-        android:id="@+id/text_story_details"
+        android:id="@+id/text_story_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/end_guideline"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textColor="?colorSecondary"
         app:layout_constraintStart_toStartOf="@+id/begin_guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/text_story_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:text="@string/text_story_description"
+        android:layout_marginVertical="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+        app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/text_story_title" />
+
+    <Button
+        android:id="@+id/button_start_interaction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/text_button_start_interraction"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="50dp"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+        app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/text_story_description" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,4 +3,7 @@
     <style name="border_radius">
         <item name="cornerSize">10%</item>
     </style>
+    <style name="shape_circle">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

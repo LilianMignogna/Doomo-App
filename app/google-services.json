@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "456366967313",
+    "firebase_url": "https://doomo-c45a0-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "doomo-c45a0",
+    "storage_bucket": "doomo-c45a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456366967313:android:e209c1dd7e593684853fb0",
+        "android_client_info": {
+          "package_name": "com.example.firebasetest1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456366967313-qep0ii92e1llad86eqni5d153c0f245a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChEssvlilfYlTbgWCeUjRtfrR3sdDZxJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456366967313-qep0ii92e1llad86eqni5d153c0f245a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
