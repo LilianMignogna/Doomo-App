@@ -2,10 +2,15 @@
     <string name="app_name">Doomo</string>
     <string name="title_home">Accueil</string>
     <string name="title_library">Bibliothèque</string>
+    <string name="page_title_library">Ma bibliothèque</string>
     <string name="title_nfc">Nfc</string>
     <string name="title_account">Compte</string>
     <string name="storyTitleText">TextView</string>
     <string name="storyDescriptionText">TextView</string>
     <string name="illustration_riri">IMAGE</string>
     <string name="text_story_details">Détails de l\'histoire</string>
+    <string name="buttoninformations">button Informations</string>
+    <string name="buttonplayinterraction">button Play Interraction</string>
+    <string name="text_story_description">Story description</string>
+    <string name="text_button_start_interraction">Lancer l\'histoire</string>
 </resources>

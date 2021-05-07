@@ -15,7 +15,6 @@ import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
 
 
-
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
@@ -33,13 +32,15 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
 
-        val storyDetailsButton: Button = root.findViewById(R.id.to_story_details_button)
+        //val storyDetailsButton: Button = root.findViewById(R.id.to_story_details_button)
 
         // Add link to the story_details fragment
-        storyDetailsButton.setOnClickListener {
+        /*storyDetailsButton.setOnClickListener {
             root.findNavController().navigate(R.id.action_global_navigation_story_details)
             (activity as MainActivity).uncheckAllItems()
         }
+
+         */
         return root
     }
 }
