@@ -14,12 +14,12 @@ class StoryActivity : AppCompatActivity() {
 
     var storyFragment = intArrayOf(0, 1, 0, 1, 1, 0, 0)
     val interactionData = arrayOf(
-        Pair(50, 400),
+        Pair(30, 400),
         Pair(397, 5),
-        Pair(670, 400),
-        Pair(880, 790),
-        Pair(1250, 540),
-        Pair(1607, 400)
+        Pair(660, 400),
+        Pair(890, 790),
+        Pair(1240, 530),
+        Pair(1607, 600)
     )
     private var storyArgument = arrayOf(R.raw.tetris, interactionData, R.raw.tetris, interactionData, interactionData, R.raw.tetris, R.raw.tetris)
     public lateinit var currentArgument: Any

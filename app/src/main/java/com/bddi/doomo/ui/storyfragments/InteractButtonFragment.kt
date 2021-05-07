@@ -34,7 +34,7 @@ class InteractButtonFragment : Fragment() {
 
         var height = context?.resources?.displayMetrics?.heightPixels
         if (height == null) {
-            height = 1036
+            height = 1080
         }
 
         var count = 0
