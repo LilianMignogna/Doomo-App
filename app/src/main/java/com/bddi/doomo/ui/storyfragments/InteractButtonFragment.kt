@@ -55,6 +55,15 @@ class InteractButtonFragment : Fragment() {
             height = 1080
         }
 
+        // define correct width for the video
+        val layoutVideoView = backgroundImage.layoutParams as ConstraintLayout.LayoutParams
+        val width = (activity as? StoryActivity)?.convertValue(height, 2560)
+
+        if (width != null) {
+            layoutVideoView.width = width
+        }
+        backgroundImage.layoutParams = layoutVideoView
+
         var count = 1
 
         // init button position

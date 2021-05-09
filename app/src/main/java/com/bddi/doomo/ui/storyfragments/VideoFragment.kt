@@ -42,6 +42,20 @@ class VideoFragment : Fragment() {
         val uri = Uri.parse(videoPath)
         videoView.setVideoURI(uri)
 
+        // define correct width for the video
+        var height = context?.resources?.displayMetrics?.heightPixels
+        if (height == null) {
+            height = 1080
+        }
+
+        val layoutVideoView = videoView.layoutParams as ConstraintLayout.LayoutParams
+        val width = (activity as? StoryActivity)?.convertValue(height, 2560)
+
+        if (width != null) {
+            layoutVideoView.width = width
+        }
+        videoView.layoutParams = layoutVideoView
+
         videoView.start()
 
         val buttonLayout = root.findViewById<ConstraintLayout>(R.id.layout_button)
