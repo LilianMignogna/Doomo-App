@@ -42,8 +42,9 @@
 
     <VideoView
         android:id="@+id/video_view"
-        android:layout_width="wrap_content"
+        android:layout_width="2560px"
         android:layout_height="match_parent"
+        android:contentDescription="Background"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
