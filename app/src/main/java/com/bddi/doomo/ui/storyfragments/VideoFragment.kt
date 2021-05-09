@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.MediaController
 import android.widget.VideoView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.bddi.doomo.R
 import com.bddi.doomo.activity.StoryActivity
@@ -43,7 +44,9 @@ class VideoFragment : Fragment() {
 
         videoView.start()
 
+        val buttonLayout = root.findViewById<ConstraintLayout>(R.id.layout_button)
         val pauseButton = root.findViewById<ImageView>(R.id.pause_button)
+        val stopButton = root.findViewById<ImageView>(R.id.stop_button)
 
         val disappear = AnimationUtils.loadAnimation(context, R.anim.disappear)
         val appear = AnimationUtils.loadAnimation(context, R.anim.appear)
@@ -55,9 +58,9 @@ class VideoFragment : Fragment() {
             }
 
             override fun onFinish() {
-                pauseButton.startAnimation(disappear)
+                buttonLayout.startAnimation(disappear)
                 isButtonVisible = false
-                pauseButton.visibility = View.INVISIBLE
+                buttonLayout.visibility = View.INVISIBLE
             }
         }
 
@@ -75,19 +78,26 @@ class VideoFragment : Fragment() {
             }
         }
 
+        // Leave Story
+        stopButton.setOnClickListener {
+            (activity as? StoryActivity)?.endStory()
+        }
+
         // display pause button
         videoView.setOnClickListener {
-            (activity as? StoryActivity)?.endEvent()
+            // (activity as? StoryActivity)?.endEvent()
+            println("touch")
             (activity as? StoryActivity)?.hideSystemUI()
             timer.start()
             if (!isButtonVisible) {
-                pauseButton.visibility = View.VISIBLE
-                pauseButton.startAnimation(appear)
+                buttonLayout.visibility = View.VISIBLE
+                buttonLayout.alpha = 1F
+                buttonLayout.startAnimation(appear)
                 isButtonVisible = true
             } else {
                 timer.cancel()
-                pauseButton.visibility = View.INVISIBLE
-                pauseButton.startAnimation(disappear)
+                buttonLayout.visibility = View.INVISIBLE
+                buttonLayout.startAnimation(disappear)
                 isButtonVisible = false
             }
         }

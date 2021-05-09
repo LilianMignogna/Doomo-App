@@ -13,7 +13,7 @@ import com.bddi.doomo.ui.story.VideoFragment
 class StoryActivity : AppCompatActivity() {
 
     var storyFragment = intArrayOf(0, 1, 0, 1, 1, 0, 0)
-    val interactionData = arrayOf(
+    private val interactionData = arrayOf(
         Pair(30, 400),
         Pair(397, 5),
         Pair(660, 400),
@@ -21,8 +21,8 @@ class StoryActivity : AppCompatActivity() {
         Pair(1240, 530),
         Pair(1607, 600)
     )
-    private var storyArgument = arrayOf(R.raw.tetris, interactionData, R.raw.tetris, interactionData, interactionData, R.raw.tetris, R.raw.tetris)
-    public lateinit var currentArgument: Any
+    private var storyArgument = arrayOf(R.raw.test, interactionData, R.raw.test, interactionData, interactionData, R.raw.test, R.raw.test)
+    lateinit var currentArgument: Any
     var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,13 +58,18 @@ class StoryActivity : AppCompatActivity() {
         print("end")
         count++
         if (count == storyArgument.size) {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("Story", "frog")
-            startActivity(intent)
+            endStory()
         } else {
             currentArgument = storyArgument[count]
             showFragment(getFragment(storyFragment[count]))
         }
+    }
+
+    // End Story and return to main activity
+    fun endStory() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("Story", "frog")
+        startActivity(intent)
     }
 
     // convert value position in interaction for all screen

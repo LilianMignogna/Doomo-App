@@ -9,7 +9,18 @@
     android:screenOrientation="userLandscape"
     tools:context=".ui.story.InteractButtonFragment">
 
-    <ImageView
+    <VideoView
+        android:id="@+id/video_background"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="Background"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <VideoView
         android:id="@+id/image_background"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -18,8 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/illustration_sans_titre_33" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/interact_layout"
@@ -29,6 +39,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/animal_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="100dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/frog" />
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/interact_button"
@@ -43,13 +63,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/pause_button"
+        android:id="@+id/stop_button"
         android:layout_width="43dp"
         android:layout_height="41dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_pause_circle_filled_24" />
+        app:srcCompat="@drawable/cancel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
