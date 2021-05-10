@@ -2,6 +2,7 @@ package com.bddi.doomo
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             uncheckAllItems()
         }
 
-        val accountButton: Button = findViewById(R.id.account_button)
+        val accountButton: ImageButton = findViewById(R.id.account_button)
         accountButton.setOnClickListener {
             navController.navigate(R.id.account)
             uncheckAllItems()

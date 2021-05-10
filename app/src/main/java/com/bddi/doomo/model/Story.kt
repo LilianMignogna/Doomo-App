@@ -6,4 +6,5 @@ data class Story(
     val funfact: String = "",
     val home: String = "",
     val reappear: String = "",
+    val species: String = "",
 )

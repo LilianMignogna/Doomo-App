@@ -9,11 +9,13 @@
     android:focusable="true">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/story_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/transparent"
         tools:ignore="MissingConstraints"
-        app:cardElevation="0dp">
+        app:cardElevation="0dp"
+        android:layout_marginBottom="20dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -24,11 +26,13 @@
 
             <TextView
                 android:id="@+id/storyTitleView"
+                android:fontFamily="@font/baloochettan_semibold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?colorSecondary"
                 android:textSize="15sp"
-                android:text="@string/storyTitleText"/>
+                android:text="@string/storyTitleText"
+                android:layout_marginBottom="10dp"/>
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/storyImageView"
@@ -75,6 +79,15 @@
                 android:contentDescription="@string/buttonplayinterraction" />
         </LinearLayout>
 
-
     </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/story_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

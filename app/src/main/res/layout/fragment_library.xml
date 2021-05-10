@@ -4,43 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.library.LibraryFragment">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/begin_guideline"
-        app:layout_constraintGuide_begin="16dp"
-        android:orientation="vertical"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/end_guideline"
-        app:layout_constraintGuide_end="16dp"
-        android:orientation="vertical"/>
+    tools:context=".ui.library.LibraryFragment"
+    android:background="@color/darkPurple">
 
     <TextView
-        android:id="@+id/text_library"
+        android:id="@+id/doomo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="@string/page_title_library"
-        android:textColor="?colorSecondary"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="@id/end_guideline"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/begin_guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="@font/baloochettan_medium"
+        android:text="@string/doomo"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/storiesRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintEnd_toStartOf="@+id/end_guideline"
-        app:layout_constraintStart_toStartOf="@+id/begin_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/text_library"
-        app:spanCount="2"
-        android:background="@color/transparent"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/page_shape"
+        android:clickable="true"
+        android:focusable="true"
+        tools:ignore="MissingConstraints">
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/begin_guideline"
+            app:layout_constraintGuide_begin="16dp"
+            android:orientation="vertical"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/end_guideline"
+            app:layout_constraintGuide_end="16dp"
+            android:orientation="vertical"/>
+
+        <TextView
+            android:id="@+id/text_library"
+            android:fontFamily="@font/baloochettan_bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/page_title_library"
+            android:textColor="?colorSecondary"
+            android:textSize="35sp"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/begin_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/storiesRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+            app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_library"
+            app:spanCount="2"
+            android:background="@color/transparent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

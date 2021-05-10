@@ -19,7 +19,7 @@
     <string name="title_story_favourite">Riri la \n grenouille</string>
     <string name="image_description">image description</string>
     <string name="toy_image_view">toy image view</string>
-    <string name="button_faq">button_faq</string>
+    <string name="button_faq">Lire la F.A.Q.</string>
     <string name="logo">logo</string>
     <string name="text_story_favourite">Grenouille nuit étoilée</string>
     <string name="info_association_title">Dons associations</string>
@@ -29,4 +29,14 @@
     <string name="projet_description">Créée par des étudiants, Doomo est une application dédiée aux enfants qui leur permet de dévouvrir des animaux qui ont échappé à leur disparition. Le but est de ré-enchanter les plus jeune à travers des histoires tirées de la réalité qui finissent bien. :)</string>
     <string name="info_abonnement_title">Découvrez nos abonnements</string>
     <string name="info_abonnement_text">"A partir de 19,99€ / mois "</string>
+    <string name="button_month_story">Lire l\'histoire du mois</string>
+    <string name="button_start_interaction">Lancer l\'histoire</string>
+    <string name="button_start_reading">Ouvrir la fiche de lecture</string>
+    <string name="fun_fact_title">L\'info cool !</string>
+    <string name="fun_fact_text">Le mot arlequin désigne un personnage de la comédie italienne dont le vêtement est formé de pièces diverses couleurs. Comme nos grenouilles !</string>
+    <string name="reappear_info_title">Leur réapparition</string>
+    <string name="reappear_info_text">Depuis plusieurs dizaines d\'années, les biologistes craignent que cette espèce en danger critique d\'extinction ne soit perdue. Une victime de plus de la propagation d\'un champignon tueur d\'amphibiens connu sous le nom de chytride. Malheureusement, les scientifiques ont constaté que ce champignon était particulièrement fatal pour les grenouilles arlequin.</string>
+    <string name="home_title">Son lieu d\'habitation</string>
+    <string name="doomo">Doomo</string>
+    <string name="fiche_detail">Fiche histoire</string>
 </resources>
