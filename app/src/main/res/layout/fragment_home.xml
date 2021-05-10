@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         tools:context=".ui.home.HomeFragment"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:paddingBottom="80dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/begin_guideline"
@@ -49,7 +50,7 @@
             android:layout_marginTop="30dp"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button"
+            android:id="@+id/button_month_story"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
@@ -364,8 +365,7 @@
             app:layout_constraintTop_toBottomOf="@id/video_projet"
             app:layout_constraintEnd_toEndOf="@id/end_guideline"
             app:layout_constraintStart_toStartOf="@id/begin_guideline"
-            app:cornerRadius="10dp"
-            android:layout_marginBottom="150dp"/>
+            app:cornerRadius="10dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
