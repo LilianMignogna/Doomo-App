@@ -23,6 +23,7 @@ class StoryActivity : AppCompatActivity() {
     )
     private var storyArgument = arrayOf(R.raw.test, interactionData, R.raw.test, interactionData, interactionData, R.raw.test, R.raw.test)
     lateinit var currentArgument: Any
+    lateinit var currentFragment: Any
     var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,11 +31,20 @@ class StoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_story)
         println(story)
-        var fragment = getFragment(storyFragment[count])
+        currentFragment = getFragment(storyFragment[count])
         currentArgument = storyArgument[count]
-        showFragment(fragment)
+        showFragment(currentFragment as Fragment)
         hideSystemUI()
         supportActionBar?.hide()
+    }
+
+    // reload fragment when resume
+    override fun onResume() {
+        super.onResume()
+        println("resume fragment")
+        showFragment(currentFragment as Fragment)
+        supportActionBar?.hide()
+        hideSystemUI()
     }
 
     // Display new fragment
@@ -61,7 +71,8 @@ class StoryActivity : AppCompatActivity() {
             endStory()
         } else {
             currentArgument = storyArgument[count]
-            showFragment(getFragment(storyFragment[count]))
+            currentFragment = getFragment(storyFragment[count])
+            showFragment(currentFragment as Fragment)
         }
     }
 
