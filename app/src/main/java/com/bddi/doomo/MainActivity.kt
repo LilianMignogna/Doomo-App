@@ -48,12 +48,6 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.navigation_nfc)
             uncheckAllItems()
         }
-
-        val accountButton: ImageButton = findViewById(R.id.account_button)
-        accountButton.setOnClickListener {
-            navController.navigate(R.id.account)
-            uncheckAllItems()
-        }
     }
 
     /**

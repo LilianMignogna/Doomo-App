@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -46,6 +47,13 @@ class NfcFragment : Fragment() {
         } else {
             nfcAdapter = NfcAdapter.getDefaultAdapter(this.context)
         }
+
+        val accountButton: ImageButton = root.findViewById(R.id.account_button)
+        accountButton.setOnClickListener {
+            findNavController().navigate(R.id.account)
+            (activity as MainActivity).uncheckAllItems()
+        }
+
         return root
     }
 

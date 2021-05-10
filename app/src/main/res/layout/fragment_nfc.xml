@@ -19,6 +19,20 @@
         app:layout_constraintGuide_end="16dp"
         android:orientation="vertical"/>
 
+    <ImageButton
+        android:id="@+id/account_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/profil"
+        android:adjustViewBounds="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:translationZ="1dp"
+        android:background="@color/transparent"
+        android:backgroundTint="@color/transparent"/>
+
     <TextView
         android:id="@+id/text_nfc"
         android:layout_width="0dp"

@@ -1,16 +1,20 @@
 package com.bddi.doomo.ui.library
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
+import com.bddi.doomo.activity.StoryActivity
 import com.bddi.doomo.model.Story
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -58,12 +62,26 @@ class LibraryFragment : Fragment() {
                     (activity as MainActivity).currentModel = model
 
                 }
+                val playButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_play_button)
+                // TODO set good link to story
+                playButton.setOnClickListener {
+                    val intent = Intent(activity, StoryActivity::class.java)
+                    intent.putExtra("Story", "frog")
+                    startActivity(intent)
+                }
             }
+        }
+
+        val accountButton: ImageButton = root.findViewById(R.id.account_button)
+        accountButton.setOnClickListener {
+            findNavController().navigate(R.id.account)
+            (activity as MainActivity).uncheckAllItems()
         }
 
         // Get recyclerView and show informations
         var storiesRecyclerView: RecyclerView = root.findViewById(R.id.storiesRecyclerView)
         storiesRecyclerView.adapter = adapter
+        storiesRecyclerView.setNestedScrollingEnabled(false);
 
         return root
     }
