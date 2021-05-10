@@ -43,5 +43,4 @@
         app:spanCount="2"
         android:background="@color/transparent"/>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
