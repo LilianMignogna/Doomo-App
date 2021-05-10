@@ -17,6 +17,7 @@
         app:cardCornerRadius="20dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/white"
         tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
