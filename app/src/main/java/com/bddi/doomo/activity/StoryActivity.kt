@@ -22,13 +22,9 @@ class StoryActivity : AppCompatActivity() {
         Pair(1607, 600)
     )
     private var storyArgument = arrayOf(
-        R.raw.test,
+        R.raw.story_01_01_video,
         interactionData,
-        R.raw.test,
-        interactionData,
-        interactionData,
-        R.raw.test,
-        R.raw.test
+        R.raw.story_01_03_video
     )
     lateinit var currentArgument: Any
     lateinit var currentFragment: Any
