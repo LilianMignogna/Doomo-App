@@ -6,16 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
+import com.bddi.doomo.model.Story
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class NfcFragment : Fragment() {
@@ -33,10 +30,6 @@ class NfcFragment : Fragment() {
         nfcViewModel =
             ViewModelProvider(this).get(NfcViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_nfc, container, false)
-        val textView: TextView = root.findViewById(R.id.text_nfc)
-        nfcViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
 
         // get and disable the big scan button to avoid bug on fragment recreation
         fabButton = activity?.findViewById(R.id.navigation_nfc)!!
@@ -88,11 +81,10 @@ class NfcFragment : Fragment() {
                     // Recognize Tag ID
                     when (tag.toString()) {
                         "04BB7254680000" -> {
-                            displayMessage("Blue tag detected : " + tag)
-                            redirectToStoryDetailsView("")
+                            nfcViewModel.getStory("wsE8dOKqILn69dUNRRYL", this)
                         }
                         else -> {
-                            displayMessage("Tag : " + tag)
+                            displayMessage("Figurine non reconnue")
                         }
                     }
                 },
@@ -133,12 +125,16 @@ class NfcFragment : Fragment() {
         })
     }
 
-    private fun redirectToStoryDetailsView(storyId: String) {
+    fun redirectToStoryDetailsView(story: Story) {
+        // Load Story informations
+        (activity as MainActivity).currentModel = story
+
         // Error : Can't create handler inside thread that has not called Looper.prepare()
         // There is no thread in the callback function, Toast now run on UI Thread to bypass the error
-        activity?.runOnUiThread(Runnable() {
+        (activity as MainActivity).runOnUiThread(Runnable() {
             (activity as MainActivity).uncheckAllItems()
             findNavController().navigate(R.id.action_global_navigation_story_details)
         })
+
     }
 }
