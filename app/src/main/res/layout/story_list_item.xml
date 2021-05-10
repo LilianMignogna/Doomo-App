@@ -32,13 +32,13 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/storyImageView"
-                android:adjustViewBounds="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                app:shapeAppearanceOverlay="@style/border_radius"
-                app:srcCompat="@drawable/illustration_riri"
                 android:layout_marginBottom="15dp"
-                android:background="@color/transparent"/>
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                app:shapeAppearanceOverlay="@style/border_radius"
+                app:srcCompat="@drawable/illustration_riri" />
 
         </LinearLayout>
 
