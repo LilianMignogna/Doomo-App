@@ -21,7 +21,11 @@ class StoryActivity : AppCompatActivity() {
         Pair(1240, 530),
         Pair(1607, 600)
     )
-    private var storyArgument = arrayOf(R.raw.test, interactionData, R.raw.test, interactionData, interactionData, R.raw.test, R.raw.test)
+    private var storyArgument = arrayOf(
+        R.raw.story_01_01_video,
+        interactionData,
+        R.raw.story_01_03_video
+    )
     lateinit var currentArgument: Any
     lateinit var currentFragment: Any
     var count = 0
@@ -105,6 +109,12 @@ class StoryActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_FULLSCREEN
             )
+    }
+
+    override fun onBackPressed() {
+        // Put your own code here which you want to run on back button click.
+        endStory()
+        super.onBackPressed()
     }
 
     // Shows the system bars by removing all the flags

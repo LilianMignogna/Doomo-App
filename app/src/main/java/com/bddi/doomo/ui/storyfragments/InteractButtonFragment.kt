@@ -29,7 +29,7 @@ class InteractButtonFragment : Fragment() {
 
         val currentPackage = activity?.packageName
         val backgroundImage = root.findViewById<VideoView>(R.id.video_background)
-        val video = R.raw.test
+        val video = R.raw.story_01_02_background
         val videoPath = "android.resource://$currentPackage/$video"
         val uri = Uri.parse(videoPath)
         backgroundImage.setVideoURI(uri)
