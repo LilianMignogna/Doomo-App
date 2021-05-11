@@ -54,7 +54,7 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/story_information_button"
-                app:srcCompat="@drawable/ic_baseline_help_24"
+                app:srcCompat="@drawable/ic_icon_questionmark"
                 android:backgroundTint="?colorSecondary"
                 app:tint="@color/white"
                 app:fabCustomSize="45dp"
