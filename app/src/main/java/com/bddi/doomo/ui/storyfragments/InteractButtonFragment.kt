@@ -51,7 +51,6 @@ class InteractButtonFragment : Fragment() {
         var animalImage = root.findViewById<ImageView>(R.id.animal_img)
         animalImage.setImageResource(R.drawable.frog)
         animalImage.contentDescription = "the cute frog"
-        animalImage.rotation = -45f
 
         var height = context?.resources?.displayMetrics?.heightPixels
         if (height == null) {
