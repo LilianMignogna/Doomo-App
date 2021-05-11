@@ -13,6 +13,7 @@ import com.bddi.doomo.R
 import com.bddi.doomo.activity.StoryActivity
 
 class InteractButtonFragment : Fragment() {
+    lateinit var root: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,13 +23,13 @@ class InteractButtonFragment : Fragment() {
         super.onCreate(savedInstanceState)
         println("interaction fragment loaded")
 
-        val root = inflater.inflate(R.layout.fragment_story_interact_button, container, false)
+        root = inflater.inflate(R.layout.fragment_story_interact_button, container, false)
 
         var argument = (activity as? StoryActivity)?.currentArgument as Array<Pair<Int, Int>>
 
         val currentPackage = activity?.packageName
         val backgroundImage = root.findViewById<VideoView>(R.id.video_background)
-        val video = R.raw.test
+        val video = R.raw.story_01_02_background
         val videoPath = "android.resource://$currentPackage/$video"
         val uri = Uri.parse(videoPath)
         backgroundImage.setVideoURI(uri)
@@ -69,12 +70,21 @@ class InteractButtonFragment : Fragment() {
         // init button position
         val layoutParamsInteractButton = buttonImage.layoutParams as ConstraintLayout.LayoutParams
         val buttonImageX = (activity as? StoryActivity)?.convertValue(height, argument[count].first)
-        val buttonImageY = (activity as? StoryActivity)?.convertValue(height, argument[count].second)
+        val buttonImageY = (activity as? StoryActivity)?.convertValue(
+            height,
+            argument[count].second
+        )
 
         // init animal position
         val layoutParamsAnimal = animalImage.layoutParams as ConstraintLayout.LayoutParams
-        val animalImageX = (activity as? StoryActivity)?.convertValue(height, argument[count - 1].first)
-        val animalImageY = (activity as? StoryActivity)?.convertValue(height, argument[count - 1].second)
+        val animalImageX = (activity as? StoryActivity)?.convertValue(
+            height,
+            argument[count - 1].first
+        )
+        val animalImageY = (activity as? StoryActivity)?.convertValue(
+            height,
+            argument[count - 1].second
+        )
 
         println("height : $height, Left : $buttonImageX, Bottom : $buttonImageY")
         if (buttonImageX != null) {
@@ -96,8 +106,14 @@ class InteractButtonFragment : Fragment() {
             if (count >= argument.size) {
                 onFinish()
             } else {
-                val buttonImageX = (activity as? StoryActivity)?.convertValue(height, argument[count].first)
-                val buttonImageY = (activity as? StoryActivity)?.convertValue(height, argument[count].second)
+                val buttonImageX = (activity as? StoryActivity)?.convertValue(
+                    height,
+                    argument[count].first
+                )
+                val buttonImageY = (activity as? StoryActivity)?.convertValue(
+                    height,
+                    argument[count].second
+                )
                 if (buttonImageX != null) {
                     if (buttonImageY != null) {
                         layoutParamsInteractButton.setMargins(buttonImageX, 0, 0, buttonImageY)
@@ -105,8 +121,14 @@ class InteractButtonFragment : Fragment() {
                 }
                 buttonImage.layoutParams = layoutParamsInteractButton
 
-                val animalImageX = (activity as? StoryActivity)?.convertValue(height, argument[count - 1].first)
-                val animalImageY = (activity as? StoryActivity)?.convertValue(height, argument[count - 1].second)
+                val animalImageX = (activity as? StoryActivity)?.convertValue(
+                    height,
+                    argument[count - 1].first
+                )
+                val animalImageY = (activity as? StoryActivity)?.convertValue(
+                    height,
+                    argument[count - 1].second
+                )
                 if (animalImageX != null) {
                     if (animalImageY != null) {
                         layoutParamsAnimal.setMargins(animalImageX, 0, 0, animalImageY)
@@ -131,5 +153,11 @@ class InteractButtonFragment : Fragment() {
     private fun onFinish() {
         (activity as? StoryActivity)?.endEvent()
         println("the interaction just ended")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val backgroundImage = root.findViewById<VideoView>(R.id.video_background)
+        backgroundImage.start()
     }
 }
