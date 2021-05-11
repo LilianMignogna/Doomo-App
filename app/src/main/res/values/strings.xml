@@ -39,4 +39,5 @@
     <string name="home_title">Son lieu d\'habitation</string>
     <string name="doomo">Doomo</string>
     <string name="fiche_detail">Fiche histoire</string>
+    <string name="page_title_nfc">Scan des figurines</string>
 </resources>

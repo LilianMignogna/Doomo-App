@@ -191,6 +191,12 @@
                     android:orientation="vertical"
                     android:layout_margin="30dp">
 
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_icon_zoom"
+                        android:tint="?colorSecondary"/>
+
                     <TextView
                         android:id="@+id/fun_fact_title"
                         android:fontFamily="@font/baloochettan_bold"
@@ -241,6 +247,12 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_margin="30dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_icon_reapparition"
+                        android:tint="?colorPrimary"/>
 
                     <TextView
                         android:id="@+id/reappear_info_title"

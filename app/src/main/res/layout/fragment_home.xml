@@ -95,7 +95,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favorite_stories_recycler_view"
             android:layout_width="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
@@ -167,6 +167,11 @@
                 android:orientation="vertical"
                 android:layout_margin="30dp">
 
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_icon_reapparition"
+                    android:tint="?colorSecondary"/>
                 <TextView
                     android:id="@+id/association_informations_title"
                     android:fontFamily="@font/baloochettan_bold"
@@ -210,8 +215,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/logo_wwf"
-                        app:shapeAppearanceOverlay="@style/shape_circle" />
+                        android:src="@drawable/logo_wwf"/>
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/imageView7"
@@ -219,8 +223,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/logo_peta"
-                        app:shapeAppearanceOverlay="@style/shape_circle" />
+                        android:src="@drawable/logo_peta"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -238,16 +241,67 @@
             app:layout_constraintStart_toStartOf="@+id/begin_guideline"
             app:layout_constraintTop_toBottomOf="@+id/association_informations_card" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/caracter_button"
-            android:layout_width="wrap_content"
+        <HorizontalScrollView
+            android:id="@+id/caracter_list"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/riri_profil"
             android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="@+id/begin_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/caracter_list_title"
-            android:adjustViewBounds="true"
-            app:shapeAppearanceOverlay="@style/shape_circle"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/caracter_list_title">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/caracter_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/riri_profil"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="16dp"
+                    app:shapeAppearanceOverlay="@style/shape_circle"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/caracter_button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/oiseau"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    app:shapeAppearanceOverlay="@style/shape_circle"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/caracter_button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ours"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    app:shapeAppearanceOverlay="@style/shape_circle"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/caracter_button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hibou"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    app:shapeAppearanceOverlay="@style/shape_circle"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/caracter_button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/phoque"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    app:shapeAppearanceOverlay="@style/shape_circle"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <ImageView
             android:id="@+id/toy_imageView"
@@ -256,10 +310,10 @@
             android:layout_height="wrap_content"
             android:src="@drawable/figurine"
             android:adjustViewBounds="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             app:layout_constraintStart_toStartOf="@+id/begin_guideline"
             app:layout_constraintEnd_toEndOf="@+id/end_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/caracter_button"
+            app:layout_constraintTop_toBottomOf="@+id/caracter_list"
             android:contentDescription="@string/toy_image_view" />
 
         <TextView
@@ -267,7 +321,7 @@
             android:fontFamily="@font/baloochettan_bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="60dp"
             android:text="@string/projet_title"
             android:textColor="?colorSecondary"
             android:textSize="20sp"
