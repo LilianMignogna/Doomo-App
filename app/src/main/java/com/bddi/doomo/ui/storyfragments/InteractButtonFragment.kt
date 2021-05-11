@@ -1,4 +1,4 @@
-package com.bddi.doomo.ui.story
+package com.bddi.doomo.ui.storyfragments
 
 import android.net.Uri
 import android.os.Bundle
@@ -32,6 +32,8 @@ class InteractButtonFragment : Fragment() {
         val video = R.raw.story_01_02_background
         val videoPath = "android.resource://$currentPackage/$video"
         val uri = Uri.parse(videoPath)
+        var count = 1
+
         backgroundImage.setVideoURI(uri)
 
         backgroundImage.start()
@@ -65,8 +67,6 @@ class InteractButtonFragment : Fragment() {
         }
         backgroundImage.layoutParams = layoutVideoView
 
-        var count = 1
-
         // init button position
         val layoutParamsInteractButton = buttonImage.layoutParams as ConstraintLayout.LayoutParams
         val buttonImageX = (activity as? StoryActivity)?.convertValue(height, argument[count].first)
@@ -86,7 +86,6 @@ class InteractButtonFragment : Fragment() {
             argument[count - 1].second
         )
 
-        println("height : $height, Left : $buttonImageX, Bottom : $buttonImageY")
         if (buttonImageX != null) {
             if (buttonImageY != null) {
                 layoutParamsInteractButton.setMargins(buttonImageX, 0, 0, buttonImageY)

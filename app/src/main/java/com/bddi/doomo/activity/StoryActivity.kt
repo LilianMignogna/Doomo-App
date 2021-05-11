@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
-import com.bddi.doomo.ui.story.InteractButtonFragment
+import com.bddi.doomo.ui.storyfragments.InteractButtonFragment
 import com.bddi.doomo.ui.story.VideoFragment
 
 class StoryActivity : AppCompatActivity() {
