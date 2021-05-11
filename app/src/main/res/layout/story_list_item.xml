@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/story_list_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/story_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/transparent"
+        tools:ignore="MissingConstraints"
+        app:cardElevation="0dp"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/transparent"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/storyTitleView"
+                android:fontFamily="@font/baloochettan_semibold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?colorSecondary"
+                android:textSize="15sp"
+                android:text="@string/storyTitleText"
+                android:layout_marginBottom="10dp"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/storyImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                app:shapeAppearanceOverlay="@style/border_radius"
+                app:srcCompat="@drawable/illustration_riri" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom|center_horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/story_information_button"
+                app:srcCompat="@drawable/ic_icon_questionmark"
+                android:backgroundTint="?colorSecondary"
+                app:tint="@color/white"
+                app:fabCustomSize="45dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="5dp"
+                app:elevation="0dp"
+                app:borderWidth="0dp"
+                android:contentDescription="@string/buttoninformations" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/story_play_button"
+                app:srcCompat="@drawable/ic_baseline_play_arrow_24"
+                android:backgroundTint="?colorPrimary"
+                app:tint="@color/white"
+                app:fabCustomSize="45dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="5dp"
+                app:elevation="0dp"
+                app:borderWidth="0dp"
+                android:contentDescription="@string/buttonplayinterraction" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/story_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="10dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

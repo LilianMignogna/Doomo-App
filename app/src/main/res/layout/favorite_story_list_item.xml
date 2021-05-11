@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/favorite_story_list_item"
+    android:layout_width="match_parent"
+    app:layout_constraintGuide_percent="0.9"
+    android:layout_height="250dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/favorite_story_card_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/white"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/transparent">
+
+            <ImageView
+                android:id="@+id/storyImageView"
+                android:adjustViewBounds="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintWidth_percent="0.5"
+                app:srcCompat="@drawable/illustration_riri"
+                android:background="@color/transparent" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_baseline_favorite_24"
+                android:tint="?colorAccent"
+                android:background="@color/transparent"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/text_story_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/baloochettan_semibold"
+                    android:textSize="18sp"
+                    android:paddingLeft="35dp"
+                    android:paddingRight="15dp"
+                    android:textColor="?colorSecondary"
+                    android:text="@string/storyTitleText"/>
+                <TextView
+                    android:id="@+id/text_story_subtitle"
+                    android:fontFamily="@font/baloochettan_medium"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="35dp"
+                    android:paddingRight="15dp"
+                    android:textColor="@color/gray"
+
+                    android:text="Animal"/>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/story_play_button"
+                app:srcCompat="@drawable/ic_baseline_play_arrow_24"
+                android:backgroundTint="?colorPrimary"
+                app:tint="@color/white"
+                app:fabCustomSize="45dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="5dp"
+                app:elevation="0dp"
+                app:borderWidth="0dp"
+                android:contentDescription="@string/buttonplayinterraction" />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
