@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -57,10 +58,11 @@ class LibraryFragment : Fragment() {
 
                 val storyInformationButton : FloatingActionButton = holder.itemView.findViewById(R.id.story_information_button)
                 storyInformationButton.setOnClickListener(){
-                    root.findNavController().navigate(R.id.action_global_navigation_story_details)
-                    (activity as MainActivity).uncheckAllItems()
-                    (activity as MainActivity).currentModel = model
-
+                    redirectToStoryDetails(model)
+                }
+                val storyImage: ImageView = holder.itemView.findViewById(R.id.storyImageView)
+                storyImage.setOnClickListener {
+                    redirectToStoryDetails(model)
                 }
                 val playButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_play_button)
                 // TODO set good link to story
@@ -78,11 +80,18 @@ class LibraryFragment : Fragment() {
             (activity as MainActivity).uncheckAllItems()
         }
 
+
         // Get recyclerView and show informations
         var storiesRecyclerView: RecyclerView = root.findViewById(R.id.storiesRecyclerView)
         storiesRecyclerView.adapter = adapter
         storiesRecyclerView.setNestedScrollingEnabled(false);
 
         return root
+    }
+
+    private fun redirectToStoryDetails(story: Story){
+        findNavController().navigate(R.id.action_global_navigation_story_details)
+        (activity as MainActivity).uncheckAllItems()
+        (activity as MainActivity).currentModel = story
     }
 }

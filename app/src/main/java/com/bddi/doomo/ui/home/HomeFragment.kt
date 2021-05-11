@@ -18,6 +18,7 @@ import com.bddi.doomo.R
 import com.bddi.doomo.activity.StoryActivity
 import com.bddi.doomo.model.Story
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HomeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
@@ -80,6 +81,15 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.account)
             (activity as MainActivity).uncheckAllItems()
         }
+
+        val monthStoryButton: MaterialButton = root.findViewById(R.id.button_month_story)
+        monthStoryButton.setOnClickListener {
+            val intent = Intent(activity, StoryActivity::class.java)
+            intent.putExtra("Story", "frog")
+            startActivity(intent)
+        }
+
+
 
         // Get recyclerView and show informations
         var storiesRecyclerView: RecyclerView = root.findViewById(R.id.favorite_stories_recycler_view)
