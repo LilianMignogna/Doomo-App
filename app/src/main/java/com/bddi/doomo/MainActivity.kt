@@ -1,15 +1,15 @@
 package com.bddi.doomo
 
+import android.content.Context
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageButton
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bddi.doomo.model.Story
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -18,11 +18,16 @@ class MainActivity : AppCompatActivity() {
 
     // Data Base Connection : get data
     val db = Firebase.firestore
-    public lateinit var currentModel : Story
+    public lateinit var currentModel: Story
+
+    public var notificationBool = true
+    public var soundEffectBool = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        loadData()
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
@@ -48,6 +53,23 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.navigation_nfc)
             uncheckAllItems()
         }
+    }
+
+    public fun saveData() {
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply {
+            putBoolean("NOTIFICATION_KEY", notificationBool)
+            putBoolean("SOUND_KEY", soundEffectBool)
+        }.apply()
+
+        Toast.makeText(this, "Données savegardées", Toast.LENGTH_SHORT).show()
+    }
+
+    public fun loadData() {
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        notificationBool = sharedPreferences.getBoolean("NOTIFICATION_KEY", true)
+        soundEffectBool = sharedPreferences.getBoolean("SOUND_KEY", false)
     }
 
     /**
