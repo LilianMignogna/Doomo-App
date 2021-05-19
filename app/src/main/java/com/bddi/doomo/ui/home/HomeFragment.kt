@@ -84,6 +84,7 @@ class HomeFragment : Fragment() {
 
         val monthStoryButton: MaterialButton = root.findViewById(R.id.button_month_story)
         monthStoryButton.setOnClickListener {
+            (activity as MainActivity).playSound(R.raw.clic_btn)
             val intent = Intent(activity, StoryActivity::class.java)
             intent.putExtra("Story", "frog")
             startActivity(intent)

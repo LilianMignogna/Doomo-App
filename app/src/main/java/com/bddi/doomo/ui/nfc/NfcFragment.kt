@@ -82,6 +82,7 @@ class NfcFragment : Fragment() {
                     when (tag.toString()) {
                         "04BB7254680000" -> {
                             nfcViewModel.getStory("wsE8dOKqILn69dUNRRYL", this)
+                            (activity as MainActivity).playSound(R.raw.check)
                         }
                         else -> {
                             displayMessage("Figurine non reconnue")
