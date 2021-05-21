@@ -32,6 +32,7 @@ Télécharger le projet depuis github, l'ouvrir à l'aide d'Android Studio et le
 
 ## Auteurs
 Doomo est le résultat du travail en collaboration de 3 développeurs et 3 talentueux designers 😉
+
 💻 Développeurs
 * **Anthony Lombard** _alias_ [@Megathony](https://github.com/Megathony)
 * **Lilian Mignogna** _alias_ [@LilianMignogna](https://github.com/LilianMignogna)
