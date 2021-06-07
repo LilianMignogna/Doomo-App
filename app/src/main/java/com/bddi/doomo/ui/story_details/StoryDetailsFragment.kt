@@ -16,7 +16,6 @@ import com.bddi.doomo.R
 import com.bddi.doomo.activity.StoryActivity
 import com.bddi.doomo.model.Story
 import com.bddi.doomo.activity.WrittenStoryActivity
-import com.bddi.doomo.model.Story
 import com.bumptech.glide.Glide
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -72,42 +71,45 @@ class StoryDetailsFragment : Fragment() {
             tvTitle2.text = currentStory.title
             tvSubtitle2.text = currentStory.species
 
-        resetStory()
+            resetStory()
 
-        // ImageViews form Firebase Storage
-        val ivHeader: ImageView = root.findViewById(R.id.StoryHeader)
-        val imgHeader = currentStory.story_img
-        Glide.with(requireActivity().application).load(imgHeader).into(ivHeader);
-        val ivHome: ImageView = root.findViewById(R.id.map_image)
-        val imgHome = currentStory.home_img
-        Glide.with(requireActivity().application).load(imgHome).into(ivHome);
+            // ImageViews form Firebase Storage
+            val ivHeader: ImageView = root.findViewById(R.id.StoryHeader)
+            val imgHeader = currentStory.story_img
+            Glide.with(requireActivity().application).load(imgHeader).into(ivHeader);
+            val ivHome: ImageView = root.findViewById(R.id.map_image)
+            val imgHome = currentStory.home_img
+            Glide.with(requireActivity().application).load(imgHome).into(ivHome);
 
-        val ivSpecies: ImageView = root.findViewById(R.id.animal_picture)
-        val imgSpecies = currentStory.species_img
-        Glide.with(requireActivity().application).load(imgSpecies).into(ivSpecies);
-        val button: Button = root.findViewById(R.id.button_start_interaction)
-        button.setOnClickListener {
-            (activity as MainActivity).saveStory("wsE8dOKqILn69dUNRRYL")
-            (activity as MainActivity).startStory("wsE8dOKqILn69dUNRRYL")
-
-        val lauchStoryButton: Button = root.findViewById(R.id.button_start_interaction)
-        lauchStoryButton.setOnClickListener {
-
+            val ivSpecies: ImageView = root.findViewById(R.id.animal_picture)
+            val imgSpecies = currentStory.species_img
+            Glide.with(requireActivity().application).load(imgSpecies).into(ivSpecies);
             val button: Button = root.findViewById(R.id.button_start_interaction)
             button.setOnClickListener {
-                val intent = Intent(activity, StoryActivity::class.java)
-                intent.putExtra("Story", "frog")
-                startActivity(intent)
-            }
+                (activity as MainActivity).saveStory("wsE8dOKqILn69dUNRRYL")
+                (activity as MainActivity).startStory("wsE8dOKqILn69dUNRRYL")
 
-            val readStoryButton: Button = root.findViewById(R.id.button_start_reading)
-            readStoryButton.setOnClickListener {
-                (activity as MainActivity).playSound(R.raw.clic_btn)
-                val intent = Intent(activity, WrittenStoryActivity::class.java)
-                intent.putExtra("WrittenStory", currentStory.written_story)
-                startActivity(intent)
+                val lauchStoryButton: Button = root.findViewById(R.id.button_start_interaction)
+                lauchStoryButton.setOnClickListener {
+
+                    val button: Button = root.findViewById(R.id.button_start_interaction)
+                    button.setOnClickListener {
+                        val intent = Intent(activity, StoryActivity::class.java)
+                        intent.putExtra("Story", "frog")
+                        startActivity(intent)
+                    }
+
+                    val readStoryButton: Button = root.findViewById(R.id.button_start_reading)
+                    readStoryButton.setOnClickListener {
+                        (activity as MainActivity).playSound(R.raw.clic_btn)
+                        val intent = Intent(activity, WrittenStoryActivity::class.java)
+                        intent.putExtra("WrittenStory", currentStory.written_story)
+                        startActivity(intent)
+                    }
+                }
+
             }
-        }
+        })
         return root
     }
 

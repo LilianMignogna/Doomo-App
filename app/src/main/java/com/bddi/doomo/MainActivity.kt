@@ -3,12 +3,9 @@ package com.bddi.doomo
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import android.media.MediaPlayer
-import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.ImageButton
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -18,7 +15,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bddi.doomo.activity.StoryActivity
 import com.bddi.doomo.model.Story
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
@@ -38,9 +34,6 @@ class MainActivity : AppCompatActivity() {
 
     // Storage connexion : get images
     val storage = Firebase.storage
-
-    // current story Model : data
-    public lateinit var currentModel : Story
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +66,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         loadData()
+        // Set sound to navigation button
+        navView.menu.findItem(R.id.navigation_home).setSoundOnMenuItemClicked(R.raw.home)
+        navView.menu.findItem(R.id.navigation_library).setSoundOnMenuItemClicked(R.raw.bibli)
     }
 
     public fun saveStory(storyId: String) {
@@ -124,9 +120,6 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, StoryActivity::class.java)
         intent.putExtra("Story", storyId)
         startActivity(intent)
-        // Set sound to navigation button
-        navView.menu.findItem(R.id.navigation_home).setSoundOnMenuItemClicked(R.raw.home)
-        navView.menu.findItem(R.id.navigation_library).setSoundOnMenuItemClicked(R.raw.bibli)
     }
 
     /**
@@ -140,7 +133,6 @@ class MainActivity : AppCompatActivity() {
         }
         navview.menu.setGroupCheckable(0, true, true)
     }
-}
 
 
 
