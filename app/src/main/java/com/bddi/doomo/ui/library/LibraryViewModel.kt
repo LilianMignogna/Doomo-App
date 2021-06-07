@@ -11,7 +11,6 @@ class LibraryViewModel : ViewModel() {
     // Data Base Connection : get data
     val db = Firebase.firestore
 
-    val query = db.collection("Stories")
+    val query = db.collection("Story")
     val options = FirestoreRecyclerOptions.Builder<Story>().setQuery(query, Story::class.java)
-
 }

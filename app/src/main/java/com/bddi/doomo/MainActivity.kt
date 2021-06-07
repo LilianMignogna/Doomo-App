@@ -1,7 +1,6 @@
 package com.bddi.doomo
 
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,11 +12,17 @@ import com.bddi.doomo.model.Story
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 class MainActivity : AppCompatActivity() {
 
     // Data Base Connection : get data
     val db = Firebase.firestore
+
+    // Storage connexion : get images
+    val storage = Firebase.storage
+
+    // current story Model : data
     public lateinit var currentModel : Story
 
     override fun onCreate(savedInstanceState: Bundle?) {
