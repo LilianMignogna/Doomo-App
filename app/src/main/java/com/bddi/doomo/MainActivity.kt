@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     public fun navToStory(toObject: Story) {
-        currentModel = toObject<
+        currentModel = toObject
         runOnUiThread(
             Runnable() {
                 uncheckAllItems()
