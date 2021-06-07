@@ -81,7 +81,7 @@ class NfcFragment : Fragment() {
                     // Recognize Tag ID
                     when (tag.toString()) {
                         "04BB7254680000" -> {
-                            nfcViewModel.getStory("wsE8dOKqILn69dUNRRYL", this)
+                            nfcViewModel.getStory("DZevLTdzAisZUcPX8tup", this)
                             (activity as MainActivity).playSound(R.raw.check)
                         }
                         else -> {
