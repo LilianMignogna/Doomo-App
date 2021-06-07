@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/transparent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/storyImageView"
                 android:adjustViewBounds="true"
                 android:layout_width="0dp"

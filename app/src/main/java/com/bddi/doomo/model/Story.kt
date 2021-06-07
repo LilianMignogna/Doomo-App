@@ -11,4 +11,5 @@ data class Story(
     val written_story: String = "",
     val species_img: String = "",
     val story_img: String = "",
+    val thumbnail_img: String = ""
 )

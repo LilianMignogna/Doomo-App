@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
 import com.bddi.doomo.activity.StoryActivity
 import com.bddi.doomo.model.Story
+import com.bumptech.glide.Glide
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -59,6 +61,9 @@ class HomeFragment : Fragment() {
                 val tvSubtitle: TextView = holder.itemView.findViewById(R.id.text_story_subtitle)
                 tvTitle.text = model.title
                 tvSubtitle.text = model.species
+                val ivThumbnail: ImageView = holder.itemView.findViewById(R.id.storyImageView)
+                val imgThumbnail = model.thumbnail_img
+                Glide.with(requireActivity().application).load(imgThumbnail).into(ivThumbnail);
 
                 val storyInformationCard: CardView = holder.itemView.findViewById(R.id.favorite_story_card_item)
                 storyInformationCard.setOnClickListener(){

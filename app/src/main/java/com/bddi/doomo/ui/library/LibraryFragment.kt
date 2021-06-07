@@ -17,8 +17,10 @@ import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
 import com.bddi.doomo.activity.StoryActivity
 import com.bddi.doomo.model.Story
+import com.bumptech.glide.Glide
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.imageview.ShapeableImageView
 
 class StoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -60,8 +62,10 @@ class LibraryFragment : Fragment() {
                 storyInformationButton.setOnClickListener(){
                     redirectToStoryDetails(model)
                 }
-                val storyImage: ImageView = holder.itemView.findViewById(R.id.storyImageView)
-                storyImage.setOnClickListener {
+                val ivStoryImage: ShapeableImageView = holder.itemView.findViewById(R.id.storyImageView)
+                val imgStory = model.thumbnail_img
+                Glide.with(holder.itemView).load(imgStory).into(ivStoryImage)
+                ivStoryImage.setOnClickListener {
                     redirectToStoryDetails(model)
                 }
                 val playButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_play_button)
