@@ -74,25 +74,24 @@ class StoryDetailsFragment : Fragment() {
 
         resetStory()
 
+        // ImageViews form Firebase Storage
+        val ivHeader: ImageView = root.findViewById(R.id.StoryHeader)
+        val imgHeader = currentStory.story_img
+        Glide.with(requireActivity().application).load(imgHeader).into(ivHeader);
+        val ivHome: ImageView = root.findViewById(R.id.map_image)
+        val imgHome = currentStory.home_img
+        Glide.with(requireActivity().application).load(imgHome).into(ivHome);
+
+        val ivSpecies: ImageView = root.findViewById(R.id.animal_picture)
+        val imgSpecies = currentStory.species_img
+        Glide.with(requireActivity().application).load(imgSpecies).into(ivSpecies);
         val button: Button = root.findViewById(R.id.button_start_interaction)
         button.setOnClickListener {
             (activity as MainActivity).saveStory("wsE8dOKqILn69dUNRRYL")
             (activity as MainActivity).startStory("wsE8dOKqILn69dUNRRYL")
+
         val lauchStoryButton: Button = root.findViewById(R.id.button_start_interaction)
         lauchStoryButton.setOnClickListener {
-            // ImageViews form Firebase Storage
-            val ivHeader: ImageView = root.findViewById(R.id.StoryHeader)
-            val imgHeader = currentStory.story_img
-            Glide.with(requireActivity().application).load(imgHeader).into(ivHeader);
-
-            val ivSpecies: ImageView = root.findViewById(R.id.animal_picture)
-            val imgSpecies = currentStory.species_img
-            Glide.with(requireActivity().application).load(imgSpecies).into(ivSpecies);
-
-            val ivHome: ImageView = root.findViewById(R.id.map_image)
-            val imgHome = currentStory.home_img
-            Glide.with(requireActivity().application).load(imgHome).into(ivHome);
-
 
             val button: Button = root.findViewById(R.id.button_start_interaction)
             button.setOnClickListener {
