@@ -29,7 +29,7 @@
                 android:id="@+id/storyImageView"
                 android:adjustViewBounds="true"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintWidth_percent="0.5"
                 app:srcCompat="@drawable/illustration_riri"
                 android:background="@color/transparent" />
