@@ -15,7 +15,7 @@ class NfcViewModel : ViewModel() {
      * Get information about a story with the id "storyId" anc call redirection function
      */
     fun getStory(storyId: String, fragment: NfcFragment){
-        db.collection("Stories").document(storyId).get()
+        db.collection("Story").document(storyId).get()
             .addOnSuccessListener{document ->
                 fragment.redirectToStoryDetailsView(document.toObject<Story>()!!)
             }

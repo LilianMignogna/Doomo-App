@@ -4,6 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import android.media.MediaPlayer
+import android.os.Bundle
+import android.view.MenuItem
+import android.widget.Button
+import android.widget.ImageButton
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -17,6 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +35,12 @@ class MainActivity : AppCompatActivity() {
     public var soundEffectBool = false
     public var storyId = " "
     private lateinit var navController: NavController
+
+    // Storage connexion : get images
+    val storage = Firebase.storage
+
+    // current story Model : data
+    public lateinit var currentModel : Story
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,11 +62,12 @@ class MainActivity : AppCompatActivity() {
         navView.menu.findItem(R.id.placeholder).isEnabled = false
 
         // Hide Action bar
-        getSupportActionBar()?.hide()
+        supportActionBar?.hide()
 
         // Set navigation action to the big scan button
         val scanButton: FloatingActionButton = findViewById(R.id.navigation_nfc)
         scanButton.setOnClickListener() {
+            playSound(R.raw.clic_btn)
             navController.navigate(R.id.navigation_nfc)
             uncheckAllItems()
         }
@@ -110,6 +124,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, StoryActivity::class.java)
         intent.putExtra("Story", storyId)
         startActivity(intent)
+        // Set sound to navigation button
+        navView.menu.findItem(R.id.navigation_home).setSoundOnMenuItemClicked(R.raw.home)
+        navView.menu.findItem(R.id.navigation_library).setSoundOnMenuItemClicked(R.raw.bibli)
     }
 
     /**
@@ -122,5 +139,37 @@ class MainActivity : AppCompatActivity() {
             navview.menu.getItem(i).isChecked = false
         }
         navview.menu.setGroupCheckable(0, true, true)
+    }
+}
+
+
+
+    // TODO Move Code + create inteface
+
+    fun MenuItem.setSoundOnMenuItemClicked(sound: Int){
+        val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
+        setOnMenuItemClickListener() {
+            mp.start()
+            false
+        }
+    }
+
+    fun Button.setSoundOnButtonClicked(sound: Int){
+        val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
+        setOnClickListener() {
+            mp.start()
+            false
+        }
+    }
+
+    fun FloatingActionButton.setSoundOnFABClicked(sound: Int){
+        val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
+        setOnClickListener() {
+            mp.start()
+        }
+    }
+    fun playSound(sound: Int){
+        val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
+        mp.start()
     }
 }
