@@ -57,14 +57,13 @@ class LibraryFragment : Fragment() {
             override fun onBindViewHolder(holder: StoryViewHolder, position: Int, model: Story) {
                 val tvTitle: TextView = holder.itemView.findViewById(R.id.storyTitleView)
                 tvTitle.text = model.title
-
                 val storyInformationButton : FloatingActionButton = holder.itemView.findViewById(R.id.story_information_button)
                 storyInformationButton.setOnClickListener(){
                     redirectToStoryDetails(model)
                 }
-                val ivStoryImage: ShapeableImageView = holder.itemView.findViewById(R.id.storyImageView)
+                val ivStoryImage: ImageView = holder.itemView.findViewById(R.id.storyImageView)
                 val imgStory = model.thumbnail_img
-                Glide.with(holder.itemView).load(imgStory).into(ivStoryImage)
+                Glide.with(context!!).load(imgStory).into(ivStoryImage)
                 ivStoryImage.setOnClickListener {
                     redirectToStoryDetails(model)
                 }

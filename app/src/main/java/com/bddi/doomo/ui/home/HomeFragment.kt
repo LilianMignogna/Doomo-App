@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
                 tvSubtitle.text = model.species
                 val ivThumbnail: ImageView = holder.itemView.findViewById(R.id.storyImageView)
                 val imgThumbnail = model.thumbnail_img
-                Glide.with(requireActivity().application).load(imgThumbnail).into(ivThumbnail);
+                Glide.with(requireActivity().application).load(imgThumbnail).into(ivThumbnail)
 
                 val storyInformationCard: CardView = holder.itemView.findViewById(R.id.favorite_story_card_item)
                 storyInformationCard.setOnClickListener(){

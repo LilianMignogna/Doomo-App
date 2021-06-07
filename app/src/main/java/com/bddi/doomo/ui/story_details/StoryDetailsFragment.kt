@@ -84,31 +84,20 @@ class StoryDetailsFragment : Fragment() {
             val ivSpecies: ImageView = root.findViewById(R.id.animal_picture)
             val imgSpecies = currentStory.species_img
             Glide.with(requireActivity().application).load(imgSpecies).into(ivSpecies);
-            val button: Button = root.findViewById(R.id.button_start_interaction)
-            button.setOnClickListener {
-                (activity as MainActivity).saveStory("wsE8dOKqILn69dUNRRYL")
+
+            val lauchStoryButton: Button = root.findViewById(R.id.button_start_interaction)
+            lauchStoryButton.setOnClickListener {
                 (activity as MainActivity).startStory("wsE8dOKqILn69dUNRRYL")
-
-                val lauchStoryButton: Button = root.findViewById(R.id.button_start_interaction)
-                lauchStoryButton.setOnClickListener {
-
-                    val button: Button = root.findViewById(R.id.button_start_interaction)
-                    button.setOnClickListener {
-                        val intent = Intent(activity, StoryActivity::class.java)
-                        intent.putExtra("Story", "frog")
-                        startActivity(intent)
-                    }
-
-                    val readStoryButton: Button = root.findViewById(R.id.button_start_reading)
-                    readStoryButton.setOnClickListener {
-                        (activity as MainActivity).playSound(R.raw.clic_btn)
-                        val intent = Intent(activity, WrittenStoryActivity::class.java)
-                        intent.putExtra("WrittenStory", currentStory.written_story)
-                        startActivity(intent)
-                    }
-                }
-
             }
+
+            val readStoryButton: Button = root.findViewById(R.id.button_start_reading)
+            readStoryButton.setOnClickListener {
+                (activity as MainActivity).playSound(R.raw.clic_btn)
+                val intent = Intent(activity, WrittenStoryActivity::class.java)
+                intent.putExtra("WrittenStory", currentStory.written_story)
+                startActivity(intent)
+            }
+
         })
         return root
     }
