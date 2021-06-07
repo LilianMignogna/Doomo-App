@@ -67,8 +67,6 @@ class MainActivity : AppCompatActivity() {
         editor.apply {
             putString("STORY_ID_KEY", storyId)
         }.apply()
-
-        Toast.makeText(this, "Histoire sauvegardé " + storyId, Toast.LENGTH_SHORT).show()
     }
 
     public fun saveData() {
@@ -78,8 +76,6 @@ class MainActivity : AppCompatActivity() {
             putBoolean("NOTIFICATION_KEY", notificationBool)
             putBoolean("SOUND_KEY", soundEffectBool)
         }.apply()
-
-        Toast.makeText(this, "Données savegardées", Toast.LENGTH_SHORT).show()
     }
 
     private fun loadData() {
@@ -93,7 +89,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     public fun goToStory(storyId: String) {
-        Toast.makeText(this, "story chargées " + storyId, Toast.LENGTH_SHORT).show()
         db.collection("Stories").document(storyId).get()
             .addOnSuccessListener { document ->
                 navToStory(document.toObject<Story>()!!)
@@ -113,7 +108,7 @@ class MainActivity : AppCompatActivity() {
     fun startStory(storyId: String) {
         saveStory(storyId)
         val intent = Intent(this, StoryActivity::class.java)
-        intent.putExtra("Story", "frog")
+        intent.putExtra("Story", storyId)
         startActivity(intent)
     }
 
