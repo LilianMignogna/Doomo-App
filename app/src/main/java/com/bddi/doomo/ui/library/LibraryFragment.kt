@@ -67,9 +67,7 @@ class LibraryFragment : Fragment() {
                 val playButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_play_button)
                 // TODO set good link to story
                 playButton.setOnClickListener {
-                    val intent = Intent(activity, StoryActivity::class.java)
-                    intent.putExtra("Story", "frog")
-                    startActivity(intent)
+                     (activity as MainActivity).startStory("wsE8dOKqILn69dUNRRYL")
                 }
             }
         }

@@ -83,7 +83,6 @@ class StoryActivity : AppCompatActivity() {
     // End Story and return to main activity
     fun endStory() {
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("Story", "frog")
         startActivity(intent)
     }
 
