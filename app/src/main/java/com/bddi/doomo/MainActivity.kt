@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.media.MediaPlayer
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -138,30 +139,38 @@ class MainActivity : AppCompatActivity() {
 
     // TODO Move Code + create inteface
 
-    fun MenuItem.setSoundOnMenuItemClicked(sound: Int){
+    fun MenuItem.setSoundOnMenuItemClicked(sound: Int) {
         val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
         setOnMenuItemClickListener() {
-            mp.start()
+            if (soundEffectBool == true) {
+                mp.start()
+            }
             false
         }
     }
 
-    fun Button.setSoundOnButtonClicked(sound: Int){
+    fun Button.setSoundOnButtonClicked(sound: Int) {
         val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
         setOnClickListener() {
-            mp.start()
+            if (soundEffectBool == true) {
+                mp.start()
+            }
             false
         }
     }
 
-    fun FloatingActionButton.setSoundOnFABClicked(sound: Int){
+    fun FloatingActionButton.setSoundOnFABClicked(sound: Int) {
         val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
         setOnClickListener() {
-            mp.start()
+            if (soundEffectBool == true) {
+                mp.start()
+            }
         }
     }
-    fun playSound(sound: Int){
+    fun playSound(sound: Int) {
         val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
-        mp.start()
+        if (soundEffectBool == true) {
+            mp.start()
+        }
     }
 }
