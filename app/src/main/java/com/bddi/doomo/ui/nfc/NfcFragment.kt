@@ -136,6 +136,5 @@ class NfcFragment : Fragment() {
             (activity as MainActivity).uncheckAllItems()
             findNavController().navigate(R.id.action_global_navigation_story_details)
         })
-
     }
 }
