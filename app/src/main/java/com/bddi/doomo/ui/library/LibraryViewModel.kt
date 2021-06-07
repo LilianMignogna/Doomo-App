@@ -13,5 +13,4 @@ class LibraryViewModel : ViewModel() {
 
     val query = db.collection("Story")
     val options = FirestoreRecyclerOptions.Builder<Story>().setQuery(query, Story::class.java)
-
 }

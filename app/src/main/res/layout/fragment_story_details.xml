@@ -49,7 +49,7 @@
                 android:orientation="vertical"/>
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageView"
+                android:id="@+id/StoryHeader"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
@@ -70,7 +70,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 android:textColor="?colorSecondary"
                 app:layout_constraintStart_toStartOf="@+id/begin_guideline"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/StoryHeader"
                 android:layout_marginTop="20dp"/>
 
             <TextView
