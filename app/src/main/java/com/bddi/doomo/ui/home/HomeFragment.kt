@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
                     parent,
                     false
                 )
-                view.layoutParams = ViewGroup.LayoutParams((parent.width * 0.95).toInt(),ViewGroup.LayoutParams.MATCH_PARENT)
+                view.layoutParams = ViewGroup.LayoutParams((parent.width * 0.9).toInt(),ViewGroup.LayoutParams.MATCH_PARENT)
                 return HomeViewHolder(view)
             }
 
@@ -84,6 +84,7 @@ class HomeFragment : Fragment() {
 
         val monthStoryButton: MaterialButton = root.findViewById(R.id.button_month_story)
         monthStoryButton.setOnClickListener {
+            (activity as MainActivity).playSound(R.raw.clic_btn)
             val intent = Intent(activity, StoryActivity::class.java)
             intent.putExtra("Story", "frog")
             startActivity(intent)

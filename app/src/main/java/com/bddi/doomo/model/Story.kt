@@ -7,4 +7,5 @@ data class Story(
     val home: String = "",
     val reappear: String = "",
     val species: String = "",
+    val written_story: String = "",
 )

@@ -14,6 +14,7 @@ import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
 import com.bddi.doomo.model.Story
 import com.bddi.doomo.activity.StoryActivity
+import com.bddi.doomo.activity.WrittenStoryActivity
 
 class StoryDetailsFragment : Fragment() {
 
@@ -50,10 +51,18 @@ class StoryDetailsFragment : Fragment() {
             tvReappear.text = currentStory.reappear
         })
 
-        val button: Button = root.findViewById(R.id.button_start_interaction)
-        button.setOnClickListener {
+        val lauchStoryButton: Button = root.findViewById(R.id.button_start_interaction)
+        lauchStoryButton.setOnClickListener {
             val intent = Intent(activity, StoryActivity::class.java)
             intent.putExtra("Story", "frog")
+            startActivity(intent)
+        }
+
+        val readStoryButton: Button = root.findViewById(R.id.button_start_reading)
+        readStoryButton.setOnClickListener {
+            (activity as MainActivity).playSound(R.raw.clic_btn)
+            val intent = Intent(activity, WrittenStoryActivity::class.java)
+            intent.putExtra("WrittenStory", currentStory.written_story)
             startActivity(intent)
         }
         return root

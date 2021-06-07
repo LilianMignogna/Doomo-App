@@ -1,6 +1,8 @@
 package com.bddi.doomo
 
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageButton
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -40,14 +42,19 @@ class MainActivity : AppCompatActivity() {
         navView.menu.findItem(R.id.placeholder).isEnabled = false
 
         // Hide Action bar
-        getSupportActionBar()?.hide()
+        supportActionBar?.hide()
 
         // Set navigation action to the big scan button
         val scanButton: FloatingActionButton = findViewById(R.id.navigation_nfc)
         scanButton.setOnClickListener() {
+            playSound(R.raw.clic_btn)
             navController.navigate(R.id.navigation_nfc)
             uncheckAllItems()
         }
+
+        // Set sound to navigation button
+        navView.menu.findItem(R.id.navigation_home).setSoundOnMenuItemClicked(R.raw.home)
+        navView.menu.findItem(R.id.navigation_library).setSoundOnMenuItemClicked(R.raw.bibli)
     }
 
     /**
@@ -60,5 +67,36 @@ class MainActivity : AppCompatActivity() {
             navview.menu.getItem(i).isChecked = false
         }
         navview.menu.setGroupCheckable(0, true, true)
+    }
+
+
+
+    // TODO Move Code + create inteface
+
+    fun MenuItem.setSoundOnMenuItemClicked(sound: Int){
+        val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
+        setOnMenuItemClickListener() {
+            mp.start()
+            false
+        }
+    }
+
+    fun Button.setSoundOnButtonClicked(sound: Int){
+        val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
+        setOnClickListener() {
+            mp.start()
+            false
+        }
+    }
+
+    fun FloatingActionButton.setSoundOnFABClicked(sound: Int){
+        val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
+        setOnClickListener() {
+            mp.start()
+        }
+    }
+    fun playSound(sound: Int){
+        val mp: MediaPlayer = MediaPlayer.create(this@MainActivity, sound)
+        mp.start()
     }
 }
