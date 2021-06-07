@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
             Log.w(TAG, "User is null, not going to navigate")
             return
         }
-
+        Log.d(TAG, "User is NOT null, going to navigate")
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
