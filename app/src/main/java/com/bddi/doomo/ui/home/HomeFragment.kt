@@ -81,7 +81,7 @@ class HomeFragment : Fragment() {
         }
         val accountButton: ImageButton = root.findViewById(R.id.account_button)
         accountButton.setOnClickListener {
-            findNavController().navigate(R.id.account)
+            findNavController().navigate(R.id.child_security)
             (activity as MainActivity).uncheckAllItems()
         }
 
