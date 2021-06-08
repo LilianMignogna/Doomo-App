@@ -1,14 +1,17 @@
 package com.bddi.doomo.activity
 
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
-import com.bddi.doomo.ui.storyfragments.InteractButtonFragment
 import com.bddi.doomo.ui.story.VideoFragment
+import com.bddi.doomo.ui.storyfragments.InteractButtonFragment
 
 class StoryActivity : AppCompatActivity() {
 
@@ -26,6 +29,9 @@ class StoryActivity : AppCompatActivity() {
         interactionData,
         R.raw.story_01_03_video
     )
+    private lateinit var TransitionAppearAnimation: AnimationDrawable
+    private lateinit var rocketAppearImage: ImageView
+    private lateinit var rocketDisappearImage: ImageView
     lateinit var currentArgument: Any
     lateinit var currentFragment: Any
     var count = 0
@@ -39,6 +45,11 @@ class StoryActivity : AppCompatActivity() {
         currentArgument = storyArgument[count]
         showFragment(currentFragment as Fragment)
         hideSystemUI()
+
+        rocketAppearImage = findViewById<ImageView>(R.id.transition).apply {
+            setBackgroundResource(R.drawable.transition_appear)
+            TransitionAppearAnimation = background as AnimationDrawable
+        }
         supportActionBar?.hide()
     }
 
@@ -70,13 +81,25 @@ class StoryActivity : AppCompatActivity() {
     // When and Video or interaction is finished
     fun endEvent() {
         print("end")
-        count++
-        if (count == storyArgument.size) {
-            endStory()
-        } else {
-            currentArgument = storyArgument[count]
-            currentFragment = getFragment(storyFragment[count])
-            showFragment(currentFragment as Fragment)
+        rocketAppearImage = findViewById<ImageView>(R.id.transition).apply {
+            setBackgroundResource(R.drawable.transition_appear)
+            TransitionAppearAnimation = background as AnimationDrawable
+        }
+        TransitionAppearAnimation.start()
+        TransitionAppearAnimation.onAnimationFinished {
+            count++
+            if (count == storyArgument.size) {
+                endStory()
+            } else {
+                currentArgument = storyArgument[count]
+                currentFragment = getFragment(storyFragment[count])
+                showFragment(currentFragment as Fragment)
+            }
+            rocketDisappearImage = findViewById<ImageView>(R.id.transition).apply {
+                setBackgroundResource(R.drawable.transition_disappear)
+                TransitionAppearAnimation = background as AnimationDrawable
+            }
+            TransitionAppearAnimation.start()
         }
     }
 
@@ -124,5 +147,18 @@ class StoryActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             )
+    }
+
+    private fun AnimationDrawable.onAnimationFinished(block: () -> Unit) {
+        var duration: Long = 0
+        for (i in 0..numberOfFrames) {
+            duration += getDuration(i)
+        }
+        Handler().postDelayed(
+            {
+                block()
+            },
+            duration
+        )
     }
 }
