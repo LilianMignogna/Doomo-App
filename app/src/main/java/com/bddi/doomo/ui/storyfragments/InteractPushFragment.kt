@@ -6,7 +6,6 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.VideoView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -67,9 +66,7 @@ class InteractPushFragment : Fragment() {
 
         layout.setOnClickListener {
             (activity as? StoryActivity)?.hideSystemUI()
-            println("CLICK CLICK CLICK")
             if (clickPossible && count != argument.size - 1) {
-                println("CLICK CLICK CLICK CLICK")
                 timer.start()
                 clickPossible = false
                 count++

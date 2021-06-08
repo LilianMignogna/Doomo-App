@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:screenOrientation="userLandscape"
-    tools:context=".ui.story.VideoFragment">
+    tools:context=".ui.storyfragments.InteractPushFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_button"

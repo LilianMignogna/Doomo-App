@@ -12,11 +12,12 @@ import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
 import com.bddi.doomo.ui.story.VideoFragment
 import com.bddi.doomo.ui.storyfragments.InteractButtonFragment
+import com.bddi.doomo.ui.storyfragments.InteractClicFragment
 import com.bddi.doomo.ui.storyfragments.InteractPushFragment
 
 class StoryActivity : AppCompatActivity() {
 
-    var storyFragment = intArrayOf(0, 1, 0, 2, 1, 0, 0)
+    var storyFragment = intArrayOf(0, 1, 0, 2, 3, 0, 0)
     private val interactionButtonData = arrayOf(
         Pair(30, 400),
         Pair(397, 5),
@@ -31,11 +32,18 @@ class StoryActivity : AppCompatActivity() {
         R.raw.interact_push_02,
         R.raw.interact_push_03,
     )
+    private val interactionClicData = arrayOf(
+        R.drawable.interact_clic_00,
+        R.drawable.interact_clic_01,
+        R.raw.locked,
+        R.raw.unlocked
+    )
     private var storyArgument = arrayOf(
         R.raw.story_01_01_video,
         interactionButtonData,
         R.raw.story_01_03_video,
-        interactionPushData
+        interactionPushData,
+        interactionClicData
     )
     private lateinit var TransitionAppearAnimation: AnimationDrawable
     private lateinit var rocketAppearImage: ImageView
@@ -83,6 +91,7 @@ class StoryActivity : AppCompatActivity() {
         return when (idFragment) {
             1 -> InteractButtonFragment()
             2 -> InteractPushFragment()
+            3 -> InteractClicFragment()
             else -> VideoFragment()
         }
     }
