@@ -39,13 +39,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/begin_guideline"
-                app:layout_constraintGuide_begin="16dp"
+                app:layout_constraintGuide_begin="24dp"
                 android:orientation="vertical"/>
             <androidx.constraintlayout.widget.Guideline
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/end_guideline"
-                app:layout_constraintGuide_end="16dp"
+                app:layout_constraintGuide_end="24dp"
                 android:orientation="vertical"/>
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -66,12 +66,23 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="Riri la grenouille"
-                app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+                app:layout_constraintEnd_toStartOf="@+id/button_favorite"
                 app:layout_constraintHorizontal_bias="0.0"
                 android:textColor="?colorSecondary"
                 app:layout_constraintStart_toStartOf="@+id/begin_guideline"
                 app:layout_constraintTop_toBottomOf="@+id/StoryHeader"
                 android:layout_marginTop="20dp"/>
+
+            <ImageButton
+                android:id="@+id/button_favorite"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/ic_baseline_favorite_24"
+                android:tint="?colorAccent"
+                app:layout_constraintTop_toTopOf="@+id/text_story_title"
+                app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+                android:background="@color/transparent"/>
 
             <TextView
                 android:id="@+id/text_story_subtitle"

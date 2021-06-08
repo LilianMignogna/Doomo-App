@@ -74,18 +74,16 @@
                 app:layout_constraintStart_toStartOf="@id/begin_guideline"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:id="@+id/nfc_scan_animation"
                 app:layout_constraintEnd_toEndOf="@id/end_guideline"
                 app:layout_constraintStart_toStartOf="@id/begin_guideline"
                 app:layout_constraintTop_toBottomOf="@+id/nfc_page_title"
+                android:src="@drawable/scan_illustration"
                 android:orientation="horizontal"
-                android:background="#D3D3D3"
-                app:layout_constraintCircleRadius="20dp">
-
-            </LinearLayout>
+                app:layout_constraintCircleRadius="20dp"/>
 
 
             <TextView

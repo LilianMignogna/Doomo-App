@@ -35,23 +35,34 @@
         app:layout_constraintGuide_end="61dp" />
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/background_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:src="@drawable/riri_written_bg_1"
+        tools:ignore="MissingConstraints" />
 
+    <ImageView
+        android:id="@+id/chevron"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toTopOf="@+id/return_to_story_details_text"
+        app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+        android:src="@drawable/ic_chevron"/>
     <TextView
         android:id="@+id/return_to_story_details_text"
         android:fontFamily="@font/futura"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:layout_marginLeft="5dp"
         android:text="Retour Bibliothèque"
         android:textColor="@color/white"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+        app:layout_constraintStart_toEndOf="@+id/chevron"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -113,6 +124,16 @@
         app:layout_constraintStart_toStartOf="@+id/begin_guideline"
         app:layout_constraintEnd_toEndOf="@id/end_guideline"
         app:layout_constraintTop_toBottomOf="@+id/story_title_text" />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/sound_button"
+        android:src="@drawable/dendrolague"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/story_text"
+        app:layout_constraintStart_toStartOf="@id/begin_guideline"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -136,7 +157,7 @@
             android:textColor="@color/white"
             android:textSize="15sp"
             app:cornerRadius="10dp"
-            app:layout_constraintBottom_toTopOf="@id/progressBar"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -145,13 +166,26 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
             android:layout_height="3dp"
-            android:layout_marginBottom="40dp"
             android:alpha="1"
             android:progress="0"
             android:progressTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/backward_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/backward_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="@color/transparent"
+            android:tint="@color/white"
+            android:src="@drawable/ic_baseline_fast_rewind_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/begin_guideline"
+            tools:ignore="NotSibling" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
