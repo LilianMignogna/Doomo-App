@@ -36,4 +36,5 @@
     <item android:drawable="@drawable/s35" android:duration="33" />
     <item android:drawable="@drawable/s36" android:duration="33" />
     <item android:drawable="@drawable/s37" android:duration="33" />
+    <item android:drawable="@drawable/s38" android:duration="33" />
 </animation-list>

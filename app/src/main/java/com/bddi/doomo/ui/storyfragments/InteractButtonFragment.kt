@@ -101,6 +101,22 @@ class InteractButtonFragment : Fragment() {
         // change button position to next one
         buttonImage.setOnClickListener {
             count++
+
+            val animalImageX = (activity as? StoryActivity)?.convertValue(
+                height,
+                argument[count - 1].first
+            )
+            val animalImageY = (activity as? StoryActivity)?.convertValue(
+                height,
+                argument[count - 1].second
+            )
+            if (animalImageX != null) {
+                if (animalImageY != null) {
+                    layoutParamsAnimal.setMargins(animalImageX, 0, 0, animalImageY)
+                }
+            }
+            animalImage.layoutParams = layoutParamsAnimal
+
             if (count >= argument.size) {
                 onFinish()
             } else {
@@ -118,21 +134,6 @@ class InteractButtonFragment : Fragment() {
                     }
                 }
                 buttonImage.layoutParams = layoutParamsInteractButton
-
-                val animalImageX = (activity as? StoryActivity)?.convertValue(
-                    height,
-                    argument[count - 1].first
-                )
-                val animalImageY = (activity as? StoryActivity)?.convertValue(
-                    height,
-                    argument[count - 1].second
-                )
-                if (animalImageX != null) {
-                    if (animalImageY != null) {
-                        layoutParamsAnimal.setMargins(animalImageX, 0, 0, animalImageY)
-                    }
-                }
-                animalImage.layoutParams = layoutParamsAnimal
             }
         }
 

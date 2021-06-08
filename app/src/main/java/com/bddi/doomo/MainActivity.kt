@@ -73,11 +73,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     public fun saveStory(storyId: String) {
-        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.apply {
-            putString("STORY_ID_KEY", storyId)
-        }.apply()
+        // val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        // val editor = sharedPreferences.edit()
+        // editor.apply {
+        //     putString("STORY_ID_KEY", storyId)
+        // }.apply()
     }
 
     public fun saveData() {
