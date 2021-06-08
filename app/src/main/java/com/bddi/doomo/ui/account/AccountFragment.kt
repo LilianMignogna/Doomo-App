@@ -9,8 +9,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
+import com.google.android.material.button.MaterialButton
 
 class AccountFragment : Fragment() {
 
@@ -24,7 +26,6 @@ class AccountFragment : Fragment() {
         accountViewModel =
             ViewModelProvider(this).get(AccountViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_account, container, false)
-        val textView: TextView = root.findViewById(R.id.text_account)
 
         val soundSwitch = root.findViewById<Switch>(R.id.sound_switch)
         val notificationSwitch = root.findViewById<Switch>(R.id.notification_switch)
@@ -42,12 +43,12 @@ class AccountFragment : Fragment() {
             (activity as MainActivity).saveData()
         }
 
-        accountViewModel.text.observe(
-            viewLifecycleOwner,
-            Observer {
-                textView.text = it
-            }
-        )
+        val helpRedirectionButton: TextView = root.findViewById(R.id.help)
+        helpRedirectionButton.setOnClickListener(){
+            root.findNavController().navigate(R.id.action_account_to_help)
+        }
+
+
         return root
     }
 }

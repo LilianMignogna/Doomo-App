@@ -27,7 +27,31 @@
         android:id="@+id/account"
         android:name="com.bddi.doomo.ui.account.AccountFragment"
         android:label="@string/title_account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_account_to_help"
+            app:destination="@id/help" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/help"
+        android:name="com.bddi.doomo.ui.help.HelpFragment"
+        android:label="Aide et assistance"
+        tools:layout="@layout/fragment_help" >
+        <action
+            android:id="@+id/action_help_to_account"
+            app:destination="@id/account" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/child_security"
+        android:name="com.bddi.doomo.ui.child_security.ChildSecurityFragment"
+        android:label="Sécurité Enfants"
+        tools:layout="@layout/fragment_child_security">
+        <action
+            android:id="@+id/action_child_security_to_account"
+            app:destination="@id/account" />
+    </fragment>
 
     <fragment
         android:id="@+id/story_details"

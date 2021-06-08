@@ -40,4 +40,5 @@
     <string name="doomo">Doomo</string>
     <string name="fiche_detail">Fiche histoire</string>
     <string name="page_title_nfc">Scan des figurines</string>
+    <string name="page_title_help">F.A.Q. et Assistance</string>
 </resources>

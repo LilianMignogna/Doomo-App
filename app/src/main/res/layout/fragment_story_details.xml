@@ -12,6 +12,18 @@
         tools:context=".ui.story_details.StoryDetailsFragment"
         android:clickable="true"
         android:focusable="true">
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/begin_guideline"
+            app:layout_constraintGuide_begin="24dp"
+            android:orientation="vertical"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/end_guideline"
+            app:layout_constraintGuide_end="24dp"
+            android:orientation="vertical"/>
 
         <TextView
             android:id="@+id/doomo"
@@ -23,9 +35,9 @@
             android:text="@string/fiche_detail"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints,NotSibling" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -38,13 +50,13 @@
             <androidx.constraintlayout.widget.Guideline
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/begin_guideline"
+                android:id="@+id/begin_guideline2"
                 app:layout_constraintGuide_begin="24dp"
                 android:orientation="vertical"/>
             <androidx.constraintlayout.widget.Guideline
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/end_guideline"
+                android:id="@+id/end_guideline2"
                 app:layout_constraintGuide_end="24dp"
                 android:orientation="vertical"/>
 
@@ -55,8 +67,8 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/small_rounded"
                 android:layout_marginHorizontal="20dp"
-                app:layout_constraintEnd_toStartOf="@id/end_guideline"
-                app:layout_constraintStart_toStartOf="@id/begin_guideline"
+                app:layout_constraintEnd_toStartOf="@id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@id/begin_guideline2"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -69,7 +81,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/button_favorite"
                 app:layout_constraintHorizontal_bias="0.0"
                 android:textColor="?colorSecondary"
-                app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/StoryHeader"
                 android:layout_marginTop="20dp"/>
 
@@ -81,7 +93,7 @@
                 android:src="@drawable/ic_baseline_favorite_24"
                 android:tint="?colorAccent"
                 app:layout_constraintTop_toTopOf="@+id/text_story_title"
-                app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+                app:layout_constraintEnd_toStartOf="@+id/end_guideline2"
                 android:background="@color/transparent"/>
 
             <TextView
@@ -92,8 +104,8 @@
                 android:textSize="15sp"
                 android:textColor="@color/gray"
                 android:text="@string/text_story_description"
-                app:layout_constraintEnd_toStartOf="@+id/end_guideline"
-                app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+                app:layout_constraintEnd_toStartOf="@+id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/text_story_title" />
 
             <TextView
@@ -105,8 +117,8 @@
                 android:textColor="@color/gray"
                 android:layout_marginVertical="20dp"
                 android:text="@string/text_story_description"
-                app:layout_constraintEnd_toStartOf="@+id/end_guideline"
-                app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+                app:layout_constraintEnd_toStartOf="@+id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/text_story_subtitle" />
 
             <com.google.android.material.button.MaterialButton
@@ -121,8 +133,8 @@
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 app:layout_constraintTop_toBottomOf="@id/text_story_description"
-                app:layout_constraintEnd_toEndOf="@id/end_guideline"
-                app:layout_constraintStart_toStartOf="@id/begin_guideline"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@id/begin_guideline2"
                 app:cornerRadius="10dp"/>
 
             <com.google.android.material.button.MaterialButton
@@ -138,8 +150,8 @@
                 android:textSize="15sp"
                 android:backgroundTint="?colorSecondary"
                 app:layout_constraintTop_toBottomOf="@id/button_start_interaction"
-                app:layout_constraintEnd_toEndOf="@id/end_guideline"
-                app:layout_constraintStart_toStartOf="@id/begin_guideline"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@id/begin_guideline2"
                 app:cornerRadius="10dp"/>
 
             <ImageView
@@ -150,8 +162,8 @@
                 android:src="@drawable/frog_illustration"
                 android:adjustViewBounds="true"
                 android:layout_marginTop="40dp"
-                app:layout_constraintStart_toStartOf="@+id/begin_guideline"
-                app:layout_constraintEnd_toEndOf="@+id/end_guideline"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
+                app:layout_constraintEnd_toEndOf="@+id/end_guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/button_start_reading"
                 android:contentDescription="@string/toy_image_view" />
 
@@ -162,10 +174,10 @@
                 android:layout_height="wrap_content"
                 android:textSize="22sp"
                 android:text="Riri la grenouille"
-                app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+                app:layout_constraintEnd_toStartOf="@+id/end_guideline2"
                 app:layout_constraintHorizontal_bias="0.0"
                 android:textColor="?colorSecondary"
-                app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/animal_picture"
                 android:layout_marginTop="20dp"/>
 
@@ -177,8 +189,8 @@
                 android:textSize="12sp"
                 android:textColor="@color/gray"
                 android:text="@string/text_story_description"
-                app:layout_constraintEnd_toStartOf="@+id/end_guideline"
-                app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+                app:layout_constraintEnd_toStartOf="@+id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/text_story_title_2" />
 
             <androidx.cardview.widget.CardView
@@ -191,9 +203,9 @@
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="30dp"
                 app:cardElevation="0dp"
-                app:layout_constraintEnd_toEndOf="@id/end_guideline"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline2"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/begin_guideline"
+                app:layout_constraintStart_toStartOf="@id/begin_guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/text_story_subtitle_2">
 
                 <LinearLayout
@@ -248,9 +260,9 @@
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="30dp"
                 app:cardElevation="0dp"
-                app:layout_constraintEnd_toEndOf="@id/end_guideline"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline2"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/begin_guideline"
+                app:layout_constraintStart_toStartOf="@id/begin_guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/fun_fact_card">
 
                 <LinearLayout
@@ -302,10 +314,10 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/home_title"
-                app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+                app:layout_constraintEnd_toStartOf="@+id/end_guideline2"
                 app:layout_constraintHorizontal_bias="0.0"
                 android:textColor="?colorSecondary"
-                app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/reappear_info_card"
                 android:layout_marginTop="30dp"/>
 
@@ -315,8 +327,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:adjustViewBounds="true"
-                app:layout_constraintEnd_toEndOf="@id/end_guideline"
-                app:layout_constraintStart_toStartOf="@id/begin_guideline"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@id/begin_guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/home_title"
                 android:src="@drawable/map"
                 app:shapeAppearanceOverlay="@style/border_radius"
