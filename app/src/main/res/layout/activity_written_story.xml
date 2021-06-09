@@ -37,12 +37,15 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/background_image"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="2560px"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
         android:src="@drawable/riri_written_bg_1"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"  />
 
     <ImageView
         android:id="@+id/chevron"

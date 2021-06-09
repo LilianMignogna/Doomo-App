@@ -126,7 +126,7 @@ class WrittenStoryActivity : AppCompatActivity() {
         if(index == chapters.size -1)
             actionButton.text = "Terminer L'histoire"
 
-        storyContainer.text = chapters[index].text
+        storyContainer.text = chapters[index].text.replace("\\n", "\n")
         //Change image if a new one is available
         if(chapters[index].background_img != ""){
             val ivBackground: ImageView = findViewById(R.id.background_image)
