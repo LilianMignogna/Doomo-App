@@ -54,6 +54,7 @@ class LibraryFragment : Fragment() {
             override fun onBindViewHolder(holder: StoryViewHolder, position: Int, model: Story) {
                 val tvTitle: TextView = holder.itemView.findViewById(R.id.storyTitleView)
                 tvTitle.text = model.title
+
                 val storyInformationButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_information_button)
                 storyInformationButton.setOnClickListener() {
                     redirectToStoryDetails(model)
@@ -67,7 +68,7 @@ class LibraryFragment : Fragment() {
                 val playButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_play_button)
                 // TODO set good link to story
                 playButton.setOnClickListener {
-                    (activity as MainActivity).startStory("wsE8dOKqILn69dUNRRYL")
+                    (activity as MainActivity).startStory("DZevLTdzAisZUcPX8tup")
                 }
             }
         }
