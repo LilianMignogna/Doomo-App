@@ -80,12 +80,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     public fun saveData() {
-        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.apply {
-            putBoolean("NOTIFICATION_KEY", notificationBool)
-            putBoolean("SOUND_KEY", soundEffectBool)
-        }.apply()
+//        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+//        val editor = sharedPreferences.edit()
+//        editor.apply {
+//            putBoolean("NOTIFICATION_KEY", notificationBool)
+//            putBoolean("SOUND_KEY", soundEffectBool)
+//        }.apply()
     }
 
     private fun loadData() {
@@ -94,12 +94,12 @@ class MainActivity : AppCompatActivity() {
         soundEffectBool = sharedPreferences.getBoolean("SOUND_KEY", false)
         val story = sharedPreferences.getString("STORY_ID_KEY", " ").toString()
         if (story != " ") {
-            goToStory(story)
+            // goToStory(story)
         }
     }
 
     public fun goToStory(storyId: String) {
-        db.collection("Stories").document(storyId).get()
+        db.collection("Story").document(storyId).get()
             .addOnSuccessListener { document ->
                 navToStory(document.toObject<Story>()!!)
             }
