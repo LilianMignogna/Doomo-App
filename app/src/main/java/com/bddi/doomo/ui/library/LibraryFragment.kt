@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
 import com.bddi.doomo.model.Story
+import com.bumptech.glide.Glide
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -50,6 +52,11 @@ class LibraryFragment : Fragment() {
             override fun onBindViewHolder(holder: StoryViewHolder, position: Int, model: Story) {
                 val tvTitle: TextView = holder.itemView.findViewById(R.id.storyTitleView)
                 tvTitle.text = model.title
+
+                // ImageViews form Firebase Storage
+                val ivHeader: ImageView = root.findViewById(R.id.StoryHeader)
+                val imgHeader = (activity as MainActivity).currentModel .story_img
+                Glide.with(requireActivity().application).load(imgHeader).into(ivHeader);
 
                 val storyInformationButton : FloatingActionButton = holder.itemView.findViewById(R.id.story_information_button)
                 storyInformationButton.setOnClickListener(){
