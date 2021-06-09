@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
                     parent,
                     false
                 )
-                view.layoutParams = ViewGroup.LayoutParams((parent.width * 0.9).toInt(),ViewGroup.LayoutParams.MATCH_PARENT)
+                view.layoutParams = ViewGroup.LayoutParams((parent.width * 0.91).toInt(),ViewGroup.LayoutParams.MATCH_PARENT)
                 return HomeViewHolder(view)
             }
 
@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
                 val playButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_play_button)
                 // TODO set good link to story
                 playButton.setOnClickListener {
-                    (activity as MainActivity).startStory("wsE8dOKqILn69dUNRRYL")
+                    (activity as MainActivity).startStory("DZevLTdzAisZUcPX8tup\n")
                 }
             }
         }
@@ -87,11 +87,8 @@ class HomeFragment : Fragment() {
 
         val monthStoryButton: MaterialButton = root.findViewById(R.id.button_month_story)
         monthStoryButton.setOnClickListener {
-            (activity as MainActivity).startStory("wsE8dOKqILn69dUNRRYL")
+            (activity as MainActivity).goToStory("DZevLTdzAisZUcPX8tup")
             (activity as MainActivity).playSound(R.raw.clic_btn)
-            val intent = Intent(activity, StoryActivity::class.java)
-            intent.putExtra("Story", "frog")
-            startActivity(intent)
         }
 
 
