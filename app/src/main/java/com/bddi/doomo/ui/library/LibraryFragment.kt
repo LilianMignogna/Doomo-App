@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
@@ -33,11 +35,11 @@ class LibraryFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_library, container, false)
 
         // Display data in recyclerView in fragment_library.xml
-        val adapter = object: FirestoreRecyclerAdapter<Story, StoryViewHolder>(
+        val adapter = object : FirestoreRecyclerAdapter<Story, StoryViewHolder>(
             librairyViewModel.options.setLifecycleOwner(
                 this
             ).build()
-        ){
+        ) {
             // Get view
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryViewHolder {
                 val view: View = LayoutInflater.from(this@LibraryFragment.context).inflate(
@@ -53,25 +55,41 @@ class LibraryFragment : Fragment() {
                 val tvTitle: TextView = holder.itemView.findViewById(R.id.storyTitleView)
                 tvTitle.text = model.title
 
-                // ImageViews form Firebase Storage
-                val ivHeader: ImageView = root.findViewById(R.id.StoryHeader)
-                val imgHeader = (activity as MainActivity).currentModel .story_img
-                Glide.with(requireActivity().application).load(imgHeader).into(ivHeader);
-
-                val storyInformationButton : FloatingActionButton = holder.itemView.findViewById(R.id.story_information_button)
-                storyInformationButton.setOnClickListener(){
-                    root.findNavController().navigate(R.id.action_global_navigation_story_details)
-                    (activity as MainActivity).uncheckAllItems()
-                    (activity as MainActivity).currentModel = model
-
+                val storyInformationButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_information_button)
+                storyInformationButton.setOnClickListener() {
+                    redirectToStoryDetails(model)
+                }
+                val ivStoryImage: ImageView = holder.itemView.findViewById(R.id.storyImageView)
+                val imgStory = model.thumbnail_img
+                Glide.with(context!!).load(imgStory).into(ivStoryImage)
+                ivStoryImage.setOnClickListener {
+                    redirectToStoryDetails(model)
+                }
+                val playButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_play_button)
+                // TODO set good link to story
+                playButton.setOnClickListener {
+                    (activity as MainActivity).startStory("DZevLTdzAisZUcPX8tup")
                 }
             }
+        }
+
+        val accountButton: ImageButton = root.findViewById(R.id.account_button)
+        accountButton.setOnClickListener {
+            findNavController().navigate(R.id.child_security)
+            (activity as MainActivity).uncheckAllItems()
         }
 
         // Get recyclerView and show informations
         var storiesRecyclerView: RecyclerView = root.findViewById(R.id.storiesRecyclerView)
         storiesRecyclerView.adapter = adapter
+        storiesRecyclerView.setNestedScrollingEnabled(false)
 
         return root
+    }
+
+    private fun redirectToStoryDetails(story: Story) {
+        findNavController().navigate(R.id.action_global_navigation_story_details)
+        (activity as MainActivity).uncheckAllItems()
+        (activity as MainActivity).currentModel = story
     }
 }

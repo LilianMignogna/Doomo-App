@@ -7,19 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColor">
 
-    <ImageButton
-        android:id="@+id/account_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/profil"
-        android:adjustViewBounds="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="10dp"
-        android:translationZ="1dp"
-        android:backgroundTint="@color/transparent"/>
-
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:backgroundTint="@color/transparent"
@@ -40,6 +27,7 @@
             android:id="@+id/nav_view"
             android:layout_width="match_parent"
             android:layout_height="72dp"
+            app:itemIconSize="28dp"
             app:elevation="10dp"
             app:labelVisibilityMode="unlabeled"
             app:menu="@menu/bottom_nav_menu"
@@ -58,13 +46,14 @@
         android:padding="38dp"
         app:fabCustomSize="100dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_baseline_nfc_24"
+        android:src="@drawable/ic_icon_scan"
         app:layout_anchor="@id/bottomAppBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:backgroundTint="?colorSecondary"
         app:borderWidth="0dp"
+        app:maxImageSize="32dp"
         app:tint="@android:color/white"/>
 
     <fragment
@@ -74,9 +63,11 @@
         android:layout_height="0dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@id/bottomAppBar"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:navGraph="@navigation/mobile_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

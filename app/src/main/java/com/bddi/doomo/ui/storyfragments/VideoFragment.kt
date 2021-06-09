@@ -16,6 +16,7 @@ import com.bddi.doomo.R
 import com.bddi.doomo.activity.StoryActivity
 
 class VideoFragment : Fragment() {
+    lateinit var root: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +27,7 @@ class VideoFragment : Fragment() {
         var isButtonVisible = false
         val context = requireContext()
 
-        val root = inflater.inflate(R.layout.fragment_story_video, container, false)
+        root = inflater.inflate(R.layout.fragment_story_video, container, false)
 
         val videoView = root.findViewById<VideoView>(R.id.video_view)
         val mediaController = MediaController(context)
@@ -61,6 +62,7 @@ class VideoFragment : Fragment() {
         val buttonLayout = root.findViewById<ConstraintLayout>(R.id.layout_button)
         val pauseButton = root.findViewById<ImageView>(R.id.pause_button)
         val stopButton = root.findViewById<ImageView>(R.id.stop_button)
+        var skipButton = root.findViewById<ImageView>(R.id.skip_button)
 
         val disappear = AnimationUtils.loadAnimation(context, R.anim.disappear)
         val appear = AnimationUtils.loadAnimation(context, R.anim.appear)
@@ -94,7 +96,10 @@ class VideoFragment : Fragment() {
 
         // Leave Story
         stopButton.setOnClickListener {
-            (activity as? StoryActivity)?.endStory()
+            if (isButtonVisible) {
+                timer.start()
+                (activity as? StoryActivity)?.endStory()
+            }
         }
 
         // display pause button
@@ -116,6 +121,14 @@ class VideoFragment : Fragment() {
             }
         }
 
+        // Skip Video
+        skipButton.setOnClickListener {
+            if (isButtonVisible) {
+                timer.start()
+                (activity as? StoryActivity)?.endEvent()
+            }
+        }
+
         // event when video is ended
         videoView.setOnCompletionListener {
             (activity as? StoryActivity)?.endEvent()
@@ -123,5 +136,11 @@ class VideoFragment : Fragment() {
         }
 
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val backgroundImage = root.findViewById<VideoView>(R.id.video_view)
+        backgroundImage.start()
     }
 }

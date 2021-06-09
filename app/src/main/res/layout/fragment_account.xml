@@ -1,32 +1,365 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.account.AccountFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/begin_guideline"
-        app:layout_constraintGuide_begin="16dp"
-        android:orientation="vertical"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/end_guideline"
-        app:layout_constraintGuide_end="16dp"
-        android:orientation="vertical"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/darkPurple"
+        tools:context=".ui.library.LibraryFragment">
 
-    <TextView
-        android:id="@+id/text_account"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/end_guideline"
-        app:layout_constraintStart_toStartOf="@+id/begin_guideline"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/begin_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="24dp" />
+
+        <TextView
+            android:id="@+id/account_title_page"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/baloochettan_medium"
+            android:text="Mon compte"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,NotSibling" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/page_shape"
+            android:clickable="true"
+            android:focusable="true"
+            tools:ignore="MissingConstraints">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/begin_guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="24dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="24dp" />
+
+            <ImageView
+                android:id="@+id/profile_picture"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/chevre"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/baloochettan_bold"
+                android:text="Jane Dorothy"
+                android:textColor="?colorSecondary"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
+                app:layout_constraintTop_toBottomOf="@id/profile_picture" />
+
+            <TextView
+                android:id="@+id/profile_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/futura_medium"
+                android:text="jane.dorothy@gmail.com"
+                android:textColor="@color/gray"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
+                app:layout_constraintTop_toBottomOf="@id/profile_name" />
+
+            <TextView
+                android:id="@+id/profile_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/futura_medium"
+                android:text="11 rue des papillons, Annecy 74000"
+                android:textColor="@color/gray"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
+                app:layout_constraintTop_toBottomOf="@id/profile_mail" />
+
+            <TextView
+                android:id="@+id/profile_modify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/futura_medium"
+                android:text="Modifier les informations personnelles"
+                android:textColor="@color/gray"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@+id/begin_guideline2"
+                app:layout_constraintTop_toBottomOf="@id/profile_address" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/title_account"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#EFF0F6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_modify">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ballochettan"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="14dp"
+                    android:text="Compte"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/change_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:fontFamily="@font/baloochettan_medium"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="14dp"
+                android:text="Changer le mot de passe"
+                android:textColor="@color/darkPurple"
+                app:layout_constraintEnd_toStartOf="@+id/chevron_password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_account" />
+
+            <ImageView
+                android:id="@+id/chevron_password"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/chevron_gauche"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/change_password" />
+
+            <Switch
+                android:id="@+id/notification_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:fontFamily="@font/baloochettan_medium"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="14dp"
+                android:text="Activer les notifications"
+                android:textColor="@color/darkPurple"
+                android:checked="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/change_password" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/title_other"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#EFF0F6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/notification_switch">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ballochettan"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="14dp"
+                    android:text="Autre"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Switch
+                android:id="@+id/sound_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:fontFamily="@font/baloochettan_medium"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="14dp"
+                android:text="Activer les bruitages"
+                android:checked="true"
+                android:textColor="@color/darkPurple"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_other" />
+
+            <TextView
+                android:id="@+id/terms_of_use"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:fontFamily="@font/baloochettan_medium"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="14dp"
+                android:text="Condition d'utilisation"
+                android:textColor="@color/darkPurple"
+                app:layout_constraintEnd_toStartOf="@+id/chevron_terms_of_use"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sound_switch" />
+
+            <ImageView
+                android:id="@+id/chevron_terms_of_use"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/chevron_gauche"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/terms_of_use" />
+
+            <TextView
+                android:id="@+id/help"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:fontFamily="@font/baloochettan_medium"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="14dp"
+                android:text="Aide et Assistance"
+                android:textColor="@color/darkPurple"
+                app:layout_constraintEnd_toStartOf="@+id/chevron_help"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms_of_use" />
+
+            <ImageView
+                android:id="@+id/chevron_help"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/chevron_gauche"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/help" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="40dp"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="20dp">
+
+                    <TextView
+                        android:id="@+id/subscriber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="20dp"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/baloochettan_bold"
+                        android:gravity="center"
+                        android:text="Votre abonnement"
+                        android:textColor="?colorSecondary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/date_subscribe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/baloochettan_bold"
+                        android:gravity="center"
+                        android:text="Abonné depuis le 00/00/0000"
+                        android:textColor="@color/gray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/subscriber" />
+
+                    <TextView
+                        android:id="@+id/end_date_subscribe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/baloochettan_bold"
+                        android:gravity="center"
+                        android:text="Votre abonnement prend fin le 00/00/0000"
+                        android:textColor="@color/gray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/date_subscribe" />
+                    <TextView
+                        android:id="@+id/nb_figurine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="20dp"
+                        android:fontFamily="@font/baloochettan_bold"
+                        android:gravity="center"
+                        android:text="Vous avez reçu : 1 figurine"
+                        android:textColor="@color/gray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/end_date_subscribe" />
+                    <TextView
+                        android:id="@+id/cancel_subscription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="20dp"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/baloochettan_bold"
+                        android:gravity="center"
+                        android:text="Résilier mon abonnement"
+                        android:textColor="@color/gray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nb_figurine" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="100dp"
+                android:paddingVertical="20dp"
+                android:text="Se déconnecter"
+                app:cornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
