@@ -62,7 +62,7 @@ class NfcFragment : Fragment() {
 
             // Check if nfc is disable on the phone and display error message
             if (!nfcAdapter.isEnabled) {
-                displayMessage("Please enable NFC first")
+                displayMessage("Veuillez activer le NFC")
             }
 
             // Enable NFC reading

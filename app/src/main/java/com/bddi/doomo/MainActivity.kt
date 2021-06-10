@@ -73,20 +73,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     public fun saveStory(storyId: String) {
-        // val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        // val editor = sharedPreferences.edit()
-        // editor.apply {
-        //     putString("STORY_ID_KEY", storyId)
-        // }.apply()
-    }
-
-    public fun saveData() {
 //        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
 //        val editor = sharedPreferences.edit()
 //        editor.apply {
-//            putBoolean("NOTIFICATION_KEY", notificationBool)
-//            putBoolean("SOUND_KEY", soundEffectBool)
+//            putString("STORY_ID_KEY", storyId)
 //        }.apply()
+    }
+
+    public fun saveData() {
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply {
+            putBoolean("NOTIFICATION_KEY", notificationBool)
+            putBoolean("SOUND_KEY", soundEffectBool)
+        }.apply()
     }
 
     private fun loadData() {
