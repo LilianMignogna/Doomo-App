@@ -14,7 +14,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 
 exports.addUserToFirestore = functions.auth.user().onCreate((user) => {
   // Code run every time is created
-  const usersRef = admin.firestore().collection("users");
+  const usersRef = admin.firestore().collection("user");
   return usersRef.doc(user.uid).set({
     name: user.displayName,
     email: user.email,
@@ -22,5 +22,7 @@ exports.addUserToFirestore = functions.auth.user().onCreate((user) => {
     sound: true,
     notification: true,
     image: "",
+    story_1: false,
+    story_2: false,
   });
 });

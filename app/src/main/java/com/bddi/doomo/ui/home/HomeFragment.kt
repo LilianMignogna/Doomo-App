@@ -18,16 +18,21 @@ import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
 import com.bddi.doomo.activity.StoryActivity
 import com.bddi.doomo.model.Story
+import com.bddi.doomo.model.User
 import com.bumptech.glide.Glide
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class HomeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -37,6 +42,10 @@ class HomeFragment : Fragment() {
         homeViewModel =
                 ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
+
+        auth = Firebase.auth
+        val user = auth.currentUser
+        homeViewModel.getUserInfos(user!!)
 
         // Display data in recyclerView in fragment_home.xml
         val adapter = object: FirestoreRecyclerAdapter<Story, HomeViewHolder>(
@@ -98,5 +107,12 @@ class HomeFragment : Fragment() {
         storiesRecyclerView.adapter = adapter
 
         return root
+    }
+
+    fun setUserInfos(user: User){
+        println("USER INFOS : 1) ${user.story_1}   2)${user.story_2}")
+        MainActivity.story_2 = user.story_2
+        MainActivity.story_1 = user.story_1
+        println("USER INFOS 2 : 1) ${MainActivity.story_1}   2)${MainActivity.story_2}")
     }
 }
