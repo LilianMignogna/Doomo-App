@@ -175,7 +175,7 @@
                     android:textSize="14sp"
                     android:textColor="@color/gray"
                     android:fontFamily="@font/futura"
-                    android:text="Félicitation ! Vous avez correctement importé l'animal et son histoire. Découvrez làa dès maintenant animée ou à lire."
+                    android:text="Félicitation ! Vous avez correctement importé l'animal et son histoire. Découvrez là dès maintenant animée ou à lire."
                     android:layout_marginTop="25dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
