@@ -5,7 +5,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
 import com.bddi.doomo.model.User
@@ -14,6 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -43,6 +46,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        /*
+        * Firebase auth : Google && Login/Password
+         */
+
         auth = Firebase.auth
 
         btnSignIn = findViewById(R.id.sign_in_button)
@@ -60,6 +67,37 @@ class LoginActivity : AppCompatActivity() {
             val signInIntent = client.signInIntent
             startActivityForResult(signInIntent,  RC_GOOGLE_SIGN_IN)
         }
+
+        val btnLogIn: MaterialButton = findViewById(R.id.button_validate)
+        val etMail: EditText = findViewById(R.id.user_field)
+        val etPassword: EditText = findViewById(R.id.user_password)
+
+        btnLogIn.setOnClickListener{
+            val email = etMail.text.toString()
+            val password = etPassword.text.toString()
+
+            if ( email.isBlank() || password.isBlank()) {
+                Toast.makeText(this, "Email/password can not be empty", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener{ task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Success! ", Toast.LENGTH_SHORT).show()
+                    goMainActivity()
+                } else {
+                    Log.i(TAG, "signInWithEmail failed", task.exception)
+                    Toast.makeText(this, "Authentification failed", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        }
+
+
+    }
+
+    private fun goMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun onStart() {
@@ -77,8 +115,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Navigate to MainActivity
         Log.d(TAG, "User is NOT null, going to navigate")
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
+        goMainActivity()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
