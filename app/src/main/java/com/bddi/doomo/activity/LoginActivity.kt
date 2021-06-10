@@ -53,6 +53,8 @@ class LoginActivity : AppCompatActivity() {
             .requestEmail()
             .build()
 
+        supportActionBar?.hide()
+
         val client = GoogleSignIn.getClient(this, gso)
         btnSignIn.setOnClickListener{
             val signInIntent = client.signInIntent
