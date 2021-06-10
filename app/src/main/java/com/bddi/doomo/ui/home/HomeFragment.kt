@@ -18,16 +18,21 @@ import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
 import com.bddi.doomo.activity.StoryActivity
 import com.bddi.doomo.model.Story
+import com.bddi.doomo.model.User
 import com.bumptech.glide.Glide
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +42,10 @@ class HomeFragment : Fragment() {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
+
+        auth = Firebase.auth
+        val user = auth.currentUser
+        homeViewModel.getUserInfos(user!!)
 
         // Display data in recyclerView in fragment_home.xml
         val adapter = object : FirestoreRecyclerAdapter<Story, HomeViewHolder>(
@@ -51,7 +60,7 @@ class HomeFragment : Fragment() {
                     parent,
                     false
                 )
-                view.layoutParams = ViewGroup.LayoutParams((parent.width * 0.9).toInt(), ViewGroup.LayoutParams.MATCH_PARENT)
+                view.layoutParams = ViewGroup.LayoutParams((parent.width * 0.91).toInt(),ViewGroup.LayoutParams.MATCH_PARENT)
                 return HomeViewHolder(view)
             }
 
@@ -74,23 +83,20 @@ class HomeFragment : Fragment() {
                 val playButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_play_button)
                 // TODO set good link to story
                 playButton.setOnClickListener {
-                    (activity as MainActivity).startStory("wsE8dOKqILn69dUNRRYL")
+                    (activity as MainActivity).startStory("DZevLTdzAisZUcPX8tup\n")
                 }
             }
         }
         val accountButton: ImageButton = root.findViewById(R.id.account_button)
         accountButton.setOnClickListener {
-            findNavController().navigate(R.id.account)
+            findNavController().navigate(R.id.child_security)
             (activity as MainActivity).uncheckAllItems()
         }
 
         val monthStoryButton: MaterialButton = root.findViewById(R.id.button_month_story)
         monthStoryButton.setOnClickListener {
-            (activity as MainActivity).startStory("wsE8dOKqILn69dUNRRYL")
+            (activity as MainActivity).goToStory("DZevLTdzAisZUcPX8tup")
             (activity as MainActivity).playSound(R.raw.clic_btn)
-            val intent = Intent(activity, StoryActivity::class.java)
-            intent.putExtra("Story", "frog")
-            startActivity(intent)
         }
 
         // Get recyclerView and show informations
@@ -98,5 +104,12 @@ class HomeFragment : Fragment() {
         storiesRecyclerView.adapter = adapter
 
         return root
+    }
+
+    fun setUserInfos(user: User){
+        println("USER INFOS : 1) ${user.story_1}   2)${user.story_2}")
+        MainActivity.story_2 = user.story_2
+        MainActivity.story_1 = user.story_1
+        println("USER INFOS 2 : 1) ${MainActivity.story_1}   2)${MainActivity.story_2}")
     }
 }
