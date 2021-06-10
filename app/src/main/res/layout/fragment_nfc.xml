@@ -121,7 +121,6 @@
                     android:fontFamily="@font/futura"
                     android:layout_marginTop="14dp"
                     android:text="Ça ne fonctionne pas ?"
-
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_nfc" />
@@ -155,17 +154,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
-                <ImageView
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/scanned_layout_animation"
                     android:layout_width="300dp"
                     android:layout_height="300dp"
-                    android:id="@+id/scanned_layout_animation"
+                    app:lottie_fileName="animation_verif.json"
+                    app:lottie_imageAssetsFolder="images"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="false"
+                    app:layout_constraintTop_toBottomOf="@+id/scanned_layout_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/scanned_layout_title"
-                    android:src="@drawable/scan_illustration"
                     android:orientation="horizontal"
                     app:layout_constraintCircleRadius="20dp"/>
-
 
                 <TextView
                     android:id="@+id/scanned_layout_text"
