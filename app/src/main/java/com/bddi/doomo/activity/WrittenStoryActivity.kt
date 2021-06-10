@@ -171,7 +171,7 @@ class WrittenStoryActivity : AppCompatActivity() {
             soundButton.setSoundOnImageButtonClicked(resources.getIdentifier(chapters[index].sound, "raw", getPackageName()))
         }
         if(chapters[index].sound2 != ""){
-            sound2ButtonName.text = chapters[index].sound.capitalize()
+            sound2ButtonName.text = chapters[index].sound2.capitalize()
             sound2Button.isVisible = true
             sound2ButtonName.isVisible = true
             //Get sound id with the file name
