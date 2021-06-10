@@ -2,6 +2,7 @@ package com.bddi.doomo.ui.storyfragments
 
 import android.net.Uri
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -98,28 +99,40 @@ class InteractButtonFragment : Fragment() {
         }
         animalImage.layoutParams = layoutParamsAnimal
 
+        val timer = object : CountDownTimer(1500, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                println("test")
+            }
+
+            override fun onFinish() {
+                (activity as? StoryActivity)?.endEvent()
+            }
+        }
+
         // change button position to next one
         buttonImage.setOnClickListener {
             count++
 
-            val animalImageX = (activity as? StoryActivity)?.convertValue(
-                height,
-                argument[count - 1].first
-            )
-            val animalImageY = (activity as? StoryActivity)?.convertValue(
-                height,
-                argument[count - 1].second
-            )
-            if (animalImageX != null) {
-                if (animalImageY != null) {
-                    layoutParamsAnimal.setMargins(animalImageX, 0, 0, animalImageY)
-                }
+            if (count == argument.size - 1) {
+                timer.start()
             }
-            animalImage.layoutParams = layoutParamsAnimal
+            if (count < argument.size) {
 
-            if (count >= argument.size) {
-                onFinish()
-            } else {
+                val animalImageX = (activity as? StoryActivity)?.convertValue(
+                    height,
+                    argument[count - 1].first
+                )
+                val animalImageY = (activity as? StoryActivity)?.convertValue(
+                    height,
+                    argument[count - 1].second
+                )
+                if (animalImageX != null) {
+                    if (animalImageY != null) {
+                        layoutParamsAnimal.setMargins(animalImageX, 0, 0, animalImageY)
+                    }
+                }
+                animalImage.layoutParams = layoutParamsAnimal
+
                 val buttonImageX = (activity as? StoryActivity)?.convertValue(
                     height,
                     argument[count].first
@@ -147,11 +160,6 @@ class InteractButtonFragment : Fragment() {
         }
 
         return root
-    }
-
-    private fun onFinish() {
-        (activity as? StoryActivity)?.endEvent()
-        println("the interaction just ended")
     }
 
     override fun onResume() {
