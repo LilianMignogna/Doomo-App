@@ -1,19 +1,24 @@
 package com.bddi.doomo.activity
 
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
-import com.bddi.doomo.ui.storyfragments.InteractButtonFragment
 import com.bddi.doomo.ui.story.VideoFragment
+import com.bddi.doomo.ui.storyfragments.InteractButtonFragment
+import com.bddi.doomo.ui.storyfragments.InteractClicFragment
+import com.bddi.doomo.ui.storyfragments.InteractPushFragment
 
 class StoryActivity : AppCompatActivity() {
 
-    var storyFragment = intArrayOf(0, 1, 0, 1, 1, 0, 0)
-    private val interactionData = arrayOf(
+    var storyFragment = intArrayOf(0, 1, 0, 2, 3, 0, 0)
+    private val interactionButtonData = arrayOf(
         Pair(30, 400),
         Pair(397, 5),
         Pair(660, 400),
@@ -21,11 +26,28 @@ class StoryActivity : AppCompatActivity() {
         Pair(1240, 530),
         Pair(1607, 600)
     )
+    private val interactionPushData = arrayOf(
+        R.drawable.interact_push_00,
+        R.raw.interact_push_01,
+        R.raw.interact_push_02,
+        R.raw.interact_push_03,
+    )
+    private val interactionClicData = arrayOf(
+        R.drawable.interact_clic_00,
+        R.drawable.interact_clic_01,
+        R.raw.locked,
+        R.raw.unlocked
+    )
     private var storyArgument = arrayOf(
         R.raw.story_01_01_video,
-        interactionData,
-        R.raw.story_01_03_video
+        interactionButtonData,
+        R.raw.story_01_03_video,
+        interactionPushData,
+        interactionClicData
     )
+    private lateinit var TransitionAppearAnimation: AnimationDrawable
+    private lateinit var rocketAppearImage: ImageView
+    private lateinit var rocketDisappearImage: ImageView
     lateinit var currentArgument: Any
     lateinit var currentFragment: Any
     var count = 0
@@ -39,6 +61,11 @@ class StoryActivity : AppCompatActivity() {
         currentArgument = storyArgument[count]
         showFragment(currentFragment as Fragment)
         hideSystemUI()
+
+        rocketAppearImage = findViewById<ImageView>(R.id.transition).apply {
+            setBackgroundResource(R.drawable.transition_appear)
+            TransitionAppearAnimation = background as AnimationDrawable
+        }
         supportActionBar?.hide()
     }
 
@@ -63,6 +90,8 @@ class StoryActivity : AppCompatActivity() {
     private fun getFragment(idFragment: Int): Fragment {
         return when (idFragment) {
             1 -> InteractButtonFragment()
+            2 -> InteractPushFragment()
+            3 -> InteractClicFragment()
             else -> VideoFragment()
         }
     }
@@ -70,13 +99,25 @@ class StoryActivity : AppCompatActivity() {
     // When and Video or interaction is finished
     fun endEvent() {
         print("end")
-        count++
-        if (count == storyArgument.size) {
-            endStory()
-        } else {
-            currentArgument = storyArgument[count]
-            currentFragment = getFragment(storyFragment[count])
-            showFragment(currentFragment as Fragment)
+        rocketAppearImage = findViewById<ImageView>(R.id.transition).apply {
+            setBackgroundResource(R.drawable.transition_appear)
+            TransitionAppearAnimation = background as AnimationDrawable
+        }
+        TransitionAppearAnimation.start()
+        TransitionAppearAnimation.onAnimationFinished {
+            count++
+            if (count == storyArgument.size) {
+                endStory()
+            } else {
+                currentArgument = storyArgument[count]
+                currentFragment = getFragment(storyFragment[count])
+                showFragment(currentFragment as Fragment)
+            }
+            rocketDisappearImage = findViewById<ImageView>(R.id.transition).apply {
+                setBackgroundResource(R.drawable.transition_disappear)
+                TransitionAppearAnimation = background as AnimationDrawable
+            }
+            TransitionAppearAnimation.start()
         }
     }
 
@@ -124,5 +165,18 @@ class StoryActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             )
+    }
+
+    private fun AnimationDrawable.onAnimationFinished(block: () -> Unit) {
+        var duration: Long = 0
+        for (i in 0..numberOfFrames) {
+            duration += getDuration(i)
+        }
+        Handler().postDelayed(
+            {
+                block()
+            },
+            duration
+        )
     }
 }
