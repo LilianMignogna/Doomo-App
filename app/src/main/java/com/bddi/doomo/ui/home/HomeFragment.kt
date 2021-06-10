@@ -23,27 +23,27 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class HomeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
+            ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         // Display data in recyclerView in fragment_home.xml
-        val adapter = object: FirestoreRecyclerAdapter<Story, HomeViewHolder>(
+        val adapter = object : FirestoreRecyclerAdapter<Story, HomeViewHolder>(
             homeViewModel.options.setLifecycleOwner(
                 this
             ).build()
-        ){
+        ) {
             // Get view
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
                 val view: View = LayoutInflater.from(this@HomeFragment.context).inflate(
@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
                     parent,
                     false
                 )
-                view.layoutParams = ViewGroup.LayoutParams((parent.width * 0.9).toInt(),ViewGroup.LayoutParams.MATCH_PARENT)
+                view.layoutParams = ViewGroup.LayoutParams((parent.width * 0.9).toInt(), ViewGroup.LayoutParams.MATCH_PARENT)
                 return HomeViewHolder(view)
             }
 
@@ -66,11 +66,10 @@ class HomeFragment : Fragment() {
                 Glide.with(requireActivity().application).load(imgThumbnail).into(ivThumbnail)
 
                 val storyInformationCard: CardView = holder.itemView.findViewById(R.id.favorite_story_card_item)
-                storyInformationCard.setOnClickListener(){
+                storyInformationCard.setOnClickListener() {
                     root.findNavController().navigate(R.id.action_global_navigation_story_details)
                     (activity as MainActivity).uncheckAllItems()
                     (activity as MainActivity).currentModel = model
-
                 }
                 val playButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_play_button)
                 // TODO set good link to story
@@ -93,8 +92,6 @@ class HomeFragment : Fragment() {
             intent.putExtra("Story", "frog")
             startActivity(intent)
         }
-
-
 
         // Get recyclerView and show informations
         var storiesRecyclerView: RecyclerView = root.findViewById(R.id.favorite_stories_recycler_view)

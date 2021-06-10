@@ -6,8 +6,8 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.VideoView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.bddi.doomo.R
 import com.bddi.doomo.activity.StoryActivity
@@ -28,7 +28,6 @@ class InteractPushFragment : Fragment() {
         var argument = (activity as? StoryActivity)?.currentArgument as Array<Integer>
 
         val currentPackage = activity?.packageName
-        val layout = root.findViewById<ConstraintLayout>(R.id.layout_button)
         val videoFind = root.findViewById<VideoView>(R.id.video_view)
 
         var clickPossible = true
@@ -49,6 +48,13 @@ class InteractPushFragment : Fragment() {
             count = 0
         }
 
+        val stopButton = root.findViewById<ImageView>(R.id.stop_button)
+
+        // Leave Story
+        stopButton.setOnClickListener {
+            (activity as? StoryActivity)?.endStory()
+        }
+
         val timer = object : CountDownTimer(1500, 10000) {
             override fun onTick(millisUntilFinished: Long) {
                 println(millisUntilFinished)
@@ -59,12 +65,7 @@ class InteractPushFragment : Fragment() {
             }
         }
 
-        // Leave Story
-        // stopButton.setOnClickListener {
-        //    (activity as? StoryActivity)?.endStory()
-        // }
-
-        layout.setOnClickListener {
+        videoFind.setOnClickListener {
             (activity as? StoryActivity)?.hideSystemUI()
             if (clickPossible && count != argument.size - 1) {
                 timer.start()

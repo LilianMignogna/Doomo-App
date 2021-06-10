@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -73,11 +74,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     public fun saveStory(storyId: String) {
-        // val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        // val editor = sharedPreferences.edit()
-        // editor.apply {
-        //     putString("STORY_ID_KEY", storyId)
-        // }.apply()
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply {
+            putString("STORY_ID_KEY", storyId)
+        }.apply()
     }
 
     public fun saveData() {
@@ -95,25 +96,29 @@ class MainActivity : AppCompatActivity() {
         soundEffectBool = sharedPreferences.getBoolean("SOUND_KEY", false)
         val story = sharedPreferences.getString("STORY_ID_KEY", " ").toString()
         if (story != " ") {
-            goToStory(story)
+            // goToStory(story)
         }
     }
 
     public fun goToStory(storyId: String) {
-        db.collection("Stories").document(storyId).get()
-            .addOnSuccessListener { document ->
-                navToStory(document.toObject<Story>()!!)
-            }
+//        db.collection("Story").document(storyId).get()
+//            .addOnSuccessListener{document ->
+//                navToStory(document.toObject<Story>()!!)
+//            }
     }
 
-    public fun navToStory(toObject: Story) {
-        currentModel = toObject
-        runOnUiThread(
+    public fun navToStory(story: Story) {
+        // Load Story informations
+        currentModel = story
+
+        // Error : Can't create handler inside thread that has not called Looper.prepare()
+        // There is no thread in the callback function, Toast now run on UI Thread to bypass the error
+        runOnUiThread(Runnable() {
             Runnable() {
                 uncheckAllItems()
                 navController.navigate(R.id.action_global_navigation_story_details)
             }
-        )
+        })
     }
 
     fun startStory(storyId: String) {

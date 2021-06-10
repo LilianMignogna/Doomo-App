@@ -35,6 +35,7 @@ class InteractClicFragment : Fragment() {
         val button_wrong_1 = root.findViewById<Button>(R.id.button_wrong_1)
         val button_wrong_2 = root.findViewById<Button>(R.id.button_wrong_2)
         val button_good_1 = root.findViewById<Button>(R.id.button_good_1)
+        val stopButton = root.findViewById<ImageView>(R.id.stop_button)
 
         var transitionning = false
 
@@ -86,6 +87,11 @@ class InteractClicFragment : Fragment() {
                 transitionning = true
                 timer.start()
             }
+        }
+
+        // Leave Story
+        stopButton.setOnClickListener {
+            (activity as? StoryActivity)?.endStory()
         }
 
         return root

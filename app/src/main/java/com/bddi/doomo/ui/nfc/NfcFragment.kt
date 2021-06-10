@@ -100,7 +100,7 @@ class NfcFragment : Fragment() {
      */
     override fun onDestroy() {
         super.onDestroy()
-        if(NfcAdapter.getDefaultAdapter(this.context) != null) {
+        if (NfcAdapter.getDefaultAdapter(this.context) != null) {
             // Disable NFC reading
             nfcAdapter.disableReaderMode(this.activity)
         }
@@ -110,7 +110,7 @@ class NfcFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        if(NfcAdapter.getDefaultAdapter(this.context) != null) {
+        if (NfcAdapter.getDefaultAdapter(this.context) != null) {
             // Disable NFC reading
             nfcAdapter.disableReaderMode(this.activity)
         }
@@ -121,9 +121,11 @@ class NfcFragment : Fragment() {
     private fun displayMessage(message: String) {
         // Error : Can't create handler inside thread that has not called Looper.prepare()
         // There is no thread in the callback function, Toast now run on UI Thread to bypass the error
-        activity?.runOnUiThread(Runnable() {
-            Toast.makeText(this.context, message, Toast.LENGTH_LONG).show()
-        })
+        activity?.runOnUiThread(
+            Runnable() {
+                Toast.makeText(this.context, message, Toast.LENGTH_LONG).show()
+            }
+        )
     }
 
     fun redirectToStoryDetailsView(story: Story) {
@@ -132,9 +134,11 @@ class NfcFragment : Fragment() {
 
         // Error : Can't create handler inside thread that has not called Looper.prepare()
         // There is no thread in the callback function, Toast now run on UI Thread to bypass the error
-        (activity as MainActivity).runOnUiThread(Runnable() {
-            (activity as MainActivity).uncheckAllItems()
-            findNavController().navigate(R.id.action_global_navigation_story_details)
-        })
+        (activity as MainActivity).runOnUiThread(
+            Runnable() {
+                (activity as MainActivity).uncheckAllItems()
+                findNavController().navigate(R.id.action_global_navigation_story_details)
+            }
+        )
     }
 }
