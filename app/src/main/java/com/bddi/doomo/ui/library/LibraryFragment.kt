@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -15,15 +17,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
 import com.bddi.doomo.model.Story
+import com.bddi.doomo.model.User
+import com.bddi.doomo.ui.account.AccountViewModel
 import com.bumptech.glide.Glide
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import kotlin.properties.Delegates
 
 class StoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 class LibraryFragment : Fragment() {
 
     private lateinit var librairyViewModel: LibraryViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,23 +61,48 @@ class LibraryFragment : Fragment() {
 
             // Display story content in story_list_item.xml
             override fun onBindViewHolder(holder: StoryViewHolder, position: Int, model: Story) {
+
+
                 val tvTitle: TextView = holder.itemView.findViewById(R.id.storyTitleView)
                 tvTitle.text = model.title
 
                 val storyInformationButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_information_button)
-                storyInformationButton.setOnClickListener() {
-                    redirectToStoryDetails(model)
-                }
+
                 val ivStoryImage: ImageView = holder.itemView.findViewById(R.id.storyImageView)
                 val imgStory = model.thumbnail_img
                 Glide.with(context!!).load(imgStory).into(ivStoryImage)
-                ivStoryImage.setOnClickListener {
-                    redirectToStoryDetails(model)
-                }
+
                 val playButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_play_button)
                 // TODO set good link to story
-                playButton.setOnClickListener {
-                    (activity as MainActivity).startStory("DZevLTdzAisZUcPX8tup")
+
+                val cvStoryCard: CardView = holder.itemView.findViewById((R.id.story_card))
+                val tvLock: TextView = holder.itemView.findViewById((R.id.lock_text))
+                val ivLock: ImageView = holder.itemView.findViewById((R.id.lock_icon))
+                println("ATCHOIN : ")
+                println("story1 : ${MainActivity.story_1}")
+                println("story2 : ${MainActivity.story_2}")
+                if ((position == 0 && MainActivity.story_1) || (position == 1 && MainActivity.story_2)) {
+
+                    playButton.setOnClickListener {
+                        (activity as MainActivity).startStory("DZevLTdzAisZUcPX8tup")
+                    }
+                    storyInformationButton.setOnClickListener() {
+                        redirectToStoryDetails(model)
+                    }
+                    ivStoryImage.setOnClickListener {
+                        redirectToStoryDetails(model)
+                    }
+                    cvStoryCard.foreground = null
+                    tvLock.isVisible  = false
+                    ivLock.isVisible = false
+                }
+                else {
+                    playButton.isEnabled = false
+                    playButton.isClickable = false
+                    storyInformationButton.isEnabled = false
+                    storyInformationButton.isClickable = false
+                    tvLock.isVisible  = true
+                    ivLock.isVisible = true
                 }
             }
         }

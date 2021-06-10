@@ -2,32 +2,46 @@ package com.bddi.doomo
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.media.MediaPlayer
+import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.Toast
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.bddi.doomo.activity.LoginActivity
 import com.bddi.doomo.activity.StoryActivity
 import com.bddi.doomo.model.Story
+import com.bddi.doomo.model.User
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+
 
 class MainActivity : AppCompatActivity() {
 
     // Data Base Connection : get data
     val db = Firebase.firestore
     public lateinit var currentModel: Story
+    private lateinit var auth: FirebaseAuth
 
+    companion object {
+        public var story_1 = false
+        public var story_2 = false
+    }
     public var notificationBool = true
     public var soundEffectBool = false
     public var storyId = " "
@@ -40,8 +54,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        auth = Firebase.auth
+
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navController = findNavController(R.id.nav_host_fragment)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
@@ -70,6 +87,7 @@ class MainActivity : AppCompatActivity() {
         // Set sound to navigation button
         navView.menu.findItem(R.id.navigation_home).setSoundOnMenuItemClicked(R.raw.home)
         navView.menu.findItem(R.id.navigation_library).setSoundOnMenuItemClicked(R.raw.bibli)
+
     }
 
     public fun saveStory(storyId: String) {
@@ -172,5 +190,12 @@ class MainActivity : AppCompatActivity() {
         if (soundEffectBool == true) {
             mp.start()
         }
+    }
+
+    fun logOut() {
+        auth.signOut()
+        val logoutIntent = Intent(this, LoginActivity::class.java)
+        logoutIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(logoutIntent)
     }
 }

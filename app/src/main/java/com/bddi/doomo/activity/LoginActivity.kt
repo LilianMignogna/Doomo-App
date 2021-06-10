@@ -1,12 +1,16 @@
 package com.bddi.doomo.activity
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
+import com.bddi.doomo.model.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
@@ -14,16 +18,25 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
+
+    //lateinit var client: GoogleSignInClient
+    val db = Firebase.firestore
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var btnSignIn: SignInButton
     private companion object {
         private const val TAG = "LoginActivity"
         private const val RC_GOOGLE_SIGN_IN = 4926
     }
-    private lateinit var auth: FirebaseAuth
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,11 +68,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        // Navigate to MainActivity
         if (user == null) {
             Log.w(TAG, "User is null, not going to navigate")
             return
         }
+
+        // Navigate to MainActivity
         Log.d(TAG, "User is NOT null, going to navigate")
         startActivity(Intent(this, MainActivity::class.java))
         finish()
