@@ -34,7 +34,7 @@ class InteractPushFragment : Fragment() {
         var clickPossible = true
         var count = 0
 
-        var video = argument[1]
+        var video = argument[count]
         var videoPath = "android.resource://$currentPackage/$video"
         var uriVideo = Uri.parse(videoPath)
         videoFind.setVideoURI(uriVideo)
@@ -49,7 +49,7 @@ class InteractPushFragment : Fragment() {
             count = 0
         }
 
-        val timer = object : CountDownTimer(1000, 10000) {
+        val timer = object : CountDownTimer(1500, 10000) {
             override fun onTick(millisUntilFinished: Long) {
                 println(millisUntilFinished)
             }

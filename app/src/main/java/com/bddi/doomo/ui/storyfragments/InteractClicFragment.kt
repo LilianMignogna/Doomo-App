@@ -28,18 +28,22 @@ class InteractClicFragment : Fragment() {
 
         var argument = (activity as? StoryActivity)?.currentArgument as Array<Integer>
 
+        (activity as? StoryActivity)?.transitioning = false
+
         val currentPackage = activity?.packageName
         var imageFind = root.findViewById<ImageView>(R.id.image_view)
         val button_wrong_1 = root.findViewById<Button>(R.id.button_wrong_1)
         val button_wrong_2 = root.findViewById<Button>(R.id.button_wrong_2)
         val button_good_1 = root.findViewById<Button>(R.id.button_good_1)
 
+        var transitionning = false
+
         var image = argument[0]
         var imagePath = "android.resource://$currentPackage/$image"
         var uriImage = Uri.parse(imagePath)
         imageFind.setImageURI(uriImage)
 
-        val timer = object : CountDownTimer(3000, 10000) {
+        val timer = object : CountDownTimer(1500, 10000) {
             override fun onTick(millisUntilFinished: Long) {
                 println(millisUntilFinished)
             }
@@ -78,7 +82,10 @@ class InteractClicFragment : Fragment() {
             var soundPath = "android.resource://$currentPackage/$sound"
             var uriSound = Uri.parse(soundPath)
             playSound(uriSound)
-            timer.start()
+            if (!transitionning) {
+                transitionning = true
+                timer.start()
+            }
         }
 
         return root
