@@ -25,6 +25,7 @@ class InteractButtonFragment : Fragment() {
         println("interaction fragment loaded")
 
         root = inflater.inflate(R.layout.fragment_story_interact_button, container, false)
+        (activity as? StoryActivity)?.playSound(R.raw.int2_riri)
 
         var argument = (activity as? StoryActivity)?.currentArgument as Array<Pair<Int, Int>>
 
