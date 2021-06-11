@@ -17,6 +17,8 @@ import com.bddi.doomo.R
 import com.bddi.doomo.model.Story
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class NfcFragment : Fragment() {
 
@@ -75,16 +77,27 @@ class NfcFragment : Fragment() {
                     // Get Tag and convert his id to the hexadecimal format
                     val id: ByteArray = it.id
                     val tag = StringBuilder()
+                    var currentUser = Firebase.auth.currentUser
 
                     for (b in id) {
                         val st = String.format("%02X", b)
                         tag.append(st)
                     }
-
+                    println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+                    println(tag.toString())
                     // Recognize Tag ID
                     when (tag.toString()) {
                         "04BB7254680000" -> {
-
+                            if (currentUser != null) {
+                                nfcViewModel.ownStory("story_1", currentUser.uid)
+                            }
+                            (activity as MainActivity).playSound(R.raw.check)
+                            succesfullScan("DZevLTdzAisZUcPX8tup")
+                        }
+                        "1A902040" -> {
+                            if (currentUser != null) {
+                                nfcViewModel.ownStory("story_1", currentUser.uid)
+                            }
                             (activity as MainActivity).playSound(R.raw.check)
                             succesfullScan("DZevLTdzAisZUcPX8tup")
                         }

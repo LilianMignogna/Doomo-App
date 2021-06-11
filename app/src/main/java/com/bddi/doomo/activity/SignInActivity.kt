@@ -60,21 +60,13 @@ class SignInActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
 
-
                         var currentUser = auth.currentUser
                         if (currentUser == null ){
                             Toast.makeText(this , "User is null ", Toast.LENGTH_SHORT).show()
                             return@addOnCompleteListener
                         }
 
-                        val users = db.collection("user")
-
-                        val cuser = hashMapOf(
-                            "name" to "$name",
-                            "email" to "$email",
-                            "address" to "$address"
-                        )
-                        users.document(currentUser.uid).set(cuser)
+                        saveDatas(name, email, address)
 
                         goLoginActivity()
                     } else {
@@ -97,6 +89,18 @@ class SignInActivity : AppCompatActivity() {
     private fun goLoginActivity() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
+    }
+
+    private fun saveDatas(name: String, email: String, address: String){
+        var currentUser = auth.currentUser
+        val users = db.collection("user")
+
+        val cuser = mapOf(
+            "name" to name,
+            "email" to email,
+            "address" to address
+        )
+        users.document(currentUser!!.uid).set(cuser)
     }
 
 }

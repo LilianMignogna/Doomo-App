@@ -119,24 +119,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     public fun goToStory(storyId: String) {
-//        db.collection("Story").document(storyId).get()
-//            .addOnSuccessListener{document ->
-//                navToStory(document.toObject<Story>()!!)
-//            }
+        db.collection("Story").document(storyId).get()
+            .addOnSuccessListener{document ->
+                navToStory(document.toObject<Story>()!!)
+            }
     }
 
-    public fun navToStory(story: Story) {
-        // Load Story informations
-        currentModel = story
-
-        // Error : Can't create handler inside thread that has not called Looper.prepare()
-        // There is no thread in the callback function, Toast now run on UI Thread to bypass the error
-        runOnUiThread(Runnable() {
+    public fun navToStory(toObject: Story) {
+        currentModel = toObject
+        runOnUiThread(
             Runnable() {
                 uncheckAllItems()
                 navController.navigate(R.id.action_global_navigation_story_details)
             }
-        })
+        )
     }
 
     fun startStory(storyId: String) {

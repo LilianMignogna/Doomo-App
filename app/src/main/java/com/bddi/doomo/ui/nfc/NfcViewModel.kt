@@ -20,4 +20,8 @@ class NfcViewModel : ViewModel() {
                 fragment.redirectToStoryDetailsView(document.toObject<Story>()!!)
             }
     }
+    fun ownStory(field: String, userId: String){
+        db.collection("user").document(userId)
+            .update(field, true)
+    }
 }
