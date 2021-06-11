@@ -92,24 +92,26 @@ class InteractDragFragment : Fragment() {
             if (count >= argument.size - 1 || count >= argumentBG.size - 1) {
                 timer.start()
             }
-            image = argumentBG[count]
-            imagePath = "android.resource://$currentPackage/$image"
-            uriImage = Uri.parse(imagePath)
-            backgroundImage.setImageURI(uriImage)
-            val buttonImageX = (activity as? StoryActivity)?.convertValue(
-                height,
-                argument[count].first
-            )
-            val buttonImageY = (activity as? StoryActivity)?.convertValue(
-                height,
-                argument[count].second
-            )
-            if (buttonImageX != null) {
-                if (buttonImageY != null) {
-                    layoutParamsInteractButton.setMargins(buttonImageX, 0, 0, buttonImageY)
+            if (count <= argument.size - 1 || count <= argumentBG.size - 1) {
+                image = argumentBG[count]
+                imagePath = "android.resource://$currentPackage/$image"
+                uriImage = Uri.parse(imagePath)
+                backgroundImage.setImageURI(uriImage)
+                val buttonImageX = (activity as? StoryActivity)?.convertValue(
+                    height,
+                    argument[count].first
+                )
+                val buttonImageY = (activity as? StoryActivity)?.convertValue(
+                    height,
+                    argument[count].second
+                )
+                if (buttonImageX != null) {
+                    if (buttonImageY != null) {
+                        layoutParamsInteractButton.setMargins(buttonImageX, 0, 0, buttonImageY)
+                    }
                 }
+                buttonImage.layoutParams = layoutParamsInteractButton
             }
-            buttonImage.layoutParams = layoutParamsInteractButton
         }
 
         // Leave Story
