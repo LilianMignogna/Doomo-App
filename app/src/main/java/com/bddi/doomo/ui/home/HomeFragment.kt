@@ -107,9 +107,9 @@ class HomeFragment : Fragment() {
     }
 
     fun setUserInfos(user: User){
-        println("USER INFOS : 1) ${user.story_1}   2)${user.story_2}")
+        //println("USER INFOS : 1) ${user.story_1}   2)${user.story_2}")
         MainActivity.story_2 = user.story_2
         MainActivity.story_1 = user.story_1
-        println("USER INFOS 2 : 1) ${MainActivity.story_1}   2)${MainActivity.story_2}")
+        //println("USER INFOS 2 : 1) ${MainActivity.story_1}   2)${MainActivity.story_2}")
     }
 }
