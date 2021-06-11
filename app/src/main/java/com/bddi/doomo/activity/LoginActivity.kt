@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Text
 
 class LoginActivity : AppCompatActivity() {
 
@@ -71,6 +72,7 @@ class LoginActivity : AppCompatActivity() {
         val btnLogIn: MaterialButton = findViewById(R.id.button_validate)
         val etMail: EditText = findViewById(R.id.user_field)
         val etPassword: EditText = findViewById(R.id.user_password)
+        val tvSignIn: TextView = findViewById(R.id.sign_in)
 
         btnLogIn.setOnClickListener{
             val email = etMail.text.toString()
@@ -89,10 +91,18 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "Authentification failed", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
 
+        tvSignIn.setOnClickListener{
+            goToSignInActivity()
         }
 
 
+    }
+
+    private fun goToSignInActivity() {
+        startActivity(Intent(this, SignInActivity::class.java))
+        finish()
     }
 
     private fun goMainActivity() {

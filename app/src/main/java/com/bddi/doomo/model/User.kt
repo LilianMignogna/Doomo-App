@@ -9,4 +9,6 @@ data class User(
     val image: String = "",
     val story_1: Boolean = false,
     val story_2: Boolean = false,
+    val story_3: Boolean = false,
+    val story_4: Boolean = false
     )
