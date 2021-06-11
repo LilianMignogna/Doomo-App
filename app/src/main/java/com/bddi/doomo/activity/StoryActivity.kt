@@ -2,6 +2,7 @@ package com.bddi.doomo.activity
 
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -19,7 +20,6 @@ import com.bddi.doomo.ui.storyfragments.InteractPushFragment
 class StoryActivity : AppCompatActivity() {
 
     var transitioning = false
-    var storyFragment = intArrayOf(0, 1, 0, 2, 3, 4, 0)
     private val interactionButtonData = arrayOf(
         Pair(30, 400),
         Pair(397, 5),
@@ -57,12 +57,30 @@ class StoryActivity : AppCompatActivity() {
     )
     private val interactionDragData = Pair(interactionDragDataBG, interactionDragDataCord)
     private var storyArgument = arrayOf(
-        R.raw.story_01_01_video,
-        interactionButtonData,
-        R.raw.story_01_03_video,
-        interactionPushData,
+        R.raw.boucle0,
+        R.raw.boucle1,
+        R.raw.boucle2,
+        R.raw.boucle3,
+        R.raw.boucle4,
+        R.raw.boucle5,
         interactionClicData,
-        interactionDragData
+        R.raw.boucle6,
+        R.raw.boucle7,
+        R.raw.boucle8,
+        interactionButtonData,
+        R.raw.boucle10,
+        R.raw.boucle11,
+        R.raw.boucle12,
+        interactionDragData,
+        R.raw.boucle13,
+        R.raw.boucle14,
+        R.raw.boucle16,
+        R.raw.boucle17,
+        interactionPushData,
+        R.raw.boucle20
+    )
+    var storyFragment = intArrayOf(
+        0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 2, 0
     )
     private lateinit var TransitionAppearAnimation: AnimationDrawable
     private lateinit var rocketAppearImage: ImageView
@@ -201,6 +219,11 @@ class StoryActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             )
+    }
+
+    fun playSound(sound: Int) {
+        val mp: MediaPlayer = MediaPlayer.create(this, sound)
+        mp.start()
     }
 
     private fun AnimationDrawable.onAnimationFinished(block: () -> Unit) {

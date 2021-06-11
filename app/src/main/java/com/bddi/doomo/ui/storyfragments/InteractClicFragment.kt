@@ -30,6 +30,8 @@ class InteractClicFragment : Fragment() {
 
         (activity as? StoryActivity)?.transitioning = false
 
+        (activity as? StoryActivity)?.playSound(R.raw.int1_riri)
+
         val currentPackage = activity?.packageName
         var imageFind = root.findViewById<ImageView>(R.id.image_view)
         val button_wrong_1 = root.findViewById<Button>(R.id.button_wrong_1)

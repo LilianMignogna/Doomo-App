@@ -26,6 +26,7 @@ class InteractPushFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_story_interact_push, container, false)
 
         var argument = (activity as? StoryActivity)?.currentArgument as Array<Integer>
+        (activity as? StoryActivity)?.playSound(R.raw.int4_riri)
 
         val currentPackage = activity?.packageName
         val videoFind = root.findViewById<VideoView>(R.id.video_view)

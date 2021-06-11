@@ -26,6 +26,7 @@ class InteractDragFragment : Fragment() {
         println("interaction fragment loaded")
 
         root = inflater.inflate(R.layout.fragment_story_interact_drag, container, false)
+        (activity as? StoryActivity)?.playSound(R.raw.int3_riri)
 
         var currentArgument = (activity as? StoryActivity)?.currentArgument as Pair<Array<Int>, Array<Pair<Int, Int>>>
         var argument = currentArgument.second
