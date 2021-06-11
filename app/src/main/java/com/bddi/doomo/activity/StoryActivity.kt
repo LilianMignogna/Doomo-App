@@ -139,32 +139,27 @@ class StoryActivity : AppCompatActivity() {
         print("end $transitioning")
         if (transitioning === false) {
             transitioning = true
-            if (storyFragment[count] != storyFragment[count + 1]) {
-                rocketAppearImage = findViewById<ImageView>(R.id.transition).apply {
-                    setBackgroundResource(R.drawable.transition_appear)
-                    TransitionAppearAnimation = background as AnimationDrawable
-                }
-                TransitionAppearAnimation.start()
-                TransitionAppearAnimation.onAnimationFinished {
-                    count++
-                    if (count == storyArgument.size) {
-                        endStory()
-                    } else {
-                        currentArgument = storyArgument[count]
-                        currentFragment = getFragment(storyFragment[count])
-                        showFragment(currentFragment as Fragment)
-                    }
-                    rocketDisappearImage = findViewById<ImageView>(R.id.transition).apply {
-                        setBackgroundResource(R.drawable.transition_disappear)
+            count++
+            if (count == storyArgument.size) {
+                endStory()
+            } else {
+                if (storyFragment[count - 1] != storyFragment[count]) {
+                    rocketAppearImage = findViewById<ImageView>(R.id.transition).apply {
+                        setBackgroundResource(R.drawable.transition_appear)
                         TransitionAppearAnimation = background as AnimationDrawable
                     }
                     TransitionAppearAnimation.start()
-                    transitioning = false
-                }
-            } else {
-                count++
-                if (count == storyArgument.size) {
-                    endStory()
+                    TransitionAppearAnimation.onAnimationFinished {
+                        currentArgument = storyArgument[count]
+                        currentFragment = getFragment(storyFragment[count])
+                        showFragment(currentFragment as Fragment)
+                        rocketDisappearImage = findViewById<ImageView>(R.id.transition).apply {
+                            setBackgroundResource(R.drawable.transition_disappear)
+                            TransitionAppearAnimation = background as AnimationDrawable
+                        }
+                        TransitionAppearAnimation.start()
+                        transitioning = false
+                    }
                 } else {
                     currentArgument = storyArgument[count]
                     currentFragment = getFragment(storyFragment[count])
