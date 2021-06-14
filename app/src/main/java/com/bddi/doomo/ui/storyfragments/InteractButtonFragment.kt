@@ -27,32 +27,36 @@ class InteractButtonFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_story_interact_button, container, false)
         (activity as? StoryActivity)?.playSound(R.raw.int2_riri)
 
-        var argument = (activity as? StoryActivity)?.currentArgument as Array<Pair<Int, Int>>
+        var argument = (activity as? StoryActivity)?.currentArgument as Pair<Array<Int>, Array<Pair<Int, Int>>>
+        var argumentBG = argument.first
+        var argumentCord = argument.second
+        var animationOff = true
 
+        // timer of visibility of pause button
+        val timerAnimation = object : CountDownTimer(2000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                println(millisUntilFinished)
+            }
+
+            override fun onFinish() {
+                animationOff = true
+            }
+        }
+
+        var count = 0
         val currentPackage = activity?.packageName
         val backgroundImage = root.findViewById<VideoView>(R.id.video_background)
-        val video = R.raw.story_01_02_background
+        val video = argumentBG[count]
         val videoPath = "android.resource://$currentPackage/$video"
         val uri = Uri.parse(videoPath)
-        var count = 1
-
         backgroundImage.setVideoURI(uri)
-
         backgroundImage.start()
-
-        backgroundImage.setOnCompletionListener {
-            backgroundImage.start()
-        }
 
         val stopButton = root.findViewById<ImageView>(R.id.stop_button)
 
         var buttonImage = root.findViewById<ImageView>(R.id.interact_button)
         buttonImage.setImageResource(R.drawable.ripple)
         buttonImage.contentDescription = "button"
-
-        var animalImage = root.findViewById<ImageView>(R.id.animal_img)
-        animalImage.setImageResource(R.drawable.frog)
-        animalImage.contentDescription = "the cute frog"
 
         var height = context?.resources?.displayMetrics?.heightPixels
         if (height == null) {
@@ -70,21 +74,10 @@ class InteractButtonFragment : Fragment() {
 
         // init button position
         val layoutParamsInteractButton = buttonImage.layoutParams as ConstraintLayout.LayoutParams
-        val buttonImageX = (activity as? StoryActivity)?.convertValue(height, argument[count].first)
+        val buttonImageX = (activity as? StoryActivity)?.convertValue(height, argumentCord[count].first)
         val buttonImageY = (activity as? StoryActivity)?.convertValue(
             height,
-            argument[count].second
-        )
-
-        // init animal position
-        val layoutParamsAnimal = animalImage.layoutParams as ConstraintLayout.LayoutParams
-        val animalImageX = (activity as? StoryActivity)?.convertValue(
-            height,
-            argument[count - 1].first
-        )
-        val animalImageY = (activity as? StoryActivity)?.convertValue(
-            height,
-            argument[count - 1].second
+            argumentCord[count].second
         )
 
         if (buttonImageX != null) {
@@ -93,12 +86,6 @@ class InteractButtonFragment : Fragment() {
             }
         }
         buttonImage.layoutParams = layoutParamsInteractButton
-        if (animalImageX != null) {
-            if (animalImageY != null) {
-                layoutParamsAnimal.setMargins(animalImageX, 0, 0, animalImageY)
-            }
-        }
-        animalImage.layoutParams = layoutParamsAnimal
 
         val timer = object : CountDownTimer(1500, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -112,42 +99,35 @@ class InteractButtonFragment : Fragment() {
 
         // change button position to next one
         buttonImage.setOnClickListener {
-            count++
-
-            if (count == argument.size - 1) {
-                timer.start()
-            }
-            if (count < argument.size) {
-
-                val animalImageX = (activity as? StoryActivity)?.convertValue(
-                    height,
-                    argument[count - 1].first
-                )
-                val animalImageY = (activity as? StoryActivity)?.convertValue(
-                    height,
-                    argument[count - 1].second
-                )
-                if (animalImageX != null) {
-                    if (animalImageY != null) {
-                        layoutParamsAnimal.setMargins(animalImageX, 0, 0, animalImageY)
-                    }
+            if (animationOff) {
+                timerAnimation.start()
+                animationOff = false
+                count++
+                if (count == argumentCord.size - 1) {
+                    timer.start()
                 }
-                animalImage.layoutParams = layoutParamsAnimal
-
-                val buttonImageX = (activity as? StoryActivity)?.convertValue(
-                    height,
-                    argument[count].first
-                )
-                val buttonImageY = (activity as? StoryActivity)?.convertValue(
-                    height,
-                    argument[count].second
-                )
-                if (buttonImageX != null) {
-                    if (buttonImageY != null) {
-                        layoutParamsInteractButton.setMargins(buttonImageX, 0, 0, buttonImageY)
+                if (count < argumentCord.size) {
+                    val buttonImageX = (activity as? StoryActivity)?.convertValue(
+                        height,
+                        argumentCord[count].first
+                    )
+                    val buttonImageY = (activity as? StoryActivity)?.convertValue(
+                        height,
+                        argumentCord[count].second
+                    )
+                    if (buttonImageX != null) {
+                        if (buttonImageY != null) {
+                            layoutParamsInteractButton.setMargins(buttonImageX, 0, 0, buttonImageY)
+                        }
                     }
+                    buttonImage.layoutParams = layoutParamsInteractButton
+
+                    val video = argumentBG[count]
+                    val videoPath = "android.resource://$currentPackage/$video"
+                    val uri = Uri.parse(videoPath)
+                    backgroundImage.setVideoURI(uri)
+                    backgroundImage.start()
                 }
-                buttonImage.layoutParams = layoutParamsInteractButton
             }
         }
 

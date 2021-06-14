@@ -28,14 +28,23 @@ class StoryActivity : AppCompatActivity() {
         R.raw.boucle4,
         R.raw.boucle5
     )
-    private val interactionButtonData = arrayOf(
-        Pair(30, 400),
-        Pair(397, 5),
-        Pair(660, 400),
-        Pair(890, 790),
-        Pair(1240, 530),
-        Pair(1607, 600),
-        Pair(50000, 5030)
+    private val interactionButtonData = Pair(
+        arrayOf(
+            R.raw.interaction_nenuphare_0,
+            R.raw.interaction_nenuphare_1,
+            R.raw.interaction_nenuphare_2,
+            R.raw.interaction_nenuphare_3,
+            R.raw.interaction_nenuphare_4,
+            R.raw.interaction_nenuphare_5
+        ),
+        arrayOf(
+            Pair(397, 5),
+            Pair(660, 400),
+            Pair(890, 790),
+            Pair(1240, 530),
+            Pair(1607, 600),
+            Pair(50000, 5030)
+        )
     )
     private val boucle6 = arrayOf(
         R.raw.boucle6,
@@ -91,8 +100,16 @@ class StoryActivity : AppCompatActivity() {
         interactionPushData,
         arrayOf(R.raw.boucle20)
     )
-    var storyFragment = intArrayOf(
-        0, 3, 0, 1, 0, 4, 0, 2, 0
+    private var storyFragment = arrayOf(
+        "Video",
+        "InteractClic",
+        "Video",
+        "InteractButton",
+        "Video",
+        "InteractDrag",
+        "Video",
+        "InteractPush",
+        "Video",
     )
     private lateinit var TransitionAppearAnimation: AnimationDrawable
     private lateinit var rocketAppearImage: ImageView
@@ -136,12 +153,12 @@ class StoryActivity : AppCompatActivity() {
     }
 
     // convert data to fragment
-    private fun getFragment(idFragment: Int): Fragment {
-        return when (idFragment) {
-            1 -> InteractButtonFragment()
-            2 -> InteractPushFragment()
-            3 -> InteractClicFragment()
-            4 -> InteractDragFragment()
+    private fun getFragment(typeFragment: String): Fragment {
+        return when (typeFragment) {
+            "InteractButton" -> InteractButtonFragment()
+            "InteractPush" -> InteractPushFragment()
+            "InteractClic" -> InteractClicFragment()
+            "InteractDrag" -> InteractDragFragment()
             else -> VideoFragment()
         }
     }
