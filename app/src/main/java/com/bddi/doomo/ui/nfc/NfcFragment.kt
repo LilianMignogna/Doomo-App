@@ -83,7 +83,7 @@ class NfcFragment : Fragment() {
                         val st = String.format("%02X", b)
                         tag.append(st)
                     }
-                    println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+
                     println(tag.toString())
                     // Recognize Tag ID
                     when (tag.toString()) {

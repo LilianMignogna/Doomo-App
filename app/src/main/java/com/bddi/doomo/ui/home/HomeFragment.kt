@@ -1,6 +1,5 @@
 package com.bddi.doomo.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
-import com.bddi.doomo.activity.StoryActivity
 import com.bddi.doomo.model.Story
 import com.bddi.doomo.model.User
 import com.bumptech.glide.Glide

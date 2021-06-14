@@ -11,27 +11,28 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bddi.doomo.MainActivity
 import com.bddi.doomo.R
 import com.bddi.doomo.model.Story
 import com.bddi.doomo.model.User
-import com.bddi.doomo.ui.account.AccountViewModel
 import com.bumptech.glide.Glide
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlin.properties.Delegates
 
 class StoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 class LibraryFragment : Fragment() {
 
     private lateinit var librairyViewModel: LibraryViewModel
+
+    private lateinit var adapter: FirestoreRecyclerAdapter<Story, StoryViewHolder>
+
+    private lateinit var auth: FirebaseAuth
 
 
     override fun onCreateView(
@@ -43,8 +44,12 @@ class LibraryFragment : Fragment() {
             ViewModelProvider(this).get(LibraryViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_library, container, false)
 
+        auth = Firebase.auth
+        val user = auth.currentUser
+        librairyViewModel.getUserInfos(user!!)
+
         // Display data in recyclerView in fragment_library.xml
-        val adapter = object : FirestoreRecyclerAdapter<Story, StoryViewHolder>(
+        adapter = object : FirestoreRecyclerAdapter<Story, StoryViewHolder>(
             librairyViewModel.options.setLifecycleOwner(
                 this
             ).build()
@@ -106,6 +111,7 @@ class LibraryFragment : Fragment() {
                 }
             }
         }
+       adapter.notifyDataSetChanged();
 
         val accountButton: ImageButton = root.findViewById(R.id.account_button)
         accountButton.setOnClickListener {
@@ -121,9 +127,20 @@ class LibraryFragment : Fragment() {
         return root
     }
 
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
+    }
+
     private fun redirectToStoryDetails(story: Story) {
         findNavController().navigate(R.id.action_global_navigation_story_details)
         (activity as MainActivity).uncheckAllItems()
         (activity as MainActivity).currentModel = story
+    }
+    fun setUserInfos(user: User){
+        println("USER INFOS : 1) ${user.story_1}   2)${user.story_2}")
+        MainActivity.story_2 = user.story_2
+        MainActivity.story_1 = user.story_1
+        println("USER INFOS 2 : 1) ${MainActivity.story_1}   2)${MainActivity.story_2}")
     }
 }

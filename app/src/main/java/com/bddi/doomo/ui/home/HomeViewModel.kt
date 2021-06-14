@@ -3,7 +3,6 @@ package com.bddi.doomo.ui.home
 import androidx.lifecycle.ViewModel
 import com.bddi.doomo.model.Story
 import com.bddi.doomo.model.User
-import com.bddi.doomo.ui.library.LibraryFragment
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.ktx.firestore
