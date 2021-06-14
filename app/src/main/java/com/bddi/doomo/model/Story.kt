@@ -1,6 +1,7 @@
 package com.bddi.doomo.model
 
 data class Story(
+    val id: String = "",
     val title: String = "",
     val description: String = "",
     val funfact: String = "",
@@ -11,5 +12,5 @@ data class Story(
     val written_story: String = "",
     val species_img: String = "",
     val story_img: String = "",
-    val thumbnail_img: String = ""
+    val thumbnail_img: String = "",
 )

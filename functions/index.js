@@ -24,5 +24,9 @@ exports.addUserToFirestore = functions.auth.user().onCreate((user) => {
     image: "",
     story_1: false,
     story_2: false,
+    story_3: false,
+    story_4: false,
+    fav_story_1: false,
+    fav_story_2: false,
   });
 });
