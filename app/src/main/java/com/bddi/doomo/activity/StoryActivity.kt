@@ -20,6 +20,14 @@ import com.bddi.doomo.ui.storyfragments.InteractPushFragment
 class StoryActivity : AppCompatActivity() {
 
     var transitioning = false
+    private val boucle0 = arrayOf(
+        R.raw.boucle0,
+        R.raw.boucle1,
+        R.raw.boucle2,
+        R.raw.boucle3,
+        R.raw.boucle4,
+        R.raw.boucle5
+    )
     private val interactionButtonData = arrayOf(
         Pair(30, 400),
         Pair(397, 5),
@@ -29,17 +37,33 @@ class StoryActivity : AppCompatActivity() {
         Pair(1607, 600),
         Pair(50000, 5030)
     )
+    private val boucle6 = arrayOf(
+        R.raw.boucle6,
+        R.raw.boucle7,
+        R.raw.boucle8
+    )
     private val interactionPushData = arrayOf(
         R.raw.interact_push_00,
         R.raw.interact_push_01,
         R.raw.interact_push_02,
         R.raw.interact_push_03,
     )
+    private val boucle10 = arrayOf(
+        R.raw.boucle10,
+        R.raw.boucle11,
+        R.raw.boucle12
+    )
     private val interactionClicData = arrayOf(
         R.drawable.interact_clic_00,
         R.drawable.interact_clic_01,
         R.raw.locked,
         R.raw.unlocked
+    )
+    private val boucle13 = arrayOf(
+        R.raw.boucle13,
+        R.raw.boucle14,
+        R.raw.boucle16,
+        R.raw.boucle17
     )
     private val interactionDragDataBG = arrayOf(
         R.drawable.interact_drag_00,
@@ -57,30 +81,18 @@ class StoryActivity : AppCompatActivity() {
     )
     private val interactionDragData = Pair(interactionDragDataBG, interactionDragDataCord)
     private var storyArgument = arrayOf(
-        R.raw.boucle0,
-        R.raw.boucle1,
-        R.raw.boucle2,
-        R.raw.boucle3,
-        R.raw.boucle4,
-        R.raw.boucle5,
+        boucle0,
         interactionClicData,
-        R.raw.boucle6,
-        R.raw.boucle7,
-        R.raw.boucle8,
+        boucle6,
         interactionButtonData,
-        R.raw.boucle10,
-        R.raw.boucle11,
-        R.raw.boucle12,
+        boucle10,
         interactionDragData,
-        R.raw.boucle13,
-        R.raw.boucle14,
-        R.raw.boucle16,
-        R.raw.boucle17,
+        boucle13,
         interactionPushData,
-        R.raw.boucle20
+        arrayOf(R.raw.boucle20)
     )
     var storyFragment = intArrayOf(
-        0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 2, 0
+        0, 3, 0, 1, 0, 4, 0, 2, 0
     )
     private lateinit var TransitionAppearAnimation: AnimationDrawable
     private lateinit var rocketAppearImage: ImageView

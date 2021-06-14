@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class HomeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 class HomeFragment : Fragment() {
 
@@ -46,11 +46,11 @@ class HomeFragment : Fragment() {
         homeViewModel.getUserInfos(user!!)
 
         // Display data in recyclerView in fragment_home.xml
-        val adapter = object: FirestoreRecyclerAdapter<Story, HomeViewHolder>(
+        val adapter = object : FirestoreRecyclerAdapter<Story, HomeViewHolder>(
             homeViewModel.options.setLifecycleOwner(
                 this
             ).build()
-        ){
+        ) {
             // Get view
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
                 val view: View = LayoutInflater.from(this@HomeFragment.context).inflate(
@@ -58,7 +58,7 @@ class HomeFragment : Fragment() {
                     parent,
                     false
                 )
-                view.layoutParams = ViewGroup.LayoutParams((parent.width * 0.91).toInt(),ViewGroup.LayoutParams.MATCH_PARENT)
+                view.layoutParams = ViewGroup.LayoutParams((parent.width * 0.91).toInt(), ViewGroup.LayoutParams.MATCH_PARENT)
                 return HomeViewHolder(view)
             }
 
@@ -73,16 +73,15 @@ class HomeFragment : Fragment() {
                 Glide.with(requireActivity().application).load(imgThumbnail).into(ivThumbnail)
 
                 val storyInformationCard: CardView = holder.itemView.findViewById(R.id.favorite_story_card_item)
-                storyInformationCard.setOnClickListener(){
+                storyInformationCard.setOnClickListener() {
                     root.findNavController().navigate(R.id.action_global_navigation_story_details)
                     (activity as MainActivity).uncheckAllItems()
                     (activity as MainActivity).currentModel = model
-
                 }
                 val playButton: FloatingActionButton = holder.itemView.findViewById(R.id.story_play_button)
                 // TODO set good link to story
                 playButton.setOnClickListener {
-                    (activity as MainActivity).startStory("DZevLTdzAisZUcPX8tup")
+                    (activity as MainActivity).startStory(model.id)
                 }
             }
         }
@@ -98,8 +97,6 @@ class HomeFragment : Fragment() {
             (activity as MainActivity).playSound(R.raw.clic_btn)
         }
 
-
-
         // Get recyclerView and show informations
         var storiesRecyclerView: RecyclerView = root.findViewById(R.id.favorite_stories_recycler_view)
         storiesRecyclerView.adapter = adapter
@@ -107,7 +104,7 @@ class HomeFragment : Fragment() {
         return root
     }
 
-    fun setUserInfos(user: User){
+    fun setUserInfos(user: User) {
         println("USER INFOS : 1) ${user.story_1}   2)${user.story_2}")
         MainActivity.story_2 = user.story_2
         MainActivity.story_1 = user.story_1
