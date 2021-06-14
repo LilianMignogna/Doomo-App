@@ -84,7 +84,7 @@ class LibraryFragment : Fragment() {
                 if ((position == 0 && MainActivity.story_1) || (position == 1 && MainActivity.story_2)) {
 
                     playButton.setOnClickListener {
-                        (activity as MainActivity).startStory("DZevLTdzAisZUcPX8tup")
+                        (activity as MainActivity).startStory(model.id)
                     }
                     storyInformationButton.setOnClickListener() {
                         redirectToStoryDetails(model)
