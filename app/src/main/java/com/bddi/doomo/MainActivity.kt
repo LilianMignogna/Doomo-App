@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -17,20 +16,14 @@ import androidx.navigation.ui.setupWithNavController
 import com.bddi.doomo.activity.LoginActivity
 import com.bddi.doomo.activity.StoryActivity
 import com.bddi.doomo.model.Story
-import com.bddi.doomo.model.User
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -88,7 +81,6 @@ class MainActivity : AppCompatActivity() {
         // Set sound to navigation button
         navView.menu.findItem(R.id.navigation_home).setSoundOnMenuItemClicked(R.raw.home)
         navView.menu.findItem(R.id.navigation_library).setSoundOnMenuItemClicked(R.raw.bibli)
-
     }
 
     public fun saveStory(storyId: String) {
@@ -114,13 +106,13 @@ class MainActivity : AppCompatActivity() {
         soundEffectBool = sharedPreferences.getBoolean("SOUND_KEY", false)
         val story = sharedPreferences.getString("STORY_ID_KEY", " ").toString()
         if (story != " ") {
-            // goToStory(story)
+            goToStory(story)
         }
     }
 
     public fun goToStory(storyId: String) {
         db.collection("Story").document(storyId).get()
-            .addOnSuccessListener{document ->
+            .addOnSuccessListener { document ->
                 navToStory(document.toObject<Story>()!!)
             }
     }
@@ -153,8 +145,6 @@ class MainActivity : AppCompatActivity() {
         }
         navview.menu.setGroupCheckable(0, true, true)
     }
-
-
 
     // TODO Move Code + create inteface
 

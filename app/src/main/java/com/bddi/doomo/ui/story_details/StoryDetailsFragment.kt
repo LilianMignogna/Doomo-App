@@ -86,7 +86,7 @@ class StoryDetailsFragment : Fragment() {
 
                 val lauchStoryButton: Button = root.findViewById(R.id.button_start_interaction)
                 lauchStoryButton.setOnClickListener {
-                    (activity as MainActivity).startStory("wsE8dOKqILn69dUNRRYL")
+                    (activity as MainActivity).startStory(currentStory.id)
                 }
 
                 val readStoryButton: Button = root.findViewById(R.id.button_start_reading)
