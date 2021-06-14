@@ -117,7 +117,6 @@ class WrittenStoryActivity : AppCompatActivity() {
             }
         }
         backwardButton.setOnClickListener() {
-            println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
             println(index)
             if(index > 0){
                 index--
