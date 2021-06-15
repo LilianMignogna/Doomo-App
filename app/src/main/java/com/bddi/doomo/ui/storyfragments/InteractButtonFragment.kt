@@ -87,7 +87,7 @@ class InteractButtonFragment : Fragment() {
         }
         buttonImage.layoutParams = layoutParamsInteractButton
 
-        val timer = object : CountDownTimer(1500, 1000) {
+        val timer = object : CountDownTimer(1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 println("test")
             }

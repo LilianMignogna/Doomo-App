@@ -46,7 +46,7 @@ class InteractClicFragment : Fragment() {
         var uriImage = Uri.parse(imagePath)
         imageFind.setImageURI(uriImage)
 
-        val timer = object : CountDownTimer(1500, 10000) {
+        val timer = object : CountDownTimer(1000, 10000) {
             override fun onTick(millisUntilFinished: Long) {
                 println(millisUntilFinished)
             }

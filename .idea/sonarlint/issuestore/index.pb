@@ -23,3 +23,14 @@ o
 ?app/src/main/java/com/bddi/doomo/ui/library/LibraryViewModel.kt,5\7\57bb1afaa3c57b332848a8a3553327449cc0ee1b
 z
 Japp/src/main/java/com/bddi/doomo/ui/storyfragments/InteractPushFragment.kt,d\a\da94afb3988ec2434cce96224ce637f1c6d53d2b
+i
+9app/src/main/java/com/bddi/doomo/ui/home/HomeViewModel.kt,3\7\3749430a2f93dd42f69cacc781adf34468dc85e7
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+K
+functions/package-lock.json,9\a\9aa94aef4a31c2e770768abf51800b19bca1d2d3
+_
+/app/src/main/java/com/bddi/doomo/model/Story.kt,7\5\753328ad833e368bb6eccd1899d03d440a5dac8e
+s
+Capp/src/main/java/com/bddi/doomo/ui/storyfragments/VideoFragment.kt,e\e\ee3b83cc3936881e12b42e5cb96e4d9060339630
