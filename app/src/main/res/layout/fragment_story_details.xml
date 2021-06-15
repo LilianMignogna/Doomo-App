@@ -90,7 +90,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:src="@drawable/ic_baseline_favorite_24"
+                android:src="@drawable/ic_baseline_favorite_border_24"
                 android:tint="?colorAccent"
                 app:layout_constraintTop_toTopOf="@+id/text_story_title"
                 app:layout_constraintEnd_toStartOf="@+id/end_guideline2"

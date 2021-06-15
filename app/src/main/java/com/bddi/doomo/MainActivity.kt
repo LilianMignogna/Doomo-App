@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
     companion object {
         public var story_1 = false
         public var story_2 = false
+        public var fav_story_1 = true
+        public var fav_story_2 = true
     }
     public var notificationBool = true
     public var soundEffectBool = false

@@ -118,7 +118,7 @@ class WrittenStoryActivity : AppCompatActivity() {
         }
         backwardButton.setOnClickListener() {
             println(index)
-            if(index > 0){
+            if(index > 0 && index < chapters.size-1){
                 index--
                 loadData(
                     chapters,

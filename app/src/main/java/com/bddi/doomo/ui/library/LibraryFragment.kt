@@ -83,9 +83,7 @@ class LibraryFragment : Fragment() {
                 val cvStoryCard: CardView = holder.itemView.findViewById((R.id.story_card))
                 val tvLock: TextView = holder.itemView.findViewById((R.id.lock_text))
                 val ivLock: ImageView = holder.itemView.findViewById((R.id.lock_icon))
-                println("ATCHOIN : ")
-                println("story1 : ${MainActivity.story_1}")
-                println("story2 : ${MainActivity.story_2}")
+
                 if ((position == 0 && MainActivity.story_1) || (position == 1 && MainActivity.story_2)) {
 
                     playButton.setOnClickListener {
