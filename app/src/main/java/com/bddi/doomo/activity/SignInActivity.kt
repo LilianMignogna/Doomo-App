@@ -29,6 +29,8 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
+        supportActionBar?.hide()
+
         auth = Firebase.auth
         val firebaseData = FirebaseDatabase.getInstance().reference
 

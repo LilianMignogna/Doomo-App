@@ -44,6 +44,7 @@ class HomeFragment : Fragment() {
         auth = Firebase.auth
         val user = auth.currentUser
         homeViewModel.getUserInfos(user!!)
+        homeViewModel.getStory()
 
         // Display data in recyclerView in fragment_home.xml
         val adapter = object : FirestoreRecyclerAdapter<Story, HomeViewHolder>(
@@ -51,6 +52,7 @@ class HomeFragment : Fragment() {
                 this
             ).build()
         ) {
+
             // Get view
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
                 val view: View = LayoutInflater.from(this@HomeFragment.context).inflate(
@@ -108,6 +110,8 @@ class HomeFragment : Fragment() {
         println("USER INFOS : 1) ${user.story_1}   2)${user.story_2}")
         MainActivity.story_2 = user.story_2
         MainActivity.story_1 = user.story_1
+        MainActivity.fav_story_1 = user.fav_story_1
+        MainActivity.fav_story_2 = user.fav_story_2
         println("USER INFOS 2 : 1) ${MainActivity.story_1}   2)${MainActivity.story_2}")
     }
 }
