@@ -1,5 +1,2 @@
 
-=kotlin:S125["Remove this commented out code.(‘ïÂ8Ğ„Êø /
-xkotlin:S101"URename class "fragmentStoryType" to match the regular expression ^[A-Z][a-zA-Z0-9]*$.(Î…Îëùÿÿÿÿ8¬¤¸ş /
-Okotlin:S1144£"1Remove this unused private "showSystemUI" method.(ÿÍóÿÿÿÿÿ
-Okotlin:S1144O"0Remove this unused private "getFragment" method.(‚†Ø‘8¼Êø /
+Okotlin:S1144ğ"1Remove this unused private "showSystemUI" method.(ÿÍóÿÿÿÿÿ

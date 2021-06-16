@@ -34,7 +34,3 @@ _
 /app/src/main/java/com/bddi/doomo/model/Story.kt,7\5\753328ad833e368bb6eccd1899d03d440a5dac8e
 s
 Capp/src/main/java/com/bddi/doomo/ui/storyfragments/VideoFragment.kt,e\e\ee3b83cc3936881e12b42e5cb96e4d9060339630
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
