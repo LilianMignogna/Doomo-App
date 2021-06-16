@@ -1,0 +1,7 @@
+
+vkotlin:S3776="RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(íô¸²ÿÿÿÿÿ8«ĞÄÒ /
+kkotlin:S1871a"LThis branch's code block is the same as the block for the branch on line 90.(ıüÚ¯8«ĞÄÒ /
+zkotlin:S117³"VRename this local variable to match the regular expression "^`?[_a-z][a-zA-Z0-9]*`?$".(˜ÀãŒşÿÿÿÿ8«ĞÄÒ /
+ukotlin:S117´"VRename this local variable to match the regular expression "^`?[_a-z][a-zA-Z0-9]*`?$".(íÃØæ8«ĞÄÒ /
+zkotlin:S117«"VRename this local variable to match the regular expression "^`?[_a-z][a-zA-Z0-9]*`?$".(˜ÀãŒşÿÿÿÿ8«ĞÄÒ /
+ukotlin:S117¬"VRename this local variable to match the regular expression "^`?[_a-z][a-zA-Z0-9]*`?$".(íÃØæ8«ĞÄÒ /

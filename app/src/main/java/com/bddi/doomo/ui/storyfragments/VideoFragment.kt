@@ -129,6 +129,7 @@ class VideoFragment : Fragment() {
         // Skip Video
         skipButton.setOnClickListener {
             if (isButtonVisible) {
+                videoView.pause()
                 timer.start()
                 nextVideo(currentPackage)
             }
