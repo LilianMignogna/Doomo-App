@@ -1,5 +1,6 @@
 package com.bddi.doomo.activity
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.media.MediaPlayer
@@ -16,115 +17,37 @@ import com.bddi.doomo.ui.storyfragments.InteractButtonFragment
 import com.bddi.doomo.ui.storyfragments.InteractClicFragment
 import com.bddi.doomo.ui.storyfragments.InteractDragFragment
 import com.bddi.doomo.ui.storyfragments.InteractPushFragment
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import java.io.IOException
+
+data class fragmentStoryType(
+    var type: String? = null,
+    var sound: Int? = null,
+    var argument: JsonObject? = null
+)
 
 class StoryActivity : AppCompatActivity() {
 
     var transitioning = false
-    private val boucle0 = arrayOf(
-        R.raw.boucle0,
-        R.raw.boucle1,
-        R.raw.boucle2,
-        R.raw.boucle3,
-        R.raw.boucle4,
-        R.raw.boucle5
-    )
-    private val interactionButtonData = Pair(
-        arrayOf(
-            R.raw.interaction_nenuphare_0,
-            R.raw.interaction_nenuphare_1,
-            R.raw.interaction_nenuphare_2,
-            R.raw.interaction_nenuphare_3,
-            R.raw.interaction_nenuphare_4,
-            R.raw.interaction_nenuphare_5
-        ),
-        arrayOf(
-            Pair(397, 5),
-            Pair(660, 400),
-            Pair(890, 790),
-            Pair(1240, 530),
-            Pair(1607, 600),
-            Pair(50000, 5030)
-        )
-    )
-    private val boucle6 = arrayOf(
-        R.raw.boucle6,
-        R.raw.boucle7,
-        R.raw.boucle8
-    )
-    private val interactionPushData = arrayOf(
-        R.raw.interact_push_00,
-        R.raw.interact_push_01,
-        R.raw.interact_push_02,
-        R.raw.interact_push_03,
-    )
-    private val boucle10 = arrayOf(
-        R.raw.boucle10,
-        R.raw.boucle11,
-        R.raw.boucle12
-    )
-    private val interactionClicData = arrayOf(
-        R.drawable.interact_clic_00,
-        R.drawable.interact_clic_01,
-        R.raw.locked,
-        R.raw.unlocked
-    )
-    private val boucle13 = arrayOf(
-        R.raw.boucle13,
-        R.raw.boucle14,
-        R.raw.boucle16,
-        R.raw.boucle17
-    )
-    private val interactionDragDataBG = arrayOf(
-        R.drawable.interact_drag_00,
-        R.drawable.interact_drag_01,
-        R.drawable.interact_drag_02,
-        R.drawable.interact_drag_03,
-        R.drawable.interact_drag_04
-    )
-    private val interactionDragDataCord = arrayOf(
-        Pair(775, 0),
-        Pair(1480, 485),
-        Pair(215, 710),
-        Pair(775, 0),
-        Pair(50000, 5030)
-    )
-    private val interactionDragData = Pair(interactionDragDataBG, interactionDragDataCord)
-    private var storyArgument = arrayOf(
-        boucle0,
-        interactionClicData,
-        boucle6,
-        interactionButtonData,
-        boucle10,
-        interactionDragData,
-        boucle13,
-        interactionPushData,
-        arrayOf(R.raw.boucle20)
-    )
-    private var storyFragment = arrayOf(
-        "Video",
-        "InteractClic",
-        "Video",
-        "InteractButton",
-        "Video",
-        "InteractDrag",
-        "Video",
-        "InteractPush",
-        "Video",
-    )
     private lateinit var TransitionAppearAnimation: AnimationDrawable
     private lateinit var rocketAppearImage: ImageView
     private lateinit var rocketDisappearImage: ImageView
     lateinit var currentArgument: Any
     lateinit var currentFragment: Any
+    var story: String = "none"
     var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val story = intent.getStringExtra("Story")
+        story = intent.getStringExtra("Story").toString()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_story)
         println(story)
-        currentFragment = getFragment(storyFragment[count])
-        currentArgument = storyArgument[count]
+//        currentFragment = getFragment(storyFragment[count])
+//        currentArgument = storyArgument[count]
+
+        val obj = Gson().toJson(getJsonDataFromAsset(this, "storyArgument.json"))
+        println(obj)
         showFragment(currentFragment as Fragment)
         hideSystemUI()
 
@@ -165,38 +88,38 @@ class StoryActivity : AppCompatActivity() {
 
     // When and Video or interaction is finished
     fun endEvent() {
-        print("end $transitioning")
-        if (transitioning === false) {
-            transitioning = true
-            count++
-            if (count == storyArgument.size) {
-                endStory()
-            } else {
-                if (storyFragment[count - 1] != storyFragment[count]) {
-                    rocketAppearImage = findViewById<ImageView>(R.id.transition).apply {
-                        setBackgroundResource(R.drawable.transition_appear)
-                        TransitionAppearAnimation = background as AnimationDrawable
-                    }
-                    TransitionAppearAnimation.start()
-                    TransitionAppearAnimation.onAnimationFinished {
-                        currentArgument = storyArgument[count]
-                        currentFragment = getFragment(storyFragment[count])
-                        showFragment(currentFragment as Fragment)
-                        rocketDisappearImage = findViewById<ImageView>(R.id.transition).apply {
-                            setBackgroundResource(R.drawable.transition_disappear)
-                            TransitionAppearAnimation = background as AnimationDrawable
-                        }
-                        TransitionAppearAnimation.start()
-                        transitioning = false
-                    }
-                } else {
-                    currentArgument = storyArgument[count]
-                    currentFragment = getFragment(storyFragment[count])
-                    showFragment(currentFragment as Fragment)
-                    transitioning = false
-                }
-            }
-        }
+//        print("end $transitioning")
+//        if (transitioning === false) {
+//            transitioning = true
+//            count++
+//            if (count == storyArgument.size) {
+//                endStory()
+//            } else {
+//                if (storyFragment[count - 1] != storyFragment[count]) {
+//                    rocketAppearImage = findViewById<ImageView>(R.id.transition).apply {
+//                        setBackgroundResource(R.drawable.transition_appear)
+//                        TransitionAppearAnimation = background as AnimationDrawable
+//                    }
+//                    TransitionAppearAnimation.start()
+//                    TransitionAppearAnimation.onAnimationFinished {
+//                        currentArgument = storyArgument[count]
+//                        currentFragment = getFragment(storyFragment[count])
+//                        showFragment(currentFragment as Fragment)
+//                        rocketDisappearImage = findViewById<ImageView>(R.id.transition).apply {
+//                            setBackgroundResource(R.drawable.transition_disappear)
+//                            TransitionAppearAnimation = background as AnimationDrawable
+//                        }
+//                        TransitionAppearAnimation.start()
+//                        transitioning = false
+//                    }
+//                } else {
+//                    currentArgument = storyArgument[count]
+//                    currentFragment = getFragment(storyFragment[count])
+//                    showFragment(currentFragment as Fragment)
+//                    transitioning = false
+//                }
+//            }
+//        }
     }
 
     // End Story and return to main activity
@@ -261,5 +184,16 @@ class StoryActivity : AppCompatActivity() {
             },
             duration
         )
+    }
+
+    fun getJsonDataFromAsset(context: Context, fileName: String): String? {
+        val jsonString: String
+        try {
+            jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+            return null
+        }
+        return jsonString
     }
 }
