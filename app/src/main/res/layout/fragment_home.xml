@@ -18,14 +18,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="16dp" />
+            app:layout_constraintGuide_begin="24dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/end_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="16dp" />
+            app:layout_constraintGuide_end="24dp" />
 
         <ImageButton
             android:id="@+id/account_button"
@@ -99,10 +99,12 @@
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
+            android:paddingHorizontal="24dp"
+            android:clipToPadding="false"
             app:layout_constraintTop_toBottomOf="@id/favourite_title_text"
-            app:layout_constraintStart_toStartOf="@+id/begin_guideline"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/favorite_story_list_item"/>
+            tools:listitem="@layout/favorite_story_list_item" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/subscription_image"
@@ -110,20 +112,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:adjustViewBounds="true"
+            android:src="@drawable/kid"
             app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/begin_guideline"
             app:layout_constraintTop_toBottomOf="@+id/favorite_stories_recycler_view"
-            android:src="@drawable/kid"
-            app:shapeAppearanceOverlay="@style/border_radius"/>
+            app:shapeAppearanceOverlay="@style/border_radius" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="381dp"
             android:adjustViewBounds="true"
-            android:padding="30dp"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="20dp"
             app:layout_constraintEnd_toEndOf="@id/end_guideline"
             app:layout_constraintStart_toStartOf="@id/begin_guideline"
             app:layout_constraintBottom_toBottomOf="@+id/subscription_image">
@@ -167,10 +171,11 @@
                 android:orientation="vertical"
                 android:layout_margin="30dp">
 
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_icon_reapparition"
+                    android:src="@drawable/ic_icon_donations"
                     android:tint="?colorSecondary"/>
                 <TextView
                     android:id="@+id/association_informations_title"
@@ -257,45 +262,54 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/caracter_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/riri_profil"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/grenouille"
                     android:layout_marginRight="8dp"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="24dp"
                     app:shapeAppearanceOverlay="@style/shape_circle"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/caracter_button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/oiseau"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/gypaete"
                     android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"
                     app:shapeAppearanceOverlay="@style/shape_circle"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/caracter_button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ours"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/tortue"
                     android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"
                     app:shapeAppearanceOverlay="@style/shape_circle"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/caracter_button4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/hibou"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/martin"
                     android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"
                     app:shapeAppearanceOverlay="@style/shape_circle"/>
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/caracter_button5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/phoque"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/chevre"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    app:shapeAppearanceOverlay="@style/shape_circle"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/caracter_button6"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/dendrolague"
                     android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"
                     app:shapeAppearanceOverlay="@style/shape_circle"/>

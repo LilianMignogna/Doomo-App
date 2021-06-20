@@ -14,10 +14,14 @@ class NfcViewModel : ViewModel() {
     /**
      * Get information about a story with the id "storyId" anc call redirection function
      */
-    fun getStory(storyId: String, fragment: NfcFragment){
-        db.collection("Stories").document(storyId).get()
+    fun getStory(storyId: String, fragment: NfcFragment) {
+        db.collection("Story").document(storyId).get()
             .addOnSuccessListener{document ->
                 fragment.redirectToStoryDetailsView(document.toObject<Story>()!!)
             }
+    }
+    fun ownStory(field: String, userId: String){
+        db.collection("user").document(userId)
+            .update(field, true)
     }
 }

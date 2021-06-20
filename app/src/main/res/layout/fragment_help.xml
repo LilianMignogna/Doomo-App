@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/darkPurple"
+        tools:context=".ui.help.HelpFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/begin_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="24dp" />
+
+        <ImageButton
+            android:id="@+id/back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_fleche"
+            android:backgroundTint="@color/transparent"
+            app:layout_constraintStart_toStartOf="@id/begin_guideline"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            android:id="@+id/help_title_page"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/baloochettan_medium"
+            android:text="Aide et assistance"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,NotSibling" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/page_shape"
+            android:clickable="true"
+            android:focusable="true"
+            tools:ignore="MissingConstraints">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/begin_guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="24dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="24dp" />
+
+            <TextView
+                android:id="@+id/help_page_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/baloochettan_bold"
+                android:text="@string/page_title_help"
+                android:textColor="?colorSecondary"
+                android:textSize="35sp"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline2"
+                app:layout_constraintStart_toStartOf="@id/begin_guideline2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/title_buy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#EFF0F6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_page_title">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ballochettan"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="14dp"
+                    android:text="Achat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/infos_and_delivery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:fontFamily="@font/baloochettan_medium"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="14dp"
+                android:text="Information et livraisons"
+                android:textColor="@color/darkPurple"
+                app:layout_constraintEnd_toStartOf="@+id/chevron_infos_and_delivery"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_buy" />
+            <ImageView
+                android:id="@+id/chevron_infos_and_delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/chevron_gauche"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/infos_and_delivery" />
+
+            <TextView
+                android:id="@+id/return_and_refund"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:fontFamily="@font/baloochettan_medium"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="14dp"
+                android:text="Retours et remboursement"
+                android:textColor="@color/darkPurple"
+                app:layout_constraintEnd_toStartOf="@+id/chevron_return_and_refund"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/infos_and_delivery" />
+            <ImageView
+                android:id="@+id/chevron_return_and_refund"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/chevron_gauche"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/return_and_refund" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/title_products"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#EFF0F6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/return_and_refund">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ballochettan"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="14dp"
+                    android:text="Produits"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/problem_order"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:fontFamily="@font/baloochettan_medium"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="14dp"
+                android:text="Un problème avec votre commande ?"
+                android:textColor="@color/darkPurple"
+                app:layout_constraintEnd_toStartOf="@+id/chevron_problem_order"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_products" />
+
+            <ImageView
+                android:id="@+id/chevron_problem_order"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/chevron_gauche"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/problem_order" />
+
+            <TextView
+                android:id="@+id/technical_question"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:fontFamily="@font/baloochettan_medium"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="14dp"
+                android:text="Questions techniques"
+                android:textColor="@color/darkPurple"
+                app:layout_constraintEnd_toStartOf="@+id/chevron_technical_question"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/problem_order" />
+
+            <ImageView
+                android:id="@+id/chevron_technical_question"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/chevron_gauche"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/technical_question" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/title_frequent_question"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#EFF0F6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/technical_question">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ballochettan"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="14dp"
+                    android:text="Questions fréquentes"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/lost_figures"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:fontFamily="@font/baloochettan_medium"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="14dp"
+                android:text="J'ai perdu ma figurine, comment la racheter ?"
+                android:textColor="@color/darkPurple"
+                app:layout_constraintEnd_toStartOf="@+id/chevron_problem_order"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_frequent_question" />
+
+            <ImageView
+                android:id="@+id/chevron_chevron_scan_not_working"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/chevron_gauche"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/lost_figures" />
+
+            <TextView
+                android:id="@+id/scan_not_working"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:fontFamily="@font/baloochettan_medium"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="14dp"
+                android:layout_marginBottom="100dp"
+                android:text="Le scan de la figurine ne fonctione pas"
+                android:textColor="@color/darkPurple"
+                app:layout_constraintEnd_toStartOf="@+id/chevron_scan_not_working"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lost_figures"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/chevron_scan_not_working"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/chevron_gauche"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/scan_not_working" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

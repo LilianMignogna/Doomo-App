@@ -18,6 +18,11 @@ import com.bddi.doomo.activity.StoryActivity
 class VideoFragment : Fragment() {
     lateinit var root: View
 
+    private lateinit var videos: Array<Int>
+    private var count: Int = 0
+    private var video: Int = 0
+    private lateinit var videoView: VideoView
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,11 +34,12 @@ class VideoFragment : Fragment() {
 
         root = inflater.inflate(R.layout.fragment_story_video, container, false)
 
-        val videoView = root.findViewById<VideoView>(R.id.video_view)
+        videoView = root.findViewById(R.id.video_view)
         val mediaController = MediaController(context)
         mediaController.setAnchorView(videoView)
 
-        val video = (activity as? StoryActivity)?.currentArgument
+        videos = (activity as? StoryActivity)?.currentArgument as Array<Int>
+        video = videos[count]
 
         // get directory path
         val currentPackage = activity?.packageName
@@ -104,7 +110,6 @@ class VideoFragment : Fragment() {
 
         // display pause button
         videoView.setOnClickListener {
-            // (activity as? StoryActivity)?.endEvent()
             println("touch")
             (activity as? StoryActivity)?.hideSystemUI()
             timer.start()
@@ -124,18 +129,32 @@ class VideoFragment : Fragment() {
         // Skip Video
         skipButton.setOnClickListener {
             if (isButtonVisible) {
+                videoView.pause()
                 timer.start()
-                (activity as? StoryActivity)?.endEvent()
+                nextVideo(currentPackage)
             }
         }
 
         // event when video is ended
         videoView.setOnCompletionListener {
-            (activity as? StoryActivity)?.endEvent()
+            nextVideo(currentPackage)
             println("the video just ended")
         }
 
         return root
+    }
+
+    fun nextVideo(currentPackage: String?) {
+        count++
+        if (count >= videos.size) {
+            (activity as? StoryActivity)?.endEvent()
+        } else {
+            video = videos[count]
+            val videoPath = "android.resource://$currentPackage/$video"
+            val uri = Uri.parse(videoPath)
+            videoView.setVideoURI(uri)
+            videoView.start()
+        }
     }
 
     override fun onResume() {
