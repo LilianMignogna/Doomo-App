@@ -63,10 +63,11 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="24dp" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/profile_picture"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
                 android:background="@drawable/chevre"
                 app:layout_constraintEnd_toEndOf="@id/end_guideline2"
                 app:layout_constraintStart_toStartOf="@+id/begin_guideline2"

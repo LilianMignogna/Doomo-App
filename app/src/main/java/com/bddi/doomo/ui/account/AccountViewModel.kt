@@ -1,5 +1,6 @@
 package com.bddi.doomo.ui.account
 
+import android.app.Activity
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.bddi.doomo.model.User
@@ -13,10 +14,10 @@ class AccountViewModel : ViewModel() {
     // Data Base Connection : get data
     val db = Firebase.firestore
 
-    fun getUserInfos(user: FirebaseUser, view: View){
+    fun getUserInfos(user: FirebaseUser, view: View, activity: Activity){
         db.collection("user").document(user.uid).get()
             .addOnSuccessListener { document ->
-                AccountFragment().setUserInfos(document.toObject<User>()!!, view)
+                AccountFragment().setUserInfos(document.toObject<User>()!!, view, activity)
             }
     }
 }
