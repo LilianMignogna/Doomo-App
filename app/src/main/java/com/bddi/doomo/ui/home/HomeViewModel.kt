@@ -24,10 +24,10 @@ class HomeViewModel : ViewModel() {
 
     fun getStory(){
         if(MainActivity.fav_story_1){
-            query = db.collection("Story").whereIn("title", listOf("Riri la grenouille", "Freddy le Gypaète"))
+            query = db.collection("Story").whereIn("id", listOf("DZevLTdzAisZUcPX8tup", " U2ZRAr0XUOp4o9djc4W2"))
         }
         else{
-            query = db.collection("Story").whereNotEqualTo("title", "Riri la grenouille").whereEqualTo("title", "Freddy le Gypaète")
+            query = db.collection("Story").whereNotEqualTo("id", "DZevLTdzAisZUcPX8tup").whereEqualTo("id", "U2ZRAr0XUOp4o9djc4W2")
         }
         options = FirestoreRecyclerOptions.Builder<Story>().setQuery(query, Story::class.java)
     }
