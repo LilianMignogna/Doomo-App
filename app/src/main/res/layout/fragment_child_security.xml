@@ -147,6 +147,7 @@
                         android:gravity="center"
                         android:inputType="number"
                         android:maxLength="1"
+                        android:nextFocusForward="@+id/result_third"
                         app:layout_constraintTop_toBottomOf="@+id/display_operation"
                         app:layout_constraintEnd_toStartOf="@id/result_third"
                         app:layout_constraintStart_toEndOf="@+id/result_first"/>
@@ -161,6 +162,7 @@
                         android:gravity="center"
                         android:inputType="number"
                         android:maxLength="1"
+                        android:nextFocusForward="@+id/result_fourth"
                         app:layout_constraintTop_toBottomOf="@+id/display_operation"
                         app:layout_constraintEnd_toStartOf="@id/result_fourth"
                         app:layout_constraintStart_toEndOf="@+id/result_second"/>
@@ -176,6 +178,7 @@
                         android:gravity="center"
                         android:inputType="number"
                         android:maxLength="1"
+                        android:nextFocusForward="@+id/button_validate"
                         app:layout_constraintTop_toBottomOf="@+id/display_operation"
                         app:layout_constraintEnd_toEndOf="parent" />
                     <com.google.android.material.button.MaterialButton

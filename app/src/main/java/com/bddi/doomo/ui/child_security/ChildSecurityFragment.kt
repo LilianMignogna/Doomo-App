@@ -1,14 +1,17 @@
 package com.bddi.doomo.ui.child_security
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.bddi.doomo.R
 
 class ChildSecurityFragment : Fragment() {
@@ -27,16 +30,34 @@ class ChildSecurityFragment : Fragment() {
         val displayOperation: EditText = root.findViewById(R.id.display_operation)
         displayOperation.setText("${firstNumber} + ${secondNumber} x ${thirdNumber}")
         val accountRedirectionButton: TextView = root.findViewById(R.id.button_validate)
-        accountRedirectionButton.setOnClickListener(){
 
-            val firstEnteredNumber: String = root.findViewById<EditText>(R.id.result_first).text.toString()
-            val secondEnteredNumber: String = root.findViewById<EditText>(R.id.result_second).text.toString()
-            val thirdEnteredNumber: String = root.findViewById<EditText>(R.id.result_third).text.toString()
-            val fourthEnteredNumber: String = root.findViewById<EditText>(R.id.result_fourth).text.toString()
+        val firstFieldNumber = root.findViewById<EditText>(R.id.result_first)
+        val secondFieldNumber= root.findViewById<EditText>(R.id.result_second)
+        val thirdFieldNumber = root.findViewById<EditText>(R.id.result_third)
+        val fourthFieldNumber= root.findViewById<EditText>(R.id.result_fourth)
 
-            if(firstEnteredNumber != "" && secondEnteredNumber != "" && thirdEnteredNumber != "" && fourthEnteredNumber != ""){
-                val enteredResult = Integer.parseInt(firstEnteredNumber)*1000 + Integer.parseInt(secondEnteredNumber)*100 + Integer.parseInt(thirdEnteredNumber)*10 + Integer.parseInt(fourthEnteredNumber)
-                if(result == enteredResult){
+        firstFieldNumber.addTextChangedListener {
+            if (firstFieldNumber.text.length == 1)
+                secondFieldNumber.requestFocus()
+        }
+        secondFieldNumber.addTextChangedListener {
+            if (secondFieldNumber.text.length == 1)
+                thirdFieldNumber.requestFocus()
+        }
+        thirdFieldNumber.addTextChangedListener {
+            if (thirdFieldNumber.text.length == 1)
+                fourthFieldNumber.requestFocus()
+        }
+
+        accountRedirectionButton.setOnClickListener() {
+            val firstEnteredNumber: String = firstFieldNumber.text.toString()
+            val secondEnteredNumber: String = secondFieldNumber.text.toString()
+            val thirdEnteredNumber: String = thirdFieldNumber.text.toString()
+            val fourthEnteredNumber: String = fourthFieldNumber.text.toString()
+
+            if (firstEnteredNumber != "" && secondEnteredNumber != "" && thirdEnteredNumber != "" && fourthEnteredNumber != "") {
+                val enteredResult = Integer.parseInt(firstEnteredNumber)*1000 + Integer.parseInt(secondEnteredNumber) * 100 + Integer.parseInt(thirdEnteredNumber)*10 + Integer.parseInt(fourthEnteredNumber)
+                if (result == enteredResult) {
                     root.findNavController().navigate(R.id.action_child_security_to_account)
                 }
             }
